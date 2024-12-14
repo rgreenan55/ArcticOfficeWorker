@@ -1,0 +1,146 @@
+[gd_scene load_steps=5 format=3 uid="uid://djc8hgmepo54m"]
+
+[ext_resource type="Script" path="res://UserInterface/Menus/Settings/Settings.gd" id="1_77y81"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_hv3si"]
+font_size = 10
+
+[sub_resource type="LabelSettings" id="LabelSettings_akmv1"]
+font_size = 10
+
+[sub_resource type="LabelSettings" id="LabelSettings_yntjs"]
+font_size = 10
+
+[node name="Settings" type="Control"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_77y81")
+
+[node name="SettingsPanel" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = -150.0
+offset_right = 200.0
+offset_bottom = 150.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="SettingsPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 25
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 25
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="SettingsPanel/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Graphics" type="VBoxContainer" parent="SettingsPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="GraphicsLabel" type="Label" parent="SettingsPanel/MarginContainer/VBoxContainer/Graphics"]
+layout_mode = 2
+text = "Graphics"
+
+[node name="FullscreenCheckBox" type="CheckBox" parent="SettingsPanel/MarginContainer/VBoxContainer/Graphics"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/icon_max_width = 13
+theme_override_constants/align_to_largest_stylebox = 0
+theme_override_font_sizes/font_size = 12
+text = "Fullscreen"
+
+[node name="Audio" type="VBoxContainer" parent="SettingsPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="AudioLabel" type="Label" parent="SettingsPanel/MarginContainer/VBoxContainer/Audio"]
+layout_mode = 2
+text = "Audio
+"
+
+[node name="MasterVolumeLabel" type="Label" parent="SettingsPanel/MarginContainer/VBoxContainer/Audio"]
+layout_mode = 2
+text = "Master Volume"
+label_settings = SubResource("LabelSettings_hv3si")
+
+[node name="MasterHBox" type="HBoxContainer" parent="SettingsPanel/MarginContainer/VBoxContainer/Audio"]
+layout_mode = 2
+
+[node name="MasterVolume" type="HSlider" parent="SettingsPanel/MarginContainer/VBoxContainer/Audio/MasterHBox"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+step = 2.5
+tick_count = 3
+
+[node name="Spacer" type="Control" parent="SettingsPanel/MarginContainer/VBoxContainer/Audio/MasterHBox"]
+custom_minimum_size = Vector2(75, 0)
+layout_mode = 2
+
+[node name="SoundVolumeLabel" type="Label" parent="SettingsPanel/MarginContainer/VBoxContainer/Audio"]
+layout_mode = 2
+text = "Sound Volume"
+label_settings = SubResource("LabelSettings_akmv1")
+
+[node name="SoundHBox" type="HBoxContainer" parent="SettingsPanel/MarginContainer/VBoxContainer/Audio"]
+layout_mode = 2
+
+[node name="SoundVolume" type="HSlider" parent="SettingsPanel/MarginContainer/VBoxContainer/Audio/SoundHBox"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+step = 2.5
+tick_count = 3
+
+[node name="Spacer" type="Control" parent="SettingsPanel/MarginContainer/VBoxContainer/Audio/SoundHBox"]
+custom_minimum_size = Vector2(75, 0)
+layout_mode = 2
+
+[node name="MusicVolumeLabel" type="Label" parent="SettingsPanel/MarginContainer/VBoxContainer/Audio"]
+layout_mode = 2
+text = "Music Volume"
+label_settings = SubResource("LabelSettings_yntjs")
+
+[node name="MusicHBox" type="HBoxContainer" parent="SettingsPanel/MarginContainer/VBoxContainer/Audio"]
+layout_mode = 2
+
+[node name="MusicVolume" type="HSlider" parent="SettingsPanel/MarginContainer/VBoxContainer/Audio/MusicHBox"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+step = 2.5
+tick_count = 3
+
+[node name="Spacer" type="Control" parent="SettingsPanel/MarginContainer/VBoxContainer/Audio/MusicHBox"]
+custom_minimum_size = Vector2(75, 0)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="SettingsPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Gameplay" type="Label" parent="SettingsPanel/MarginContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Gameplay"
+
+[node name="CheckBox" type="CheckBox" parent="SettingsPanel/MarginContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/icon_max_width = 13
+theme_override_font_sizes/font_size = 12
+text = "Temp"
+
+[connection signal="toggled" from="SettingsPanel/MarginContainer/VBoxContainer/Graphics/FullscreenCheckBox" to="." method="_on_fullscreen_check_box_toggled"]
+[connection signal="drag_ended" from="SettingsPanel/MarginContainer/VBoxContainer/Audio/MasterHBox/MasterVolume" to="." method="_on_master_volume_drag_ended"]
+[connection signal="drag_ended" from="SettingsPanel/MarginContainer/VBoxContainer/Audio/SoundHBox/SoundVolume" to="." method="_on_sound_volume_drag_ended"]
+[connection signal="drag_ended" from="SettingsPanel/MarginContainer/VBoxContainer/Audio/MusicHBox/MusicVolume" to="." method="_on_music_volume_drag_ended"]

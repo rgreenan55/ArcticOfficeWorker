@@ -1,0 +1,67 @@
+[gd_scene load_steps=6 format=3 uid="uid://dnwc5adrx7bm3"]
+
+[ext_resource type="Shader" path="res://Stages/Desktop/DesktopBackgrounds/DesktopBackground.gdshader" id="1_8116u"]
+[ext_resource type="Texture2D" uid="uid://j8hudmjds34y" path="res://Stages/Desktop/DesktopBackgrounds/DesktopBackground_1.png" id="2_a275l"]
+[ext_resource type="PackedScene" uid="uid://dmm7ujmcn46k4" path="res://Stages/Desktop/Utilities/InterfaceBackground/InterfaceBackground.tscn" id="3_fwov0"]
+[ext_resource type="PackedScene" uid="uid://cyn4w6tsrjxoi" path="res://DesktopIcon.tscn" id="4_3tdg0"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xef0d"]
+shader = ExtResource("1_8116u")
+
+[node name="Desktop" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background" type="TextureRect" parent="."]
+material = SubResource("ShaderMaterial_xef0d")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_a275l")
+stretch_mode = 1
+
+[node name="Header" parent="." instance=ExtResource("3_fwov0")]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_right = 0.0
+offset_bottom = 30.0
+grow_horizontal = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Header"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_right = 8
+
+[node name="HBoxContainer" type="HSplitContainer" parent="Header/MarginContainer"]
+layout_mode = 2
+
+[node name="ComputerVersion" type="Label" parent="Header/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "Wild Jam Inc. v0.7.6"
+
+[node name="Date" type="Label" parent="Header/MarginContainer/HBoxContainer"]
+layout_mode = 2
+text = "12:48 IMAGE"
+horizontal_alignment = 2
+
+[node name="DesktopIcon" parent="." instance=ExtResource("4_3tdg0")]
+layout_mode = 0
+offset_left = 26.0
+offset_top = 65.0
+offset_right = 154.0
+offset_bottom = 193.0
+label_text = "blahjblah"

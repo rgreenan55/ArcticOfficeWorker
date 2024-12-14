@@ -1,0 +1,173 @@
+[gd_scene load_steps=13 format=3 uid="uid://dnwc5adrx7bm3"]
+
+[ext_resource type="Shader" path="res://Stages/Desktop/DesktopBackgrounds/DesktopBackground.gdshader" id="1_8116u"]
+[ext_resource type="Texture2D" uid="uid://j8hudmjds34y" path="res://Stages/Desktop/DesktopBackgrounds/DesktopBackground_1.png" id="2_a275l"]
+[ext_resource type="PackedScene" uid="uid://dmm7ujmcn46k4" path="res://Stages/Desktop/Utilities/InterfaceBackground/InterfaceBackground.tscn" id="3_fwov0"]
+[ext_resource type="Script" path="res://Stages/Desktop/Utilities/Date.gd" id="4_71qwm"]
+[ext_resource type="LabelSettings" uid="uid://d2a4gol6xvhu5" path="res://Stages/Desktop/Utilities/DesktopFont.tres" id="4_cw2jj"]
+[ext_resource type="Texture2D" uid="uid://br1fh0ht5442l" path="res://Stages/Desktop/DesktopIcons/ExitIcon/ExitIdleIcon.png" id="4_gc4ki"]
+[ext_resource type="Texture2D" uid="uid://d2nchwlx8q4mo" path="res://Stages/Desktop/DesktopIcons/ExitIcon/ExitPressedIcon.png" id="5_j7qde"]
+[ext_resource type="Texture2D" uid="uid://ds5ahpg8dd32h" path="res://Stages/Desktop/DesktopIcons/ExitIcon/ExitHoverIcon.png" id="6_i7qnv"]
+[ext_resource type="Script" path="res://Stages/Desktop/DesktopIcons/ExitIcon/ExitIcon.gd" id="7_xox02"]
+[ext_resource type="Script" path="res://Stages/Desktop/DesktopIcons/TodoIcon/TodoIcon.gd" id="9_n58hj"]
+[ext_resource type="Script" path="res://Stages/Desktop/Utilities/Windows.gd" id="11_rla85"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xef0d"]
+shader = ExtResource("1_8116u")
+
+[node name="Desktop" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background" type="TextureRect" parent="."]
+material = SubResource("ShaderMaterial_xef0d")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_a275l")
+stretch_mode = 1
+metadata/_edit_lock_ = true
+
+[node name="Header" parent="." instance=ExtResource("3_fwov0")]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_right = 0.0
+offset_bottom = 32.0
+grow_horizontal = 2
+metadata/_edit_lock_ = true
+
+[node name="MarginContainer" type="MarginContainer" parent="Header"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_right = 8
+
+[node name="HSplitContainer" type="HSplitContainer" parent="Header/MarginContainer"]
+layout_mode = 2
+dragger_visibility = 2
+
+[node name="ComputerVersion" type="Label" parent="Header/MarginContainer/HSplitContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "Wild Jam Inc. v0.7.6"
+label_settings = ExtResource("4_cw2jj")
+
+[node name="Date" type="Label" parent="Header/MarginContainer/HSplitContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+label_settings = ExtResource("4_cw2jj")
+horizontal_alignment = 2
+script = ExtResource("4_71qwm")
+
+[node name="DesktopIcons" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 32.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+
+[node name="Icon_1" type="TextureButton" parent="DesktopIcons"]
+offset_left = 32.0
+offset_top = 8.0
+offset_right = 128.0
+offset_bottom = 104.0
+texture_normal = ExtResource("4_gc4ki")
+texture_pressed = ExtResource("5_j7qde")
+texture_hover = ExtResource("6_i7qnv")
+
+[node name="Icon_2" type="TextureButton" parent="DesktopIcons"]
+offset_left = 32.0
+offset_top = 120.0
+offset_right = 128.0
+offset_bottom = 216.0
+texture_normal = ExtResource("4_gc4ki")
+texture_pressed = ExtResource("5_j7qde")
+texture_hover = ExtResource("6_i7qnv")
+
+[node name="Icon_3" type="TextureButton" parent="DesktopIcons"]
+offset_left = 32.0
+offset_top = 248.0
+offset_right = 128.0
+offset_bottom = 344.0
+texture_normal = ExtResource("4_gc4ki")
+texture_pressed = ExtResource("5_j7qde")
+texture_hover = ExtResource("6_i7qnv")
+
+[node name="Icon_4" type="TextureButton" parent="DesktopIcons"]
+offset_left = 144.0
+offset_top = 8.0
+offset_right = 240.0
+offset_bottom = 104.0
+texture_normal = ExtResource("4_gc4ki")
+texture_pressed = ExtResource("5_j7qde")
+texture_hover = ExtResource("6_i7qnv")
+
+[node name="Icon_5" type="TextureButton" parent="DesktopIcons"]
+offset_left = 1152.0
+offset_top = 8.0
+offset_right = 1248.0
+offset_bottom = 104.0
+texture_normal = ExtResource("4_gc4ki")
+texture_pressed = ExtResource("5_j7qde")
+texture_hover = ExtResource("6_i7qnv")
+
+[node name="Icon_6" type="TextureButton" parent="DesktopIcons"]
+offset_left = 1152.0
+offset_top = 120.0
+offset_right = 1248.0
+offset_bottom = 216.0
+texture_normal = ExtResource("4_gc4ki")
+texture_pressed = ExtResource("5_j7qde")
+texture_hover = ExtResource("6_i7qnv")
+
+[node name="Icon_7" type="TextureButton" parent="DesktopIcons"]
+offset_left = 1152.0
+offset_top = 232.0
+offset_right = 1248.0
+offset_bottom = 328.0
+texture_normal = ExtResource("4_gc4ki")
+texture_pressed = ExtResource("5_j7qde")
+texture_hover = ExtResource("6_i7qnv")
+
+[node name="TodoIcon" type="TextureButton" parent="DesktopIcons"]
+offset_left = 1152.0
+offset_top = 448.0
+offset_right = 1248.0
+offset_bottom = 544.0
+texture_normal = ExtResource("4_gc4ki")
+texture_pressed = ExtResource("5_j7qde")
+texture_hover = ExtResource("6_i7qnv")
+script = ExtResource("9_n58hj")
+
+[node name="ExitIcon" type="TextureButton" parent="DesktopIcons"]
+layout_mode = 0
+offset_left = 1152.0
+offset_top = 560.0
+offset_right = 1248.0
+offset_bottom = 656.0
+texture_normal = ExtResource("4_gc4ki")
+texture_pressed = ExtResource("5_j7qde")
+texture_hover = ExtResource("6_i7qnv")
+script = ExtResource("7_xox02")
+
+[node name="Windows" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("11_rla85")
+metadata/_edit_use_anchors_ = true
+
+[connection signal="pressed" from="DesktopIcons/TodoIcon" to="DesktopIcons/TodoIcon" method="_on_pressed"]
