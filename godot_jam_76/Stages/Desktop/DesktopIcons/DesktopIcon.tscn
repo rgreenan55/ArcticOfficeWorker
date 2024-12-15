@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://dpvoncx6dm53r"]
+
+[ext_resource type="Script" path="res://Stages/Desktop/DesktopIcons/DesktopIcon.gd" id="1_fsslo"]
+
+[sub_resource type="Gradient" id="Gradient_stn32"]
+offsets = PackedFloat32Array(0.458065)
+colors = PackedColorArray(0, 0, 0, 0.607843)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_n2dlo"]
+gradient = SubResource("Gradient_stn32")
+width = 96
+height = 96
+fill_from = Vector2(1, 0)
+fill_to = Vector2(0.491453, 0.5)
+
+[node name="DesktopIcon" type="TextureButton"]
+offset_left = -48.0
+offset_top = -48.0
+offset_right = 48.0
+offset_bottom = 48.0
+texture_normal = SubResource("GradientTexture2D_n2dlo")
+script = ExtResource("1_fsslo")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

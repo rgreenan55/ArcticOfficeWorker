@@ -1,0 +1,100 @@
+[gd_scene load_steps=12 format=3 uid="uid://cbdokv7vtqjra"]
+
+[ext_resource type="Texture2D" uid="uid://wl525yrh4hqs" path="res://Stages/Desktop/Applications/IcePacker/Art/IcePackerBoard.png" id="1_6glgn"]
+[ext_resource type="FontFile" uid="uid://dvjbusva4epa5" path="res://Assets/Fonts/OCRAEXT.TTF" id="2_litii"]
+
+[sub_resource type="Gradient" id="Gradient_pmr84"]
+offsets = PackedFloat32Array(0.779503, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_haqej"]
+gradient = SubResource("Gradient_pmr84")
+width = 128
+height = 128
+fill = 2
+fill_from = Vector2(0.529915, 0.504274)
+fill_to = Vector2(0, 1)
+
+[sub_resource type="Gradient" id="Gradient_4nivs"]
+offsets = PackedFloat32Array(0.496894)
+colors = PackedColorArray(0.863497, 0.618086, 0.439121, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_h71eq"]
+gradient = SubResource("Gradient_4nivs")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pr2o0"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_frmc6"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2yn2a"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vd8ow"]
+bg_color = Color(0.925472, 0.747554, 0.62021, 1)
+
+[sub_resource type="Theme" id="Theme_vpj1l"]
+default_font = ExtResource("2_litii")
+default_font_size = 32
+Button/colors/font_color = Color(1, 1, 1, 1)
+Button/colors/font_focus_color = Color(0.95, 0.95, 0.95, 1)
+Button/colors/font_hover_color = Color(1, 1, 1, 1)
+Button/colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+Button/colors/font_pressed_color = Color(1, 1, 1, 1)
+Button/font_sizes/font_size = 32
+Button/fonts/font = ExtResource("2_litii")
+Button/styles/focus = SubResource("StyleBoxEmpty_pr2o0")
+Button/styles/hover = SubResource("StyleBoxEmpty_frmc6")
+Button/styles/normal = SubResource("StyleBoxEmpty_2yn2a")
+Button/styles/pressed = SubResource("StyleBoxFlat_vd8ow")
+
+[node name="IcePacker" type="CenterContainer"]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="GameBoard" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="GameBoard" type="CenterContainer" parent="VBoxContainer/GameBoard"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/GameBoard/GameBoard"]
+layout_mode = 2
+theme_override_constants/margin_left = 48
+theme_override_constants/margin_right = 48
+
+[node name="GameBoardTexture" type="TextureRect" parent="VBoxContainer/GameBoard/GameBoard/MarginContainer"]
+layout_mode = 2
+texture = ExtResource("1_6glgn")
+
+[node name="IceBlockOptions" type="VBoxContainer" parent="VBoxContainer/GameBoard"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="TextureRect_2" type="TextureRect" parent="VBoxContainer/GameBoard/IceBlockOptions"]
+layout_mode = 2
+texture = SubResource("GradientTexture2D_haqej")
+
+[node name="TextureRect_3" type="TextureRect" parent="VBoxContainer/GameBoard/IceBlockOptions"]
+layout_mode = 2
+texture = SubResource("GradientTexture2D_haqej")
+
+[node name="TextureRect_4" type="TextureRect" parent="VBoxContainer/GameBoard/IceBlockOptions"]
+layout_mode = 2
+texture = SubResource("GradientTexture2D_haqej")
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer"]
+layout_mode = 2
+texture = SubResource("GradientTexture2D_h71eq")
+
+[node name="Button" type="Button" parent="VBoxContainer/TextureRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_vpj1l")
+text = "Ship > > >"

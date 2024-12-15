@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://bpeqdply1ywtb"]
+
+[ext_resource type="Script" path="res://Stages/Desktop/Applications/IceBreaker/IceBreaker.gd" id="1_3t3jv"]
+[ext_resource type="Texture2D" uid="uid://bs473onkn4xea" path="res://Stages/Desktop/Applications/IceBreaker/Art/Ice100.png" id="2_3e6yv"]
+[ext_resource type="Texture2D" uid="uid://pvi4svenewx2" path="res://Stages/Desktop/Applications/IceBreaker/Art/PickIdle.png" id="2_15tmc"]
+[ext_resource type="Texture2D" uid="uid://bymxc6qof1mdi" path="res://Stages/Desktop/Applications/IceBreaker/Art/PickPressed.png" id="3_732p7"]
+
+[node name="IceBreaker" type="CenterContainer"]
+offset_right = 32.0
+offset_bottom = 32.0
+script = ExtResource("1_3t3jv")
+
+[node name="IceTexture" type="TextureRect" parent="."]
+layout_mode = 2
+texture = ExtResource("2_3e6yv")
+
+[node name="PickButton" type="TextureButton" parent="."]
+layout_mode = 2
+texture_normal = ExtResource("2_15tmc")
+texture_pressed = ExtResource("3_732p7")
+
+[connection signal="gui_input" from="PickButton" to="." method="_on_texture_button_gui_input"]
+[connection signal="pressed" from="PickButton" to="." method="_on_pick_button_pressed"]

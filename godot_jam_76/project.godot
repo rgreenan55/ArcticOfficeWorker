@@ -11,7 +11,12 @@ config_version=5
 [application]
 
 config/name="GodotJam76"
+run/main_scene="res://Stages/Desktop/Desktop.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
+
+[autoload]
+
+DesktopManager="*res://Globals/DesktopManager.gd"
 
 [display]
 

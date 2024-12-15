@@ -1,0 +1,103 @@
+[gd_scene load_steps=9 format=3 uid="uid://bnufeghigo603"]
+
+[ext_resource type="Script" path="res://Stages/Desktop/Applications/WindowBody.gd" id="1_11h3p"]
+[ext_resource type="PackedScene" uid="uid://dmm7ujmcn46k4" path="res://Stages/Desktop/Utilities/InterfaceStyle/InterfaceBackground.tscn" id="2_0i1gs"]
+[ext_resource type="LabelSettings" uid="uid://d2a4gol6xvhu5" path="res://Stages/Desktop/Utilities/DesktopFont.tres" id="3_4qutd"]
+[ext_resource type="FontFile" uid="uid://dvjbusva4epa5" path="res://Assets/Fonts/OCRAEXT.TTF" id="4_eub2l"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vbqpc"]
+
+[sub_resource type="Gradient" id="Gradient_b3keu"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_skt4o"]
+gradient = SubResource("Gradient_b3keu")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_esl5a"]
+size = Vector2(0, 0)
+
+[node name="WindowBody" type="CharacterBody2D"]
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("1_11h3p")
+
+[node name="WindowControl" type="PanelContainer" parent="."]
+offset_right = 160.0
+offset_bottom = 192.0
+mouse_filter = 1
+
+[node name="WindowDivider" type="VBoxContainer" parent="WindowControl"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="WindowHeader" type="PanelContainer" parent="WindowControl/WindowDivider"]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxEmpty_vbqpc")
+
+[node name="WindowHeaderStyle" parent="WindowControl/WindowDivider/WindowHeader" instance=ExtResource("2_0i1gs")]
+layout_mode = 2
+mouse_filter = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="WindowControl/WindowDivider/WindowHeader"]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_right = 8
+
+[node name="HSplitContainer" type="HSplitContainer" parent="WindowControl/WindowDivider/WindowHeader/MarginContainer"]
+layout_mode = 2
+dragger_visibility = 2
+
+[node name="WindowLabel" type="Label" parent="WindowControl/WindowDivider/WindowHeader/MarginContainer/HSplitContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 1
+mouse_filter = 1
+text = "Title"
+label_settings = ExtResource("3_4qutd")
+vertical_alignment = 1
+
+[node name="ExitButton" type="Button" parent="WindowControl/WindowDivider/WindowHeader/MarginContainer/HSplitContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_eub2l")
+theme_override_font_sizes/font_size = 12
+text = "X"
+flat = true
+
+[node name="WindowPanel" type="PanelContainer" parent="WindowControl/WindowDivider"]
+layout_mode = 2
+size_flags_vertical = 3
+mouse_filter = 1
+
+[node name="WindowPanelStyle" parent="WindowControl/WindowDivider/WindowPanel" instance=ExtResource("2_0i1gs")]
+layout_mode = 2
+
+[node name="ContentContainer" type="MarginContainer" parent="WindowControl/WindowDivider/WindowPanel"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="ContentBackground" type="TextureRect" parent="WindowControl/WindowDivider/WindowPanel/ContentContainer"]
+layout_mode = 2
+texture = SubResource("GradientTexture2D_skt4o")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_esl5a")
+
+[connection signal="gui_input" from="WindowControl" to="." method="_on_window_control_gui_input"]
+[connection signal="gui_input" from="WindowControl/WindowDivider/WindowHeader" to="." method="_on_window_header_gui_input"]
+[connection signal="pressed" from="WindowControl/WindowDivider/WindowHeader/MarginContainer/HSplitContainer/ExitButton" to="." method="_on_exit_button_pressed"]
+[connection signal="child_entered_tree" from="WindowControl/WindowDivider/WindowPanel/ContentContainer" to="." method="_on_content_container_child_entered_tree"]
