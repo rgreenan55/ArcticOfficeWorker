@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://b280vok6utgxq"]
+
+[ext_resource type="Script" path="res://Stages/Desktop/Applications/IcePacker/Shapes/BaseShape.gd" id="1_atf46"]
+
+[node name="BaseShape" type="CharacterBody2D"]
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("1_atf46")

@@ -1,9 +1,12 @@
-[gd_scene load_steps=9 format=3 uid="uid://bnufeghigo603"]
+[gd_scene load_steps=11 format=3 uid="uid://bnufeghigo603"]
 
 [ext_resource type="Script" path="res://Stages/Desktop/Applications/WindowBody.gd" id="1_11h3p"]
 [ext_resource type="PackedScene" uid="uid://dmm7ujmcn46k4" path="res://Stages/Desktop/Utilities/InterfaceStyle/InterfaceBackground.tscn" id="2_0i1gs"]
 [ext_resource type="LabelSettings" uid="uid://d2a4gol6xvhu5" path="res://Stages/Desktop/Utilities/DesktopFont.tres" id="3_4qutd"]
+[ext_resource type="PackedScene" uid="uid://b4wl605ib0dtk" path="res://Stages/Desktop/Applications/WindowUtility/StatusSymbols/StatusSymbols.tscn" id="3_62ipf"]
 [ext_resource type="FontFile" uid="uid://dvjbusva4epa5" path="res://Assets/Fonts/OCRAEXT.TTF" id="4_eub2l"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tdr4i"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vbqpc"]
 
@@ -26,6 +29,7 @@ script = ExtResource("1_11h3p")
 offset_right = 160.0
 offset_bottom = 192.0
 mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxEmpty_tdr4i")
 
 [node name="WindowDivider" type="VBoxContainer" parent="WindowControl"]
 layout_mode = 2
@@ -43,12 +47,16 @@ mouse_filter = 1
 
 [node name="MarginContainer" type="MarginContainer" parent="WindowControl/WindowDivider/WindowHeader"]
 layout_mode = 2
-theme_override_constants/margin_left = 8
+theme_override_constants/margin_left = 24
 theme_override_constants/margin_right = 8
 
 [node name="HSplitContainer" type="HSplitContainer" parent="WindowControl/WindowDivider/WindowHeader/MarginContainer"]
 layout_mode = 2
 dragger_visibility = 2
+
+[node name="StatusSymbol" parent="WindowControl/WindowDivider/WindowHeader/MarginContainer/HSplitContainer" instance=ExtResource("3_62ipf")]
+unique_name_in_owner = true
+position = Vector2(-11, 15)
 
 [node name="WindowLabel" type="Label" parent="WindowControl/WindowDivider/WindowHeader/MarginContainer/HSplitContainer"]
 unique_name_in_owner = true
@@ -62,6 +70,7 @@ vertical_alignment = 1
 [node name="ExitButton" type="Button" parent="WindowControl/WindowDivider/WindowHeader/MarginContainer/HSplitContainer"]
 layout_mode = 2
 size_flags_horizontal = 8
+size_flags_vertical = 4
 theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
 theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
 theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
@@ -76,7 +85,6 @@ flat = true
 
 [node name="WindowPanel" type="PanelContainer" parent="WindowControl/WindowDivider"]
 layout_mode = 2
-size_flags_vertical = 3
 mouse_filter = 1
 
 [node name="WindowPanelStyle" parent="WindowControl/WindowDivider/WindowPanel" instance=ExtResource("2_0i1gs")]

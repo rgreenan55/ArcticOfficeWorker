@@ -1,19 +1,17 @@
-[gd_scene load_steps=12 format=3 uid="uid://cbdokv7vtqjra"]
+[gd_scene load_steps=13 format=3 uid="uid://cbdokv7vtqjra"]
 
-[ext_resource type="Texture2D" uid="uid://wl525yrh4hqs" path="res://Stages/Desktop/Applications/IcePacker/Art/IcePackerBoard.png" id="1_6glgn"]
+[ext_resource type="PackedScene" uid="uid://4ri44fry6k3f" path="res://Stages/Desktop/Applications/IcePacker/IcePackerGame.tscn" id="1_8wjba"]
 [ext_resource type="FontFile" uid="uid://dvjbusva4epa5" path="res://Assets/Fonts/OCRAEXT.TTF" id="2_litii"]
+[ext_resource type="PackedScene" uid="uid://dmm7ujmcn46k4" path="res://Stages/Desktop/Utilities/InterfaceStyle/InterfaceBackground.tscn" id="2_qcq1l"]
 
-[sub_resource type="Gradient" id="Gradient_pmr84"]
-offsets = PackedFloat32Array(0.779503, 1)
-colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+[sub_resource type="Gradient" id="Gradient_4bris"]
+offsets = PackedFloat32Array(1)
+colors = PackedColorArray(1, 1, 1, 0)
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_haqej"]
-gradient = SubResource("Gradient_pmr84")
-width = 128
-height = 128
-fill = 2
-fill_from = Vector2(0.529915, 0.504274)
-fill_to = Vector2(0, 1)
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_dfqyt"]
+gradient = SubResource("Gradient_4bris")
+width = 520
+height = 340
 
 [sub_resource type="Gradient" id="Gradient_4nivs"]
 offsets = PackedFloat32Array(0.496894)
@@ -47,43 +45,32 @@ Button/styles/normal = SubResource("StyleBoxEmpty_2yn2a")
 Button/styles/pressed = SubResource("StyleBoxFlat_vd8ow")
 
 [node name="IcePacker" type="CenterContainer"]
-offset_right = 40.0
-offset_bottom = 40.0
+offset_right = 520.0
+offset_bottom = 416.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 2
+mouse_filter = 2
 theme_override_constants/separation = 0
 
-[node name="GameBoard" type="HBoxContainer" parent="VBoxContainer"]
+[node name="SizingPanel" type="TextureRect" parent="VBoxContainer"]
 layout_mode = 2
+mouse_filter = 2
+texture = SubResource("GradientTexture2D_dfqyt")
 
-[node name="GameBoard" type="CenterContainer" parent="VBoxContainer/GameBoard"]
+[node name="InterfaceBackground_2" parent="VBoxContainer/SizingPanel" instance=ExtResource("2_qcq1l")]
+z_as_relative = false
 layout_mode = 2
+offset_left = 328.0
+offset_right = 344.0
+offset_bottom = 341.0
+region_rect = Rect2(0, 1, 24, 20)
 
-[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/GameBoard/GameBoard"]
+[node name="InterfaceBackground" parent="VBoxContainer" instance=ExtResource("2_qcq1l")]
 layout_mode = 2
-theme_override_constants/margin_left = 48
-theme_override_constants/margin_right = 48
-
-[node name="GameBoardTexture" type="TextureRect" parent="VBoxContainer/GameBoard/GameBoard/MarginContainer"]
-layout_mode = 2
-texture = ExtResource("1_6glgn")
-
-[node name="IceBlockOptions" type="VBoxContainer" parent="VBoxContainer/GameBoard"]
-layout_mode = 2
-theme_override_constants/separation = 0
-
-[node name="TextureRect_2" type="TextureRect" parent="VBoxContainer/GameBoard/IceBlockOptions"]
-layout_mode = 2
-texture = SubResource("GradientTexture2D_haqej")
-
-[node name="TextureRect_3" type="TextureRect" parent="VBoxContainer/GameBoard/IceBlockOptions"]
-layout_mode = 2
-texture = SubResource("GradientTexture2D_haqej")
-
-[node name="TextureRect_4" type="TextureRect" parent="VBoxContainer/GameBoard/IceBlockOptions"]
-layout_mode = 2
-texture = SubResource("GradientTexture2D_haqej")
+region_rect = Rect2(1, 0, 22, 24)
 
 [node name="TextureRect" type="TextureRect" parent="VBoxContainer"]
 layout_mode = 2
@@ -94,7 +81,13 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -4.0
+offset_right = 4.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = SubResource("Theme_vpj1l")
 text = "Ship > > >"
+
+[node name="IcePackerGame" parent="." instance=ExtResource("1_8wjba")]
+
+[connection signal="pressed" from="VBoxContainer/TextureRect/Button" to="IcePackerGame" method="ship_package"]

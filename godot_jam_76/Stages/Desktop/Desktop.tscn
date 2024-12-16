@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://dnwc5adrx7bm3"]
+[gd_scene load_steps=24 format=3 uid="uid://dnwc5adrx7bm3"]
 
 [ext_resource type="Shader" path="res://Stages/Desktop/DesktopBackgrounds/DesktopBackground.gdshader" id="1_8116u"]
 [ext_resource type="Texture2D" uid="uid://j8hudmjds34y" path="res://Stages/Desktop/DesktopBackgrounds/DesktopBackground_1.png" id="2_a275l"]
@@ -18,7 +18,10 @@
 [ext_resource type="Script" path="res://Stages/Desktop/Windows.gd" id="11_rla85"]
 [ext_resource type="Texture2D" uid="uid://b04h553cu5b4" path="res://Stages/Desktop/Applications/IcePacker/Art/IcePackerHover.png" id="12_md40b"]
 [ext_resource type="Texture2D" uid="uid://021juuwyp18y" path="res://Stages/Desktop/Applications/IcePacker/Art/IcePackerPressed.png" id="13_b37ar"]
+[ext_resource type="Texture2D" uid="uid://bjq5nsf70jewv" path="res://Stages/Desktop/Applications/SnowTransport/Art/SnowTransportIdle.png" id="15_ug7sn"]
 [ext_resource type="PackedScene" uid="uid://iss5udt0n871" path="res://Stages/Desktop/Applications/SnowTransport/SnowTransport.tscn" id="15_y4ffw"]
+[ext_resource type="Texture2D" uid="uid://dihjqstj4goud" path="res://Stages/Desktop/Applications/SnowTransport/Art/SnowTransportHover.png" id="16_g7ts5"]
+[ext_resource type="Texture2D" uid="uid://bixp50vwqc8b5" path="res://Stages/Desktop/Applications/SnowTransport/Art/SnowTransportPressed.png" id="17_mbwvg"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_xef0d"]
 shader = ExtResource("1_8116u")
@@ -119,6 +122,9 @@ offset_left = 1136.0
 offset_top = 256.0
 offset_right = 1232.0
 offset_bottom = 352.0
+idle_icon = ExtResource("15_ug7sn")
+hover_icon = ExtResource("16_g7ts5")
+pressed_icon = ExtResource("17_mbwvg")
 application_name = "Snow Transport"
 window_content = ExtResource("15_y4ffw")
 

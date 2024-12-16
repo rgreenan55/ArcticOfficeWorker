@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://klojnaitjn0k"
-path="res://.godot/imported/LShape.png-eccd4d302aa9c36d8d8462dcb6557176.ctex"
+uid="uid://567dke8b58jl"
+path="res://.godot/imported/StatusSymbols.png-3fc650f697c60ed4ace3051b52780492.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Stages/Desktop/Applications/IcePacker/Art/Shapes/LShape.png"
-dest_files=["res://.godot/imported/LShape.png-eccd4d302aa9c36d8d8462dcb6557176.ctex"]
+source_file="res://Stages/Desktop/Applications/WindowUtility/StatusSymbols/StatusSymbols.png"
+dest_files=["res://.godot/imported/StatusSymbols.png-3fc650f697c60ed4ace3051b52780492.ctex"]
 
 [params]
 

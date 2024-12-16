@@ -41,5 +41,7 @@ text = ">"
 
 [node name="SnowTransportGame" parent="." instance=ExtResource("3_orodo")]
 
+[connection signal="gui_input" from="VBoxContainer/HBoxContainer/ButtonLeft" to="." method="_on_gui_input"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/ButtonLeft" to="." method="_on_button_left_pressed"]
+[connection signal="gui_input" from="VBoxContainer/HBoxContainer/ButtonRight" to="." method="_on_gui_input"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/ButtonRight" to="." method="_on_button_right_pressed"]

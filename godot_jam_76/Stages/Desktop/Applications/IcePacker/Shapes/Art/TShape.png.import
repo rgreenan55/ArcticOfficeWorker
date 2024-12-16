@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dmidy6wljnhuu"
-path="res://.godot/imported/TShape.png-c9e65a5d9a3227745abd5f904652726d.ctex"
+path="res://.godot/imported/TShape.png-f88d41d6fbb72fc381f0b1851b7685f8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Stages/Desktop/Applications/IcePacker/Art/Shapes/TShape.png"
-dest_files=["res://.godot/imported/TShape.png-c9e65a5d9a3227745abd5f904652726d.ctex"]
+source_file="res://Stages/Desktop/Applications/IcePacker/Shapes/Art/TShape.png"
+dest_files=["res://.godot/imported/TShape.png-f88d41d6fbb72fc381f0b1851b7685f8.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bqvld8ebik5fo"
-path="res://.godot/imported/OShape.png-78821e1ca64d5eaf26d557ca295b92f5.ctex"
+uid="uid://dihjqstj4goud"
+path="res://.godot/imported/SnowTransportHover.png-d653dd955fb61bf66cb3716b140b7e8e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Stages/Desktop/Applications/IcePacker/Art/Shapes/OShape.png"
-dest_files=["res://.godot/imported/OShape.png-78821e1ca64d5eaf26d557ca295b92f5.ctex"]
+source_file="res://Stages/Desktop/Applications/SnowTransport/Art/SnowTransportHover.png"
+dest_files=["res://.godot/imported/SnowTransportHover.png-d653dd955fb61bf66cb3716b140b7e8e.ctex"]
 
 [params]
 

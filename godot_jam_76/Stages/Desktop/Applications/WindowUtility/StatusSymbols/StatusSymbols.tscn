@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://b4wl605ib0dtk"]
+
+[ext_resource type="Texture2D" uid="uid://567dke8b58jl" path="res://Stages/Desktop/Applications/WindowUtility/StatusSymbols/StatusSymbols.png" id="1_8crkf"]
+[ext_resource type="Script" path="res://Stages/Desktop/Applications/WindowUtility/StatusSymbols/StatusSymbols.gd" id="2_f1dox"]
+
+[node name="StatusSymbol" type="Sprite2D"]
+texture = ExtResource("1_8crkf")
+hframes = 2
+vframes = 3
+script = ExtResource("2_f1dox")

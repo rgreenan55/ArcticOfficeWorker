@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ht60ymxjw7t0"
-path="res://.godot/imported/UShape.png-fcb0622eb418bc5fd46d630def2997f0.ctex"
+uid="uid://b74pi2kuab4ie"
+path="res://.godot/imported/GameCompleteAnimation.png-4edc1a018852e6c79e130dc6a0f90094.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Stages/Desktop/Applications/IcePacker/Art/Shapes/UShape.png"
-dest_files=["res://.godot/imported/UShape.png-fcb0622eb418bc5fd46d630def2997f0.ctex"]
+source_file="res://Stages/Desktop/Applications/SnowTransport/Art/GameCompleteAnimation.png"
+dest_files=["res://.godot/imported/GameCompleteAnimation.png-4edc1a018852e6c79e130dc6a0f90094.ctex"]
 
 [params]
 

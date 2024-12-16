@@ -1,13 +1,14 @@
 class_name DesktopWindow extends CharacterBody2D
 
+enum Status { Normal, Warning, Alert }
+var current_status : Status;
+
 @export var window_name : String;
 
 var draggingDistance : float;
 var direction : Vector2;
 var dragging : bool;
 var newPosition : Vector2 = Vector2();
-
-var mouse_in : bool = false;
 
 func _ready() -> void:
 	get_node("CollisionShape2D").shape.size = get_node("WindowControl").size
@@ -19,9 +20,16 @@ func set_window_name(window_name_string : String) -> void:
 	window_name = window_name_string;
 	%WindowLabel.text = window_name;
 
+func _process(_delta: float) -> void:
+	var get_status_callable : Callable = Callable(DesktopManager, window_name.replace(" ", "_").to_lower() + "_get_status");
+	var status : Status = get_status_callable.call();
+	if (current_status != status):
+		current_status = status;
+		get_node("%StatusSymbol").set_status(status);
+
 # Handles movement when the window header is clicked & dragged.
 func _on_window_header_gui_input(event: InputEvent) -> void:
-	if (event is InputEventMouseButton):
+	if (event.is_action("LeftMouseButton")):
 		if (event.is_pressed()):
 			draggingDistance = position.distance_to(get_viewport().get_mouse_position());
 			direction = (get_viewport().get_mouse_position() - position).normalized();
@@ -29,9 +37,8 @@ func _on_window_header_gui_input(event: InputEvent) -> void:
 			newPosition = get_viewport().get_mouse_position() - draggingDistance * direction;
 		else:
 			dragging = false;
-	elif (event is InputEventMouseMotion):
-		if (dragging):
-			newPosition = get_viewport().get_mouse_position() - draggingDistance * direction;
+	elif (dragging && event is InputEventMouseMotion):
+		newPosition = get_viewport().get_mouse_position() - draggingDistance * direction;
 
 func _physics_process(_delta: float) -> void:
 	if (dragging):

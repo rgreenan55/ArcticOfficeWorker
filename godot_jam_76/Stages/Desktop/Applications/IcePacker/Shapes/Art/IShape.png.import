@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dxq8dbehs5h00"
-path="res://.godot/imported/ZShape.png-9f14b136ac374bb8c72132657654f327.ctex"
+uid="uid://bx2mpedpe8ggh"
+path="res://.godot/imported/IShape.png-357aff47aa11b2534476e8a9af2cd043.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Stages/Desktop/Applications/IcePacker/Art/Shapes/ZShape.png"
-dest_files=["res://.godot/imported/ZShape.png-9f14b136ac374bb8c72132657654f327.ctex"]
+source_file="res://Stages/Desktop/Applications/IcePacker/Shapes/Art/IShape.png"
+dest_files=["res://.godot/imported/IShape.png-357aff47aa11b2534476e8a9af2cd043.ctex"]
 
 [params]
 

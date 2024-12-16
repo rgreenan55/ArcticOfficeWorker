@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=4 uid="uid://dmhb7rxcydiqg"]
+[gd_scene load_steps=34 format=4 uid="uid://dmhb7rxcydiqg"]
 
 [ext_resource type="Texture2D" uid="uid://b1xujcw1kiyun" path="res://Stages/Desktop/Applications/SnowTransport/Art/SnowTransportTileSet.png" id="1_84gx8"]
 [ext_resource type="Script" path="res://Stages/Desktop/Applications/SnowTransport/SnowTransportGame.gd" id="1_737mp"]
 [ext_resource type="Texture2D" uid="uid://qcyo2ekhlcpd" path="res://Stages/Desktop/Applications/SnowTransport/Art/Transport.png" id="2_6yy3u"]
+[ext_resource type="Texture2D" uid="uid://b74pi2kuab4ie" path="res://Stages/Desktop/Applications/SnowTransport/Art/GameCompleteAnimation.png" id="4_0p5nm"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gu1od"]
 texture = ExtResource("1_84gx8")
@@ -26,10 +27,177 @@ size = Vector2(368, 0)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_paqvj"]
 size = Vector2(8, 8)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_7rkpk"]
+atlas = ExtResource("4_0p5nm")
+region = Rect2(0, 0, 368, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tj061"]
+atlas = ExtResource("4_0p5nm")
+region = Rect2(368, 0, 368, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_53qgt"]
+atlas = ExtResource("4_0p5nm")
+region = Rect2(736, 0, 368, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kaner"]
+atlas = ExtResource("4_0p5nm")
+region = Rect2(1104, 0, 368, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l0hiv"]
+atlas = ExtResource("4_0p5nm")
+region = Rect2(1472, 0, 368, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2g3me"]
+atlas = ExtResource("4_0p5nm")
+region = Rect2(1840, 0, 368, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6togw"]
+atlas = ExtResource("4_0p5nm")
+region = Rect2(2208, 0, 368, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o0f1r"]
+atlas = ExtResource("4_0p5nm")
+region = Rect2(2576, 0, 368, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dv3ib"]
+atlas = ExtResource("4_0p5nm")
+region = Rect2(2944, 0, 368, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wyten"]
+atlas = ExtResource("4_0p5nm")
+region = Rect2(3312, 0, 368, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7f2s6"]
+atlas = ExtResource("4_0p5nm")
+region = Rect2(3680, 0, 368, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ufvh5"]
+atlas = ExtResource("4_0p5nm")
+region = Rect2(4048, 0, 368, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r3qwm"]
+atlas = ExtResource("4_0p5nm")
+region = Rect2(4416, 0, 368, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cxs01"]
+atlas = ExtResource("4_0p5nm")
+region = Rect2(4784, 0, 368, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_larb5"]
+atlas = ExtResource("4_0p5nm")
+region = Rect2(5152, 0, 368, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xw1uf"]
+atlas = ExtResource("4_0p5nm")
+region = Rect2(5520, 0, 368, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jwc6b"]
+atlas = ExtResource("4_0p5nm")
+region = Rect2(5888, 0, 368, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0nwle"]
+atlas = ExtResource("4_0p5nm")
+region = Rect2(6256, 0, 368, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_us5qo"]
+atlas = ExtResource("4_0p5nm")
+region = Rect2(6624, 0, 368, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wl13g"]
+atlas = ExtResource("4_0p5nm")
+region = Rect2(6992, 0, 368, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2ks4r"]
+atlas = ExtResource("4_0p5nm")
+region = Rect2(7360, 0, 368, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ex7pp"]
+atlas = ExtResource("4_0p5nm")
+region = Rect2(0, 0, 368, 144)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fl57u"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7rkpk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tj061")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_53qgt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kaner")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l0hiv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2g3me")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6togw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o0f1r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dv3ib")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wyten")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7f2s6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ufvh5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r3qwm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cxs01")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_larb5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xw1uf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jwc6b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0nwle")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_us5qo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wl13g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2ks4r")
+}],
+"loop": false,
+"name": &"complete",
+"speed": 15.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ex7pp")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
+
 [node name="SnowTransportGame" type="Node2D"]
 script = ExtResource("1_737mp")
 
-[node name="TileMapLayer" type="TileMapLayer" parent="."]
+[node name="BackgroundLayer" type="TileMapLayer" parent="."]
 tile_map_data = PackedByteArray("AAAAAAAAAAACAAAAAAAAAAEAAAACAAAAAAAAAAIAAAACAAAAAAAAAAMAAAACAAAAAAAAAAQAAAACAAAAAAAAAAUAAAACAAAAAAAAAAYAAAACAAAAAAAAAAcAAAACAAAAAAAAAAgAAAABAAAAAAABAAAAAAACAAAAAAABAAEAAAACAAAAAAABAAIAAAACAAAAAAABAAMAAAACAAAAAAABAAQAAAACAAAAAAABAAUAAAACAAAAAAABAAYAAAACAAAAAAABAAcAAAACAAAAAAABAAgAAAABAAAAAAACAAAAAAACAAAAAAACAAEAAAACAAAAAAACAAIAAAACAAAAAAACAAMAAAACAAAAAAACAAQAAAACAAAAAAACAAUAAAACAAAAAAACAAYAAAACAAAAAAACAAcAAAACAAAAAAACAAgAAAABAAAAAAADAAAAAAACAAAAAAADAAEAAAACAAAAAAADAAIAAAACAAAAAAADAAMAAAACAAAAAAADAAQAAAACAAAAAAADAAUAAAACAAAAAAADAAYAAAACAAAAAAADAAcAAAACAAAAAAADAAgAAAABAAAAAAAEAAAAAAACAAAAAAAEAAEAAAACAAAAAAAEAAIAAAACAAAAAAAEAAMAAAACAAAAAAAEAAQAAAACAAAAAAAEAAUAAAACAAAAAAAEAAYAAAACAAAAAAAEAAcAAAACAAAAAAAEAAgAAAABAAAAAAAFAAAAAAACAAAAAAAFAAEAAAACAAAAAAAFAAIAAAACAAAAAAAFAAMAAAACAAAAAAAFAAQAAAACAAAAAAAFAAUAAAACAAAAAAAFAAYAAAACAAAAAAAFAAcAAAACAAAAAAAFAAgAAAABAAAAAAAGAAAAAAACAAAAAAAGAAEAAAACAAAAAAAGAAIAAAACAAAAAAAGAAMAAAACAAAAAAAGAAQAAAACAAAAAAAGAAUAAAACAAAAAAAGAAYAAAACAAAAAAAGAAcAAAACAAAAAAAGAAgAAAABAAAAAAAHAAAAAAACAAAAAAAHAAEAAAACAAAAAAAHAAIAAAACAAAAAAAHAAMAAAACAAAAAAAHAAQAAAACAAAAAAAHAAUAAAACAAAAAAAHAAYAAAACAAAAAAAHAAcAAAACAAAAAAAHAAgAAAABAAAAAAAIAAAAAAACAAAAAAAIAAEAAAACAAAAAAAIAAIAAAACAAAAAAAIAAMAAAACAAAAAAAIAAQAAAACAAAAAAAIAAUAAAACAAAAAAAIAAYAAAACAAAAAAAIAAcAAAACAAAAAAAIAAgAAAABAAAAAAAJAAAAAAACAAAAAAAJAAEAAAACAAAAAAAJAAIAAAACAAAAAAAJAAMAAAACAAAAAAAJAAQAAAACAAAAAAAJAAUAAAACAAAAAAAJAAYAAAACAAAAAAAJAAcAAAACAAAAAAAJAAgAAAABAAAAAAAKAAAAAAACAAAAAAAKAAEAAAACAAAAAAAKAAIAAAACAAAAAAAKAAMAAAACAAAAAAAKAAQAAAACAAAAAAAKAAUAAAACAAAAAAAKAAYAAAACAAAAAAAKAAcAAAACAAAAAAAKAAgAAAABAAAAAAALAAAAAAACAAAAAAALAAEAAAACAAAAAAALAAIAAAACAAAAAAALAAMAAAACAAAAAAALAAQAAAACAAAAAAALAAUAAAACAAAAAAALAAYAAAACAAAAAAALAAcAAAACAAAAAAALAAgAAAABAAAAAAAMAAAAAAACAAAAAAAMAAEAAAACAAAAAAAMAAIAAAACAAAAAAAMAAMAAAACAAAAAAAMAAQAAAACAAAAAAAMAAUAAAACAAAAAAAMAAYAAAACAAAAAAAMAAcAAAACAAAAAAAMAAgAAAABAAAAAAANAAAAAAACAAAAAAANAAEAAAACAAAAAAANAAIAAAACAAAAAAANAAMAAAACAAAAAAANAAQAAAACAAAAAAANAAUAAAACAAAAAAANAAYAAAACAAAAAAANAAcAAAACAAAAAAANAAgAAAABAAAAAAAOAAAAAAACAAAAAAAOAAEAAAACAAAAAAAOAAIAAAACAAAAAAAOAAMAAAACAAAAAAAOAAQAAAACAAAAAAAOAAUAAAACAAAAAAAOAAYAAAACAAAAAAAOAAcAAAACAAAAAAAOAAgAAAABAAAAAAAPAAAAAAACAAAAAAAPAAEAAAACAAAAAAAPAAIAAAACAAAAAAAPAAMAAAACAAAAAAAPAAQAAAACAAAAAAAPAAUAAAACAAAAAAAPAAYAAAACAAAAAAAPAAcAAAACAAAAAAAPAAgAAAABAAAAAAAQAAAAAAACAAAAAAAQAAEAAAACAAAAAAAQAAIAAAACAAAAAAAQAAMAAAACAAAAAAAQAAQAAAACAAAAAAAQAAUAAAACAAAAAAAQAAYAAAACAAAAAAAQAAcAAAACAAAAAAAQAAgAAAABAAAAAAARAAAAAAACAAAAAAARAAEAAAACAAAAAAARAAIAAAACAAAAAAARAAMAAAACAAAAAAARAAQAAAACAAAAAAARAAUAAAACAAAAAAARAAYAAAACAAAAAAARAAcAAAACAAAAAAARAAgAAAABAAAAAAASAAAAAAACAAAAAAASAAEAAAACAAAAAAASAAIAAAACAAAAAAASAAMAAAACAAAAAAASAAQAAAACAAAAAAASAAUAAAACAAAAAAASAAYAAAACAAAAAAASAAcAAAACAAAAAAASAAgAAAABAAAAAAATAAAAAAACAAAAAAATAAEAAAACAAAAAAATAAIAAAACAAAAAAATAAMAAAACAAAAAAATAAQAAAACAAAAAAATAAUAAAACAAAAAAATAAYAAAACAAAAAAATAAcAAAACAAAAAAATAAgAAAABAAAAAAAUAAAAAAACAAAAAAAUAAEAAAACAAAAAAAUAAIAAAACAAAAAAAUAAMAAAACAAAAAAAUAAQAAAACAAAAAAAUAAUAAAACAAAAAAAUAAYAAAACAAAAAAAUAAcAAAACAAAAAAAUAAgAAAABAAAAAAAVAAAAAAACAAAAAAAVAAEAAAACAAAAAAAVAAIAAAACAAAAAAAVAAMAAAACAAAAAAAVAAQAAAACAAAAAAAVAAUAAAACAAAAAAAVAAYAAAACAAAAAAAVAAcAAAACAAAAAAAVAAgAAAABAAAAAAAWAAAAAAACAAAAAAAWAAEAAAACAAAAAAAWAAIAAAACAAAAAAAWAAMAAAACAAAAAAAWAAQAAAACAAAAAAAWAAUAAAACAAAAAAAWAAYAAAACAAAAAAAWAAcAAAADAAAAAAAWAAgAAAABAAAAAAA=")
 tile_set = SubResource("TileSet_mm5y3")
 
@@ -62,6 +230,11 @@ position = Vector2(360, 120)
 shape = SubResource("RectangleShape2D_paqvj")
 
 [node name="SnowHolder" type="Node2D" parent="."]
+
+[node name="GameResetAnimation" type="AnimatedSprite2D" parent="."]
+position = Vector2(184, 72)
+sprite_frames = SubResource("SpriteFrames_fl57u")
+animation = &"complete"
 
 [connection signal="area_entered" from="SnowCollectionArea" to="." method="_on_snow_collection_area_area_entered"]
 [connection signal="body_entered" from="GoalArea" to="." method="_on_goal_area_body_entered"]
