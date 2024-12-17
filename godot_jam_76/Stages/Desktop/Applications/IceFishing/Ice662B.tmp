@@ -1,0 +1,71 @@
+[gd_scene load_steps=9 format=3 uid="uid://f30j676871dg"]
+
+[ext_resource type="Script" path="res://Stages/Desktop/Applications/IceFishing/IceFishingGame.gd" id="1_p5idr"]
+[ext_resource type="Texture2D" uid="uid://wcfp6wfg7rf8" path="res://Stages/Desktop/Applications/IceFishing/Art/IceFishingBackground.png" id="2_8eh4q"]
+[ext_resource type="Script" path="res://Stages/Desktop/Applications/IceFishing/FishingHook.gd" id="3_bq87i"]
+[ext_resource type="Texture2D" uid="uid://hur358c52npu" path="res://Stages/Desktop/Applications/IceFishing/Art/FishingHook.png" id="3_qm053"]
+[ext_resource type="PackedScene" uid="uid://u0qukeapq4f2" path="res://Stages/Desktop/Applications/IceFishing/Entities/Fish.tscn" id="4_g0hwd"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_42d57"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6412b"]
+size = Vector2(8, 200)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sudnw"]
+size = Vector2(8, 200)
+
+[node name="IceFishingGame" type="Node2D"]
+script = ExtResource("1_p5idr")
+
+[node name="Background" type="TextureRect" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("2_8eh4q")
+
+[node name="FishingRod" type="Node2D" parent="."]
+
+[node name="FishingHook" type="CharacterBody2D" parent="FishingRod" groups=["FishingHook"]]
+position = Vector2(256, 0)
+script = ExtResource("3_bq87i")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FishingRod/FishingHook"]
+position = Vector2(2, 5)
+shape = SubResource("CircleShape2D_42d57")
+
+[node name="Sprite2D" type="Sprite2D" parent="FishingRod/FishingHook"]
+position = Vector2(2, 5)
+texture = ExtResource("3_qm053")
+
+[node name="String" type="Line2D" parent="FishingRod"]
+width = 1.0
+
+[node name="Spawners" type="Node2D" parent="."]
+
+[node name="SpawnerLeft" type="Area2D" parent="Spawners"]
+position = Vector2(-4, 140)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Spawners/SpawnerLeft"]
+shape = SubResource("RectangleShape2D_6412b")
+
+[node name="SpawnerRight" type="Area2D" parent="Spawners"]
+position = Vector2(516, 140)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Spawners/SpawnerRight"]
+shape = SubResource("RectangleShape2D_sudnw")
+
+[node name="SpawnedEntities" type="Control" parent="."]
+clip_contents = true
+layout_mode = 3
+anchors_preset = 0
+offset_right = 512.0
+offset_bottom = 240.0
+mouse_filter = 2
+
+[node name="Fish" parent="SpawnedEntities" instance=ExtResource("4_g0hwd")]
+position = Vector2(134, 56)
+
+[node name="Fish_2" parent="SpawnedEntities" instance=ExtResource("4_g0hwd")]
+position = Vector2(22, 56)
+
+[connection signal="mouse_entered" from="Background" to="FishingRod/FishingHook" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Background" to="FishingRod/FishingHook" method="_on_mouse_exited"]

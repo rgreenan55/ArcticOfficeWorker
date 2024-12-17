@@ -1,8 +1,14 @@
-[gd_scene load_steps=2 format=3 uid="uid://b280vok6utgxq"]
+[gd_scene load_steps=3 format=3 uid="uid://b280vok6utgxq"]
 
 [ext_resource type="Script" path="res://Stages/Desktop/Applications/IcePacker/Shapes/BaseShape.gd" id="1_atf46"]
+[ext_resource type="AudioStream" uid="uid://cjo52xot2wdmn" path="res://Stages/Desktop/Applications/IcePacker/Audio/PlaceTile.wav" id="2_1k2r3"]
 
 [node name="BaseShape" type="CharacterBody2D"]
+y_sort_enabled = true
 collision_layer = 0
 collision_mask = 0
 script = ExtResource("1_atf46")
+
+[node name="PlaceTileAudio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_1k2r3")
+volume_db = 5.0

@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://rly416nnp0b3"]
+
+[ext_resource type="PackedScene" uid="uid://f30j676871dg" path="res://Stages/Desktop/Applications/IceFishing/IceFishingGame.tscn" id="1_roe7u"]
+
+[sub_resource type="Gradient" id="Gradient_1bm7c"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_2pur4"]
+gradient = SubResource("Gradient_1bm7c")
+width = 512
+height = 240
+
+[node name="IceFishing" type="CenterContainer"]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 2
+texture = SubResource("GradientTexture2D_2pur4")
+
+[node name="IceFishingGame" parent="." instance=ExtResource("1_roe7u")]

@@ -2,10 +2,14 @@ class_name BaseShape extends CharacterBody2D
 
 signal shape_placed(shape_placed);
 
+# Spawner Record
+@export var spawner_origin : Area2D;
+
 # Disables Movement if Placed
 var is_shape_placed : bool = false;
 
 # Info on Shape Placement
+var placement_nodes : int;
 var direction_info : Dictionary;
 var ghost : Sprite2D;
 var ghost_present : bool = false;
@@ -25,17 +29,32 @@ func _ready() -> void:
 	if (get_node_or_null("AreaDetectors") == null): push_warning(name, ": No Area Detector Node");
 	if (get_node_or_null("GrabbingAreas") == null): push_warning(name, ": No Grabbing Area Node");
 
+	placement_nodes = get_node("AreaDetectors").get_child_count();
 	for grabbing_area : Control in get_node("GrabbingAreas").get_children():
 		grabbing_area.connect("gui_input", _on_grabbing_area_gui_input);
+	if (randi_range(0,1) == 1): _horizontal_flip();
 
 func _physics_process(_delta: float) -> void:
 	if (dragging):
 		velocity = (newPosition - position) * Vector2(30, 30);
 		move_and_slide();
-	var half_x = get_node("CollisionShape2D").shape.size.x / 2;
-	var half_y = get_node("CollisionShape2D").shape.size.y / 2;
-	position.x = clamp(position.x, half_x, 520 - half_x)
-	position.y = clamp(position.y, half_y-16, 340 - half_y)
+		var half_x = get_node("CollisionShape2D").shape.size.x / 2;
+		var half_y = get_node("CollisionShape2D").shape.size.y / 2;
+		# The +- 8 adds some room for placing on edges easier.
+		position.x = clamp(position.x, half_x-8, 512 - half_x + 8);
+		position.y = clamp(position.y, half_y-16-8, 340 - half_y + 8);
+	elif (ghost_present):
+		_remove_ghost();
+
+func scale_shape(scale_amount : Vector2) -> void:
+	get_node("Sprite2D").scale = scale_amount;
+	get_node("CollisionShape2D").scale = scale_amount;
+	get_node("GrabbingAreas").scale = scale_amount;
+
+func _horizontal_flip() -> void:
+	get_node("Sprite2D").flip_h = true;
+	get_node("AreaDetectors").scale.x = -1;
+	get_node("GrabbingAreas").scale.x = -1;
 
 #region Tile Placement Functionality
 func _get_closest_board_tile_direction() -> Dictionary:
@@ -60,13 +79,13 @@ func _get_closest_board_tile_direction() -> Dictionary:
 				closest_distance = detector.global_position.distance_to(area.global_position)
 				closest_direction = detector.global_position.direction_to(area.global_position);
 		var closest_vector : Vector2 = closest_distance * closest_direction;
-		closest_vector.x = snapped(closest_vector.x, 0.0001);
-		closest_vector.y = snapped(closest_vector.y, 0.0001);
+		closest_vector.x = snapped(closest_vector.x, 0.001);
+		closest_vector.y = snapped(closest_vector.y, 0.001);
 		placement_vectors.push_back(closest_vector);
 		placement_areas.push_back(closest_area);
 
 	# Check if closest are all the same.
-	if (placement_vectors.size() >= 4 && placement_vectors.all(func(v): return v == placement_vectors.front())):
+	if (placement_vectors.size() >= placement_nodes && placement_vectors.all(func(v): return v == placement_vectors.front())):
 		return { "is_valid" : true, "vector": placement_vectors.front(), "areas": placement_areas }
 	return { "is_valid" : false }
 #endregion
@@ -83,6 +102,7 @@ func _on_grabbing_area_gui_input(event: InputEvent) -> void:
 		_handle_dragging();
 
 func _grab_shape() -> void:
+	scale_shape(Vector2(1, 1));
 	move_to_front();
 	dragging = true;
 	prevPosition = position;
@@ -100,8 +120,10 @@ func _release_shape() -> void:
 		position += direction_info.vector;
 		_remove_ghost();
 		is_shape_placed = true;
+		get_node("PlaceTileAudio").play();
 		shape_placed.emit(self);
 	else:
+		scale_shape(Vector2(0.5, 0.5));
 		position = prevPosition;
 
 func _handle_dragging() -> void:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://dnwc5adrx7bm3"]
+[gd_scene load_steps=28 format=3 uid="uid://dnwc5adrx7bm3"]
 
 [ext_resource type="Shader" path="res://Stages/Desktop/DesktopBackgrounds/DesktopBackground.gdshader" id="1_8116u"]
 [ext_resource type="Texture2D" uid="uid://j8hudmjds34y" path="res://Stages/Desktop/DesktopBackgrounds/DesktopBackground_1.png" id="2_a275l"]
@@ -10,9 +10,13 @@
 [ext_resource type="Texture2D" uid="uid://ds5ahpg8dd32h" path="res://Stages/Desktop/Applications/Exit/ExitHoverIcon.png" id="6_i7qnv"]
 [ext_resource type="PackedScene" uid="uid://dpvoncx6dm53r" path="res://Stages/Desktop/DesktopIcons/DesktopIcon.tscn" id="6_rnter"]
 [ext_resource type="Texture2D" uid="uid://clxom0l45i8to" path="res://Stages/Desktop/Applications/IceBreaker/Art/IceBreakerIdle.png" id="7_5bmfb"]
+[ext_resource type="Texture2D" uid="uid://drn0loljkren7" path="res://Stages/Desktop/Applications/IceFishing/Art/IceFishingIdle.png" id="7_64qfu"]
 [ext_resource type="PackedScene" uid="uid://bpeqdply1ywtb" path="res://Stages/Desktop/Applications/IceBreaker/IceBreaker.tscn" id="7_iwov4"]
+[ext_resource type="PackedScene" uid="uid://rly416nnp0b3" path="res://Stages/Desktop/Applications/IceFishing/IceFishing.tscn" id="7_ryjtw"]
 [ext_resource type="Texture2D" uid="uid://c1bukuqy6iuqk" path="res://Stages/Desktop/Applications/IceBreaker/Art/IceBreakerHover.png" id="8_36xq7"]
+[ext_resource type="Texture2D" uid="uid://coyq04cbiqd7c" path="res://Stages/Desktop/Applications/IceFishing/Art/IceFishingHover.png" id="8_q66n5"]
 [ext_resource type="Texture2D" uid="uid://b5v7p1exdnrtg" path="res://Stages/Desktop/Applications/IceBreaker/Art/IceBreakerPressed.png" id="9_g1r4n"]
+[ext_resource type="Texture2D" uid="uid://0pvi4pn4d82r" path="res://Stages/Desktop/Applications/IceFishing/Art/IceFishingPressed.png" id="9_xp7rl"]
 [ext_resource type="PackedScene" uid="uid://cbdokv7vtqjra" path="res://Stages/Desktop/Applications/IcePacker/IcePacker.tscn" id="11_0abha"]
 [ext_resource type="Texture2D" uid="uid://bpp432uboqhh6" path="res://Stages/Desktop/Applications/IcePacker/Art/IcePackerIdle.png" id="11_ooxhi"]
 [ext_resource type="Script" path="res://Stages/Desktop/Windows.gd" id="11_rla85"]
@@ -91,6 +95,18 @@ offset_top = 32.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
+
+[node name="IceFishingIcon" parent="DesktopIcons" instance=ExtResource("6_rnter")]
+layout_mode = 0
+offset_left = 48.0
+offset_top = 32.0
+offset_right = 144.0
+offset_bottom = 128.0
+idle_icon = ExtResource("7_64qfu")
+hover_icon = ExtResource("8_q66n5")
+pressed_icon = ExtResource("9_xp7rl")
+application_name = "Ice Fishing"
+window_content = ExtResource("7_ryjtw")
 
 [node name="IceBreakerIcon" parent="DesktopIcons" instance=ExtResource("6_rnter")]
 layout_mode = 0

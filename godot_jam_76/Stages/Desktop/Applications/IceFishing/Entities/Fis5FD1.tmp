@@ -1,0 +1,34 @@
+[gd_scene load_steps=6 format=3 uid="uid://u0qukeapq4f2"]
+
+[ext_resource type="Script" path="res://Stages/Desktop/Applications/IceFishing/Entities/Fish.gd" id="1_k0v8u"]
+
+[sub_resource type="Gradient" id="Gradient_45yjh"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_bpnjk"]
+gradient = SubResource("Gradient_45yjh")
+width = 32
+height = 16
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x3cpj"]
+size = Vector2(32, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1b62e"]
+size = Vector2(0, 0)
+
+[node name="Fish" type="CharacterBody2D"]
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("1_k0v8u")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("GradientTexture2D_bpnjk")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_x3cpj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_1b62e")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_body_entered"]

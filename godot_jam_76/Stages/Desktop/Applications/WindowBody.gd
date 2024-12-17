@@ -11,10 +11,8 @@ var dragging : bool;
 var newPosition : Vector2 = Vector2();
 
 func _ready() -> void:
-	get_node("CollisionShape2D").shape.size = get_node("WindowControl").size
-	get_node("CollisionShape2D").position = get_node("CollisionShape2D").shape.size / 2
-	position.x = randf_range(0, 1280 - get_node("WindowControl").size.x)
-	position.y = randf_range(32, 720 - get_node("WindowControl").size.y)
+	position.x = randf_range(0, 1280 - get_node("WindowControl").size.x);
+	position.y = randf_range(32, 720 - get_node("WindowControl").size.y);
 
 func set_window_name(window_name_string : String) -> void:
 	window_name = window_name_string;
@@ -67,3 +65,5 @@ func _on_content_container_child_entered_tree(node: Node) -> void:
 	if (node.name == "ContentBackground"): return;
 	get_node("WindowControl").size.x = node.size.x * node.scale.x;
 	get_node("WindowControl").size.y = node.size.y * node.scale.y;
+	get_node("CollisionShape2D").shape.size = get_node("WindowControl").size;
+	get_node("CollisionShape2D").position = get_node("WindowControl").position + get_node("WindowControl").size / 2;

@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://u0qukeapq4f2"]
+
+[ext_resource type="Script" path="res://Stages/Desktop/Applications/IceFishing/Entities/Fish.gd" id="1_k0v8u"]
+[ext_resource type="Texture2D" uid="uid://bdbucyq2h81k" path="res://Stages/Desktop/Applications/IceFishing/Art/Fish.png" id="2_rdluv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x3cpj"]
+size = Vector2(32, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1b62e"]
+size = Vector2(0, 0)
+
+[node name="Fish" type="CharacterBody2D"]
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("1_k0v8u")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_rdluv")
+
+[node name="HookDetector" type="Area2D" parent="." groups=["Fish"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HookDetector"]
+shape = SubResource("RectangleShape2D_x3cpj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_1b62e")
+
+[connection signal="body_entered" from="HookDetector" to="." method="_on_body_entered"]

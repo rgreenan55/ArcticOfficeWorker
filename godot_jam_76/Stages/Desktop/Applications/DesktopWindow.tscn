@@ -17,7 +17,8 @@ colors = PackedColorArray(1, 1, 1, 1)
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_skt4o"]
 gradient = SubResource("Gradient_b3keu")
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_esl5a"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j7cjq"]
+resource_local_to_scene = true
 size = Vector2(0, 0)
 
 [node name="WindowBody" type="CharacterBody2D"]
@@ -103,7 +104,7 @@ layout_mode = 2
 texture = SubResource("GradientTexture2D_skt4o")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_esl5a")
+shape = SubResource("RectangleShape2D_j7cjq")
 
 [connection signal="gui_input" from="WindowControl" to="." method="_on_window_control_gui_input"]
 [connection signal="gui_input" from="WindowControl/WindowDivider/WindowHeader" to="." method="_on_window_header_gui_input"]

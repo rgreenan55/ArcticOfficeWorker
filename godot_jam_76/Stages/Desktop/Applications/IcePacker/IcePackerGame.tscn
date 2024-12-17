@@ -1,8 +1,9 @@
-[gd_scene load_steps=41 format=3 uid="uid://4ri44fry6k3f"]
+[gd_scene load_steps=42 format=3 uid="uid://4ri44fry6k3f"]
 
 [ext_resource type="Texture2D" uid="uid://wl525yrh4hqs" path="res://Stages/Desktop/Applications/IcePacker/Art/IcePackerBoard.png" id="1_0uka0"]
 [ext_resource type="Script" path="res://Stages/Desktop/Applications/IcePacker/IcePackerGame.gd" id="1_cmfct"]
 [ext_resource type="Texture2D" uid="uid://cydevoyenncdh" path="res://Stages/Desktop/Applications/IcePacker/Art/ShippingGateSprites.png" id="3_u5wdw"]
+[ext_resource type="AudioStream" uid="uid://d3jp0jfo8a23m" path="res://Stages/Desktop/Applications/IcePacker/Audio/ShippingGate.wav" id="4_ll026"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tpigj"]
 size = Vector2(64, 64)
@@ -15,7 +16,7 @@ colors = PackedColorArray(0, 0, 0, 1)
 gradient = SubResource("Gradient_7xuvm")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_px6j1"]
-size = Vector2(176, 340)
+size = Vector2(168, 170)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6nf7s"]
 atlas = ExtResource("3_u5wdw")
@@ -424,14 +425,22 @@ shape = SubResource("RectangleShape2D_tpigj")
 [node name="ShapeSpawner" type="Node2D" parent="."]
 
 [node name="Background" type="Sprite2D" parent="ShapeSpawner"]
-position = Vector2(432, 170)
-scale = Vector2(2.75, 5.3125)
+position = Vector2(428, 170)
+scale = Vector2(2.625, 5.3125)
 texture = SubResource("GradientTexture2D_epl0h")
 
-[node name="SpawnArea" type="Area2D" parent="ShapeSpawner"]
-position = Vector2(432, 170)
+[node name="SpawnAreas" type="Node2D" parent="ShapeSpawner"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ShapeSpawner/SpawnArea"]
+[node name="SpawnArea" type="Area2D" parent="ShapeSpawner/SpawnAreas"]
+position = Vector2(428, 85)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ShapeSpawner/SpawnAreas/SpawnArea"]
+shape = SubResource("RectangleShape2D_px6j1")
+
+[node name="SpawnArea_2" type="Area2D" parent="ShapeSpawner/SpawnAreas"]
+position = Vector2(428, 255)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ShapeSpawner/SpawnAreas/SpawnArea_2"]
 shape = SubResource("RectangleShape2D_px6j1")
 
 [node name="PlacedShapes" type="Node2D" parent="."]
@@ -441,6 +450,10 @@ y_sort_enabled = true
 position = Vector2(164, 170)
 sprite_frames = SubResource("SpriteFrames_8fotu")
 autoplay = "default"
+
+[node name="GateAudio" type="AudioStreamPlayer2D" parent="ShippingGate"]
+position = Vector2(-164, -170)
+stream = ExtResource("4_ll026")
 
 [node name="Shapes" type="Node2D" parent="."]
 

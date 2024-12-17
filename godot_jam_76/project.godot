@@ -37,16 +37,26 @@ naming/script_name_casing=1
 
 folder_colors={
 "res://Assets/": "red",
-"res://Common/": "orange",
 "res://Config/": "gray",
-"res://Entities/": "purple",
-"res://Environment/": "pink",
 "res://Globals/": "gray",
 "res://Stages/": "blue",
+"res://Stages/Desktop/Applications/": "purple",
+"res://Stages/Desktop/Applications/Exit/": "purple",
+"res://Stages/Desktop/Applications/IceBreaker/": "purple",
 "res://Stages/Desktop/Applications/IceBreaker/Art/": "red",
+"res://Stages/Desktop/Applications/IceFishing/": "purple",
+"res://Stages/Desktop/Applications/IceFishing/Art/": "red",
+"res://Stages/Desktop/Applications/IcePacker/": "purple",
 "res://Stages/Desktop/Applications/IcePacker/Art/": "red",
+"res://Stages/Desktop/Applications/IcePacker/Audio/": "red",
 "res://Stages/Desktop/Applications/IcePacker/Shapes/Art/": "red",
+"res://Stages/Desktop/Applications/SnowTransport/": "purple",
 "res://Stages/Desktop/Applications/SnowTransport/Art/": "red",
+"res://Stages/Desktop/Applications/WindowUtility/": "gray",
+"res://Stages/Desktop/DesktopBackgrounds/": "gray",
+"res://Stages/Desktop/DesktopIcons/": "gray",
+"res://Stages/Desktop/Utilities/": "gray",
+"res://Stages/World/": "orange",
 "res://UserInterface/": "green"
 }
 
@@ -57,6 +67,10 @@ LeftMouseButton={
 "events": [Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":0,"position":Vector2(0, 0),"global_position":Vector2(0, 0),"factor":1.0,"button_index":1,"canceled":false,"pressed":false,"double_click":false,"script":null)
 ]
 }
+
+[layer_names]
+
+3d_render/layer_15="Foam"
 
 [rendering]
 

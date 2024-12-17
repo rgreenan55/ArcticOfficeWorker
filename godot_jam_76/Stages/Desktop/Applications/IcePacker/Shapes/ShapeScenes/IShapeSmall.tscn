@@ -1,0 +1,46 @@
+[gd_scene load_steps=5 format=3 uid="uid://ckdrdxyyqoirw"]
+
+[ext_resource type="PackedScene" uid="uid://b280vok6utgxq" path="res://Stages/Desktop/Applications/IcePacker/Shapes/BaseShape.tscn" id="1_8fw5i"]
+[ext_resource type="Texture2D" uid="uid://b1d0vq81gcdxl" path="res://Stages/Desktop/Applications/IcePacker/Shapes/Art/IShapeSmall.png" id="2_6vek2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wrn84"]
+size = Vector2(64, 144)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_og15k"]
+size = Vector2(64, 64)
+
+[node name="IShapeSmall" instance=ExtResource("1_8fw5i")]
+
+[node name="Sprite2D" type="Sprite2D" parent="." index="0"]
+y_sort_enabled = true
+texture = ExtResource("2_6vek2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1"]
+shape = SubResource("RectangleShape2D_wrn84")
+
+[node name="AreaDetectors" type="Node2D" parent="." index="2"]
+
+[node name="Area2D" type="Area2D" parent="AreaDetectors" index="0"]
+position = Vector2(0, -24)
+
+[node name="CollisionShape" type="CollisionShape2D" parent="AreaDetectors/Area2D" index="0"]
+shape = SubResource("RectangleShape2D_og15k")
+
+[node name="Area2D_2" type="Area2D" parent="AreaDetectors" index="1"]
+position = Vector2(0, 40)
+
+[node name="CollisionShape" type="CollisionShape2D" parent="AreaDetectors/Area2D_2" index="0"]
+shape = SubResource("RectangleShape2D_og15k")
+
+[node name="GrabbingAreas" type="Control" parent="." index="3"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="GrabbingArea" type="CenterContainer" parent="GrabbingAreas" index="0"]
+layout_mode = 0
+offset_left = -32.0
+offset_top = -72.0
+offset_right = 32.0
+offset_bottom = 72.0

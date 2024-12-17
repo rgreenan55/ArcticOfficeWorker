@@ -10,7 +10,7 @@ colors = PackedColorArray(1, 1, 1, 0)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_dfqyt"]
 gradient = SubResource("Gradient_4bris")
-width = 520
+width = 512
 height = 340
 
 [sub_resource type="Gradient" id="Gradient_4nivs"]
@@ -45,7 +45,7 @@ Button/styles/normal = SubResource("StyleBoxEmpty_2yn2a")
 Button/styles/pressed = SubResource("StyleBoxFlat_vd8ow")
 
 [node name="IcePacker" type="CenterContainer"]
-offset_right = 520.0
+offset_right = 512.0
 offset_bottom = 416.0
 size_flags_horizontal = 0
 size_flags_vertical = 0

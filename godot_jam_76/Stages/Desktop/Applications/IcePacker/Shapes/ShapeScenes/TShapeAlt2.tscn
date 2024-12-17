@@ -1,0 +1,57 @@
+[gd_scene load_steps=5 format=3 uid="uid://6at8qijbd65i"]
+
+[ext_resource type="PackedScene" uid="uid://b280vok6utgxq" path="res://Stages/Desktop/Applications/IcePacker/Shapes/BaseShape.tscn" id="1_ahttq"]
+[ext_resource type="Texture2D" uid="uid://d27sygfi7eo0u" path="res://Stages/Desktop/Applications/IcePacker/Shapes/Art/TShapeAlt2.png" id="2_fdhim"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4rp65"]
+size = Vector2(192, 144)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8lux5"]
+size = Vector2(64, 64)
+
+[node name="TShapeAlt2" instance=ExtResource("1_ahttq")]
+
+[node name="Sprite2D" type="Sprite2D" parent="." index="0"]
+texture = ExtResource("2_fdhim")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1"]
+shape = SubResource("RectangleShape2D_4rp65")
+
+[node name="AreaDetectors" type="Node2D" parent="." index="2"]
+
+[node name="Area2D" type="Area2D" parent="AreaDetectors" index="0"]
+position = Vector2(0, 40)
+
+[node name="CollisionShape" type="CollisionShape2D" parent="AreaDetectors/Area2D" index="0"]
+shape = SubResource("RectangleShape2D_8lux5")
+
+[node name="Area2D_2" type="Area2D" parent="AreaDetectors" index="1"]
+position = Vector2(-64, -24)
+
+[node name="CollisionShape" type="CollisionShape2D" parent="AreaDetectors/Area2D_2" index="0"]
+shape = SubResource("RectangleShape2D_8lux5")
+
+[node name="Area2D_3" type="Area2D" parent="AreaDetectors" index="2"]
+position = Vector2(0, -24)
+
+[node name="CollisionShape" type="CollisionShape2D" parent="AreaDetectors/Area2D_3" index="0"]
+shape = SubResource("RectangleShape2D_8lux5")
+
+[node name="Area2D_4" type="Area2D" parent="AreaDetectors" index="3"]
+position = Vector2(64, -24)
+
+[node name="CollisionShape" type="CollisionShape2D" parent="AreaDetectors/Area2D_4" index="0"]
+shape = SubResource("RectangleShape2D_8lux5")
+
+[node name="GrabbingAreas" type="Control" parent="." index="3"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="GrabbingArea" type="CenterContainer" parent="GrabbingAreas" index="0"]
+layout_mode = 0
+offset_left = -96.0
+offset_top = -72.0
+offset_right = 96.0
+offset_bottom = 72.0

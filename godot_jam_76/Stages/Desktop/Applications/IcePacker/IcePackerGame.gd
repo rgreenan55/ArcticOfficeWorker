@@ -3,36 +3,50 @@ extends Node2D
 const GAME_BOARD : Texture = preload("res://Stages/Desktop/Applications/IcePacker/Art/IcePackerBoard.png")
 const SHIPPED_BOARD : Texture = preload("res://Stages/Desktop/Applications/IcePacker/Art/IcePackerBoardShipped.png")
 
-const SHAPES : Array[String] = [
-	"res://Stages/Desktop/Applications/IcePacker/Shapes/IShape.tscn",
-	"res://Stages/Desktop/Applications/IcePacker/Shapes/LShape.tscn",
-	"res://Stages/Desktop/Applications/IcePacker/Shapes/OShape.tscn",
-	"res://Stages/Desktop/Applications/IcePacker/Shapes/TShape.tscn",
-	"res://Stages/Desktop/Applications/IcePacker/Shapes/UShape.tscn",
-	"res://Stages/Desktop/Applications/IcePacker/Shapes/ZShape.tscn",
-]
+var shapes : Array[String] = [
+	"res://Stages/Desktop/Applications/IcePacker/Shapes/ShapeScenes/IShape.tscn",
+	"res://Stages/Desktop/Applications/IcePacker/Shapes/ShapeScenes/IShapeAlt.tscn",
+	"res://Stages/Desktop/Applications/IcePacker/Shapes/ShapeScenes/IShapeSmall.tscn",
+	"res://Stages/Desktop/Applications/IcePacker/Shapes/ShapeScenes/IShapeSmallAlt.tscn",
+	"res://Stages/Desktop/Applications/IcePacker/Shapes/ShapeScenes/LShape.tscn",
+	"res://Stages/Desktop/Applications/IcePacker/Shapes/ShapeScenes/LShapeAlt1.tscn",
+	"res://Stages/Desktop/Applications/IcePacker/Shapes/ShapeScenes/LShapeAlt2.tscn",
+	"res://Stages/Desktop/Applications/IcePacker/Shapes/ShapeScenes/LShapeVFlipped.tscn",
+	"res://Stages/Desktop/Applications/IcePacker/Shapes/ShapeScenes/OShape.tscn",
+	"res://Stages/Desktop/Applications/IcePacker/Shapes/ShapeScenes/OShapeSmall.tscn",
+	"res://Stages/Desktop/Applications/IcePacker/Shapes/ShapeScenes/TShape.tscn",
+	"res://Stages/Desktop/Applications/IcePacker/Shapes/ShapeScenes/TShapeAlt2.tscn",
+	"res://Stages/Desktop/Applications/IcePacker/Shapes/ShapeScenes/TShapeAlt.tscn",
+	"res://Stages/Desktop/Applications/IcePacker/Shapes/ShapeScenes/UShape.tscn",
+	"res://Stages/Desktop/Applications/IcePacker/Shapes/ShapeScenes/UShapeAlt2.tscn",
+	"res://Stages/Desktop/Applications/IcePacker/Shapes/ShapeScenes/UShapeAlt.tscn",
+	"res://Stages/Desktop/Applications/IcePacker/Shapes/ShapeScenes/ZShape.tscn",
+	"res://Stages/Desktop/Applications/IcePacker/Shapes/ShapeScenes/ZShapeAlt.tscn",
+];
 
 var min_vector = Vector2(0, 0);
 var max_vector = Vector2(512, 340);
 
 func _ready() -> void:
-	spawn_shape();
+	for spawner : Area2D in get_node("ShapeSpawner/SpawnAreas").get_children():
+		spawn_shape(spawner);
 
-func spawn_shape() -> void:
-	var shape_path : String = SHAPES.pick_random();
+func spawn_shape(spawner : Area2D) -> void:
+	var shape_path : String = shapes.pick_random();
 	var shape_scene : PackedScene = load(shape_path);
 	var shape : BaseShape = shape_scene.instantiate();
 	shape.connect("shape_placed", shape_placed);
-	shape.position = get_node("ShapeSpawner").get_node("SpawnArea").position;
+	shape.scale_shape(Vector2(0.5, 0.5));
+	shape.position = spawner.position;
+	shape.spawner_origin = spawner;
 	get_node("Shapes").add_child(shape);
 
 func shape_placed(shape : BaseShape) -> void:
 	get_node("Shapes").remove_child(shape);
 	get_node("PlacedShapes").add_child(shape);
-	spawn_shape();
+	spawn_shape(shape.spawner_origin);
 
 func ship_package() -> void:
-	# TODO : Lock Game
 	for tile : Area2D in get_node("Board/BoardTiles").get_children():
 		tile.monitorable = false;
 		tile.monitoring = false;
@@ -40,18 +54,21 @@ func ship_package() -> void:
 	get_node("Board/Sprite").texture = SHIPPED_BOARD
 	get_node("PlacedShapes").position.y += 16;
 	get_node("ShippingGate").play("closing");
+	get_node("ShippingGate/GateAudio").play();
 	await get_node("ShippingGate").animation_finished;
 
-	# TODO: Reset Board & Tally Points
+	# TODO: Point System
+
 	for shape : BaseShape in get_node("PlacedShapes").get_children():
 		shape.queue_free();
 
 	get_node("ShippingGate").play("opening");
 	await get_node("ShippingGate").animation_finished;
+	get_node("ShippingGate/GateAudio").stop();
+
 	get_node("PlacedShapes").position.y -= 16;
 	get_node("Board/Sprite").texture = GAME_BOARD
 
-	# TODO : Unlock Game
 	for tile : Area2D in get_node("Board/BoardTiles").get_children():
 		tile.monitorable = true;
 		tile.monitoring = true;
