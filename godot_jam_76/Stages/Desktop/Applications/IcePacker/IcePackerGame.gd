@@ -1,5 +1,7 @@
 extends Node2D
 
+signal gui_input(event);
+
 const GAME_BOARD : Texture = preload("res://Stages/Desktop/Applications/IcePacker/Art/IcePackerBoard.png")
 const SHIPPED_BOARD : Texture = preload("res://Stages/Desktop/Applications/IcePacker/Art/IcePackerBoardShipped.png")
 
@@ -36,6 +38,7 @@ func spawn_shape(spawner : Area2D) -> void:
 	var shape_scene : PackedScene = load(shape_path);
 	var shape : BaseShape = shape_scene.instantiate();
 	shape.connect("shape_placed", shape_placed);
+	shape.connect("gui_input", gui_input.emit)
 	shape.scale_shape(Vector2(0.5, 0.5));
 	shape.position = spawner.position;
 	shape.spawner_origin = spawner;
@@ -47,6 +50,12 @@ func shape_placed(shape : BaseShape) -> void:
 	spawn_shape(shape.spawner_origin);
 
 func ship_package() -> void:
+	# Get Points Acquired
+	var tile_count : int = 0;
+	for tile : Area2D in get_node("Board/BoardTiles").get_children():
+		if (tile.monitorable == false): tile_count += 1;
+
+	get_node("../VBoxContainer/TextureRect/ShipButton").disabled = true;
 	for tile : Area2D in get_node("Board/BoardTiles").get_children():
 		tile.monitorable = false;
 		tile.monitoring = false;
@@ -57,10 +66,10 @@ func ship_package() -> void:
 	get_node("ShippingGate/GateAudio").play();
 	await get_node("ShippingGate").animation_finished;
 
-	# TODO: Point System
-
 	for shape : BaseShape in get_node("PlacedShapes").get_children():
 		shape.queue_free();
+
+	DesktopManager.ice_packer_shipped(tile_count);
 
 	get_node("ShippingGate").play("opening");
 	await get_node("ShippingGate").animation_finished;
@@ -69,6 +78,7 @@ func ship_package() -> void:
 	get_node("PlacedShapes").position.y -= 16;
 	get_node("Board/Sprite").texture = GAME_BOARD
 
+	get_node("../VBoxContainer/TextureRect/ShipButton").disabled = false;
 	for tile : Area2D in get_node("Board/BoardTiles").get_children():
 		tile.monitorable = true;
 		tile.monitoring = true;

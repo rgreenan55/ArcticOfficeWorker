@@ -11,13 +11,19 @@ size = Vector2(64, 64)
 
 [node name="OShapeSmall" instance=ExtResource("1_4wak0")]
 
-[node name="Sprite2D" type="Sprite2D" parent="." index="0"]
+[node name="Sprite" type="Node2D" parent="." index="0"]
+y_sort_enabled = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Sprite" index="0"]
+y_sort_enabled = true
 texture = ExtResource("2_oyeb7")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1"]
+visible = false
 shape = SubResource("RectangleShape2D_u3ch1")
 
 [node name="AreaDetectors" type="Node2D" parent="." index="2"]
+visible = false
 
 [node name="Area2D" type="Area2D" parent="AreaDetectors" index="0"]
 y_sort_enabled = true
@@ -35,8 +41,8 @@ offset_bottom = 40.0
 [node name="GrabbingArea" type="CenterContainer" parent="GrabbingAreas" index="0"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.8
-anchor_top = 0.8
+anchor_left = -0.8
+anchor_top = -0.8
 anchor_right = -0.8
 anchor_bottom = -0.8
 offset_left = -64.0

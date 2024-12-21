@@ -1,0 +1,205 @@
+[gd_scene load_steps=34 format=3 uid="uid://dnwc5adrx7bm3"]
+
+[ext_resource type="Shader" path="res://Stages/Desktop/DesktopBackgrounds/DesktopBackground.gdshader" id="1_8116u"]
+[ext_resource type="Script" path="res://Stages/Desktop/Desktop.gd" id="1_dbuie"]
+[ext_resource type="PackedScene" uid="uid://dmm7ujmcn46k4" path="res://Stages/Desktop/Utilities/InterfaceStyle/InterfaceBackground.tscn" id="3_fwov0"]
+[ext_resource type="Script" path="res://Stages/Desktop/Date.gd" id="4_71qwm"]
+[ext_resource type="LabelSettings" uid="uid://d2a4gol6xvhu5" path="res://Stages/Desktop/Utilities/DesktopFont.tres" id="4_cw2jj"]
+[ext_resource type="Texture2D" uid="uid://br1fh0ht5442l" path="res://Stages/Desktop/Applications/Exit/ExitIdleIcon.png" id="4_gc4ki"]
+[ext_resource type="Texture2D" uid="uid://d2nchwlx8q4mo" path="res://Stages/Desktop/Applications/Exit/ExitPressedIcon.png" id="5_j7qde"]
+[ext_resource type="Texture2D" uid="uid://ds5ahpg8dd32h" path="res://Stages/Desktop/Applications/Exit/ExitHoverIcon.png" id="6_i7qnv"]
+[ext_resource type="PackedScene" uid="uid://dpvoncx6dm53r" path="res://Stages/Desktop/DesktopIcons/DesktopIcon.tscn" id="6_rnter"]
+[ext_resource type="Texture2D" uid="uid://clxom0l45i8to" path="res://Stages/Desktop/Applications/IceBreaker/Art/IceBreakerIdle.png" id="7_5bmfb"]
+[ext_resource type="Texture2D" uid="uid://drn0loljkren7" path="res://Stages/Desktop/Applications/IceFishing/Art/IceFishingIdle.png" id="7_64qfu"]
+[ext_resource type="PackedScene" uid="uid://bpeqdply1ywtb" path="res://Stages/Desktop/Applications/IceBreaker/IceBreaker.tscn" id="7_iwov4"]
+[ext_resource type="PackedScene" uid="uid://rly416nnp0b3" path="res://Stages/Desktop/Applications/IceFishing/IceFishing.tscn" id="7_ryjtw"]
+[ext_resource type="Texture2D" uid="uid://c1bukuqy6iuqk" path="res://Stages/Desktop/Applications/IceBreaker/Art/IceBreakerHover.png" id="8_36xq7"]
+[ext_resource type="Texture2D" uid="uid://coyq04cbiqd7c" path="res://Stages/Desktop/Applications/IceFishing/Art/IceFishingHover.png" id="8_q66n5"]
+[ext_resource type="Texture2D" uid="uid://b5v7p1exdnrtg" path="res://Stages/Desktop/Applications/IceBreaker/Art/IceBreakerPressed.png" id="9_g1r4n"]
+[ext_resource type="Texture2D" uid="uid://0pvi4pn4d82r" path="res://Stages/Desktop/Applications/IceFishing/Art/IceFishingPressed.png" id="9_xp7rl"]
+[ext_resource type="PackedScene" uid="uid://cbdokv7vtqjra" path="res://Stages/Desktop/Applications/IcePacker/IcePacker.tscn" id="11_0abha"]
+[ext_resource type="Texture2D" uid="uid://niowisj4db3u" path="res://Stages/Desktop/Applications/FishFrying/Art/FishFryingIdle.png" id="11_5fyst"]
+[ext_resource type="Texture2D" uid="uid://bpp432uboqhh6" path="res://Stages/Desktop/Applications/IcePacker/Art/IcePackerIdle.png" id="11_ooxhi"]
+[ext_resource type="Script" path="res://Stages/Desktop/Windows.gd" id="11_rla85"]
+[ext_resource type="PackedScene" uid="uid://c53xt42gxoxub" path="res://Stages/Desktop/Applications/FishFrying/FishFrying.tscn" id="11_yiafc"]
+[ext_resource type="Texture2D" uid="uid://cxo2n7bgp57j" path="res://Stages/Desktop/Applications/FishFrying/Art/FishFryingHover.png" id="12_lx5nt"]
+[ext_resource type="Texture2D" uid="uid://b04h553cu5b4" path="res://Stages/Desktop/Applications/IcePacker/Art/IcePackerHover.png" id="12_md40b"]
+[ext_resource type="Texture2D" uid="uid://021juuwyp18y" path="res://Stages/Desktop/Applications/IcePacker/Art/IcePackerPressed.png" id="13_b37ar"]
+[ext_resource type="Texture2D" uid="uid://o77rwy5nxqpr" path="res://Stages/Desktop/Applications/FishFrying/Art/FishFryingPressed.png" id="13_mh8jo"]
+[ext_resource type="PackedScene" uid="uid://b4jm5214xpwn2" path="res://Stages/Desktop/Applications/FacultyTraining/FacultyTraining.tscn" id="15_0rlgu"]
+[ext_resource type="Texture2D" uid="uid://bjq5nsf70jewv" path="res://Stages/Desktop/Applications/SnowTransport/Art/SnowTransportIdle.png" id="15_ug7sn"]
+[ext_resource type="PackedScene" uid="uid://iss5udt0n871" path="res://Stages/Desktop/Applications/SnowTransport/SnowTransport.tscn" id="15_y4ffw"]
+[ext_resource type="Texture2D" uid="uid://dihjqstj4goud" path="res://Stages/Desktop/Applications/SnowTransport/Art/SnowTransportHover.png" id="16_g7ts5"]
+[ext_resource type="Texture2D" uid="uid://bixp50vwqc8b5" path="res://Stages/Desktop/Applications/SnowTransport/Art/SnowTransportPressed.png" id="17_mbwvg"]
+[ext_resource type="PackedScene" uid="uid://ukc0qadxpmxk" path="res://Stages/Desktop/Applications/Status/Status.tscn" id="27_jhnr2"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xef0d"]
+shader = ExtResource("1_8116u")
+
+[node name="Desktop" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_dbuie")
+
+[node name="Background" type="TextureRect" parent="."]
+material = SubResource("ShaderMaterial_xef0d")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stretch_mode = 1
+metadata/_edit_lock_ = true
+
+[node name="Header" parent="." instance=ExtResource("3_fwov0")]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_right = 0.0
+offset_bottom = 32.0
+grow_horizontal = 2
+metadata/_edit_lock_ = true
+
+[node name="MarginContainer" type="MarginContainer" parent="Header"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_right = 8
+
+[node name="HSplitContainer" type="HSplitContainer" parent="Header/MarginContainer"]
+layout_mode = 2
+dragger_visibility = 2
+
+[node name="ComputerVersion" type="Label" parent="Header/MarginContainer/HSplitContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "Wild Jam Inc. v0.7.6"
+label_settings = ExtResource("4_cw2jj")
+
+[node name="Date" type="Label" parent="Header/MarginContainer/HSplitContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+label_settings = ExtResource("4_cw2jj")
+horizontal_alignment = 2
+script = ExtResource("4_71qwm")
+
+[node name="DesktopIcons" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 32.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+
+[node name="IceFishingIcon" parent="DesktopIcons" instance=ExtResource("6_rnter")]
+layout_mode = 0
+offset_left = 48.0
+offset_top = 32.0
+offset_right = 144.0
+offset_bottom = 128.0
+idle_icon = ExtResource("7_64qfu")
+hover_icon = ExtResource("8_q66n5")
+pressed_icon = ExtResource("9_xp7rl")
+application_name = "Ice Fishing"
+window_content = ExtResource("7_ryjtw")
+
+[node name="FishFryingIcon" parent="DesktopIcons" instance=ExtResource("6_rnter")]
+layout_mode = 0
+offset_left = 48.0
+offset_top = 144.0
+offset_right = 144.0
+offset_bottom = 240.0
+idle_icon = ExtResource("11_5fyst")
+hover_icon = ExtResource("12_lx5nt")
+pressed_icon = ExtResource("13_mh8jo")
+application_name = "Fish Frying"
+window_content = ExtResource("11_yiafc")
+
+[node name="DesktopIcon_2" parent="DesktopIcons" instance=ExtResource("6_rnter")]
+visible = false
+layout_mode = 0
+offset_left = 48.0
+offset_top = 256.0
+offset_right = 144.0
+offset_bottom = 352.0
+
+[node name="FacultyTrainingIcon" parent="DesktopIcons" instance=ExtResource("6_rnter")]
+layout_mode = 0
+offset_left = 48.0
+offset_top = 368.0
+offset_right = 144.0
+offset_bottom = 464.0
+application_name = "Faculty Training"
+window_content = ExtResource("15_0rlgu")
+
+[node name="IceBreakerIcon" parent="DesktopIcons" instance=ExtResource("6_rnter")]
+layout_mode = 0
+offset_left = 1136.0
+offset_top = 32.0
+offset_right = 1232.0
+offset_bottom = 128.0
+idle_icon = ExtResource("7_5bmfb")
+hover_icon = ExtResource("8_36xq7")
+pressed_icon = ExtResource("9_g1r4n")
+application_name = "Ice Breaker"
+window_content = ExtResource("7_iwov4")
+
+[node name="IcePackerIcon" parent="DesktopIcons" instance=ExtResource("6_rnter")]
+layout_mode = 0
+offset_left = 1136.0
+offset_top = 144.0
+offset_right = 1232.0
+offset_bottom = 240.0
+idle_icon = ExtResource("11_ooxhi")
+hover_icon = ExtResource("12_md40b")
+pressed_icon = ExtResource("13_b37ar")
+application_name = "Ice Packer"
+window_content = ExtResource("11_0abha")
+
+[node name="SnowTransport" parent="DesktopIcons" instance=ExtResource("6_rnter")]
+layout_mode = 0
+offset_left = 1136.0
+offset_top = 256.0
+offset_right = 1232.0
+offset_bottom = 352.0
+idle_icon = ExtResource("15_ug7sn")
+hover_icon = ExtResource("16_g7ts5")
+pressed_icon = ExtResource("17_mbwvg")
+application_name = "Snow Transport"
+window_content = ExtResource("15_y4ffw")
+
+[node name="StatusListIcon" parent="DesktopIcons" instance=ExtResource("6_rnter")]
+layout_mode = 0
+offset_left = 1136.0
+offset_top = 448.0
+offset_right = 1232.0
+offset_bottom = 544.0
+application_name = "Facility Status"
+window_content = ExtResource("27_jhnr2")
+
+[node name="ExitIcon" parent="DesktopIcons" instance=ExtResource("6_rnter")]
+layout_mode = 0
+offset_left = 1136.0
+offset_top = 560.0
+offset_right = 1232.0
+offset_bottom = 656.0
+idle_icon = ExtResource("4_gc4ki")
+hover_icon = ExtResource("6_i7qnv")
+pressed_icon = ExtResource("5_j7qde")
+is_exit = true
+
+[node name="Windows" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("11_rla85")
+metadata/_edit_use_anchors_ = true

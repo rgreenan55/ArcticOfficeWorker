@@ -1,0 +1,60 @@
+[gd_scene load_steps=4 format=3 uid="uid://b4jm5214xpwn2"]
+
+[ext_resource type="Script" path="res://FacultyTraining.gd" id="1_rei0v"]
+[ext_resource type="FontFile" uid="uid://dvjbusva4epa5" path="res://Assets/Fonts/OCRAEXT.TTF" id="1_w8b83"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_nt6tb"]
+font = ExtResource("1_w8b83")
+font_size = 20
+
+[node name="FacultyTraining" type="CenterContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -800.0
+offset_bottom = -640.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_rei0v")
+
+[node name="SizingOrganizer" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="UserInputContainer" type="MarginContainer" parent="SizingOrganizer"]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_right = 8
+
+[node name="UserInput" type="LineEdit" parent="SizingOrganizer/UserInputContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 0)
+theme_override_fonts/font = ExtResource("1_w8b83")
+theme_override_font_sizes/font_size = 20
+middle_mouse_paste_enabled = false
+
+[node name="MarginContainer" type="MarginContainer" parent="SizingOrganizer/UserInputContainer"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 8
+
+[node name="UserInputDisplay" type="RichTextLabel" parent="SizingOrganizer/UserInputContainer/MarginContainer"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_fonts/normal_font = ExtResource("1_w8b83")
+theme_override_font_sizes/normal_font_size = 20
+bbcode_enabled = true
+scroll_active = false
+
+[node name="SampleTextContainer" type="MarginContainer" parent="SizingOrganizer"]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_right = 8
+
+[node name="SampleText" type="Label" parent="SizingOrganizer/SampleTextContainer"]
+layout_mode = 2
+text = "asdasdadas"
+label_settings = SubResource("LabelSettings_nt6tb")
+
+[connection signal="text_changed" from="SizingOrganizer/UserInputContainer/UserInput" to="." method="_on_user_input_text_changed"]

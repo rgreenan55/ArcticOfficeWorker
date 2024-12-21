@@ -1,0 +1,8 @@
+[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://ou4wfnn6bgdi"]
+
+[ext_resource type="FontFile" uid="uid://dvjbusva4epa5" path="res://Assets/Fonts/OCRAEXT.TTF" id="1_jwlyj"]
+
+[resource]
+font = ExtResource("1_jwlyj")
+font_size = 12
+font_color = Color(0, 0, 0, 1)

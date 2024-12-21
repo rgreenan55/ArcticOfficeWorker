@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://b3kc7apuwcjm0"]
+
+[ext_resource type="Script" path="res://Stages/Desktop/Applications/IceFishing/Trash.gd" id="1_dtlwu"]
+[ext_resource type="Texture2D" uid="uid://bubo3i060qc6p" path="res://Stages/Desktop/Applications/IceFishing/Art/Trash1.png" id="2_28f65"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4gucv"]
+size = Vector2(0, 0)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ay0he"]
+size = Vector2(16, 16)
+
+[node name="Trash" type="CharacterBody2D" groups=["Trash"]]
+script = ExtResource("1_dtlwu")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_28f65")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_4gucv")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_ay0he")

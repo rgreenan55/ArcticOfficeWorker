@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://rmu6qtdoarme"]
+
+[ext_resource type="Texture2D" uid="uid://rhgkmlcfv007" path="res://Stages/Desktop/Applications/FishFrying/Art/FishForFrying.png" id="1_5e4aq"]
+
+[node name="FishObject" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = -1.5708
+texture = ExtResource("1_5e4aq")

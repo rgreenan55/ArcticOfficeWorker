@@ -11,13 +11,19 @@ size = Vector2(64, 64)
 
 [node name="TShape" instance=ExtResource("1_j6fmt")]
 
-[node name="Sprite2D" type="Sprite2D" parent="." index="0"]
+[node name="Sprite" type="Node2D" parent="." index="0"]
+y_sort_enabled = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Sprite" index="0"]
+y_sort_enabled = true
 texture = ExtResource("2_c38hu")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1"]
+visible = false
 shape = SubResource("RectangleShape2D_3f0ru")
 
 [node name="AreaDetectors" type="Node2D" parent="." index="2"]
+visible = false
 
 [node name="Area2D" type="Area2D" parent="AreaDetectors" index="0"]
 position = Vector2(32, -56)

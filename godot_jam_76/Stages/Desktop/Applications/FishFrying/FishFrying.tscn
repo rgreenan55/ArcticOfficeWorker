@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://c53xt42gxoxub"]
+
+[ext_resource type="Script" path="res://Stages/Desktop/Applications/FishFrying/FishFrying.gd" id="1_5vgxw"]
+[ext_resource type="PackedScene" uid="uid://c4ter8svybneg" path="res://Stages/Desktop/Applications/FishFrying/FishFryingGame.tscn" id="1_gpb5w"]
+
+[sub_resource type="Gradient" id="Gradient_rk436"]
+offsets = PackedFloat32Array(0.450311)
+colors = PackedColorArray(1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_oqp46"]
+gradient = SubResource("Gradient_rk436")
+width = 512
+height = 256
+
+[node name="FishFrying" type="CenterContainer"]
+script = ExtResource("1_5vgxw")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 2
+texture = SubResource("GradientTexture2D_oqp46")
+
+[node name="FishFrying" parent="." instance=ExtResource("1_gpb5w")]
+
+[connection signal="gui_input" from="FishFrying" to="." method="_on_gui_input"]

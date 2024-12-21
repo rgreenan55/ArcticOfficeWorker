@@ -1,0 +1,102 @@
+[gd_scene load_steps=16 format=3 uid="uid://2ps3nyhmumh4"]
+
+[ext_resource type="Texture2D" uid="uid://do5n5jdmg5ek7" path="res://Stages/Desktop/Applications/FishFrying/Art/FishSlices.png" id="1_5r6p4"]
+[ext_resource type="Script" path="res://Stages/Desktop/Applications/FishFrying/Objects/FishSlicesToCook.gd" id="1_cawcd"]
+[ext_resource type="AudioStream" uid="uid://ctg2w10nl8d75" path="res://Stages/Desktop/Applications/FishFrying/Audio/Sizzling.wav" id="3_bhvpe"]
+
+[sub_resource type="Curve" id="Curve_3xd88"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.968553, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_2mv65"]
+curve = SubResource("Curve_3xd88")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_q3lrr"]
+particle_flag_disable_z = true
+emission_shape = 2
+emission_sphere_radius = 8.0
+direction = Vector3(0, -1, 0)
+spread = 90.0
+flatness = 1.0
+initial_velocity_min = 50.0
+initial_velocity_max = 75.0
+gravity = Vector3(0, 100, 0)
+scale_curve = SubResource("CurveTexture_2mv65")
+
+[sub_resource type="Gradient" id="Gradient_00e3a"]
+offsets = PackedFloat32Array(0.397516)
+colors = PackedColorArray(1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_fu5s2"]
+gradient = SubResource("Gradient_00e3a")
+width = 2
+height = 2
+
+[sub_resource type="Gradient" id="Gradient_bp7bb"]
+offsets = PackedFloat32Array(0, 0.527586, 0.855172, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.135818, 0.135818, 0.135818, 1, 0.455172, 0.455172, 0.455172, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_axywu"]
+gradient = SubResource("Gradient_bp7bb")
+
+[sub_resource type="Curve" id="Curve_kun15"]
+_data = [Vector2(0, 0.650625), 0.0, 0.0, 0, 0, Vector2(0.996855, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_v5gq8"]
+curve = SubResource("Curve_kun15")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_87gav"]
+particle_flag_disable_z = true
+emission_shape = 2
+emission_sphere_radius = 16.0
+direction = Vector3(0, -1, 0)
+initial_velocity_min = 25.0
+initial_velocity_max = 50.0
+gravity = Vector3(0, 0, 0)
+scale_curve = SubResource("CurveTexture_v5gq8")
+color_ramp = SubResource("GradientTexture1D_axywu")
+
+[sub_resource type="Gradient" id="Gradient_yeb1q"]
+offsets = PackedFloat32Array(0.531056)
+colors = PackedColorArray(1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_vx6hv"]
+gradient = SubResource("Gradient_yeb1q")
+width = 16
+height = 16
+
+[node name="FishSlicesToCook" type="Node2D"]
+script = ExtResource("1_cawcd")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_5r6p4")
+hframes = 4
+
+[node name="SizzleParticles" type="GPUParticles2D" parent="."]
+amount = 30
+process_material = SubResource("ParticleProcessMaterial_q3lrr")
+texture = SubResource("GradientTexture2D_fu5s2")
+
+[node name="SmokeParticles" type="GPUParticles2D" parent="."]
+texture_filter = 1
+position = Vector2(0, -8)
+emitting = false
+amount = 30
+process_material = SubResource("ParticleProcessMaterial_87gav")
+texture = SubResource("GradientTexture2D_vx6hv")
+lifetime = 2.5
+
+[node name="MouseDetector" type="TextureRect" parent="."]
+offset_left = -32.0
+offset_top = -32.0
+offset_right = 32.0
+offset_bottom = 32.0
+
+[node name="SizzleSound" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(0, -4)
+stream = ExtResource("3_bhvpe")
+volume_db = -15.0
+autoplay = true
+
+[connection signal="gui_input" from="MouseDetector" to="." method="_on_mouse_detector_gui_input"]

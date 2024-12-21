@@ -1,6 +1,7 @@
-[gd_scene load_steps=13 format=3 uid="uid://cbdokv7vtqjra"]
+[gd_scene load_steps=14 format=3 uid="uid://cbdokv7vtqjra"]
 
 [ext_resource type="PackedScene" uid="uid://4ri44fry6k3f" path="res://Stages/Desktop/Applications/IcePacker/IcePackerGame.tscn" id="1_8wjba"]
+[ext_resource type="Script" path="res://Stages/Desktop/Applications/IcePacker/IcePacker.gd" id="1_cwndb"]
 [ext_resource type="FontFile" uid="uid://dvjbusva4epa5" path="res://Assets/Fonts/OCRAEXT.TTF" id="2_litii"]
 [ext_resource type="PackedScene" uid="uid://dmm7ujmcn46k4" path="res://Stages/Desktop/Utilities/InterfaceStyle/InterfaceBackground.tscn" id="2_qcq1l"]
 
@@ -49,6 +50,7 @@ offset_right = 512.0
 offset_bottom = 416.0
 size_flags_horizontal = 0
 size_flags_vertical = 0
+script = ExtResource("1_cwndb")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 2
@@ -76,7 +78,7 @@ region_rect = Rect2(1, 0, 22, 24)
 layout_mode = 2
 texture = SubResource("GradientTexture2D_h71eq")
 
-[node name="Button" type="Button" parent="VBoxContainer/TextureRect"]
+[node name="ShipButton" type="Button" parent="VBoxContainer/TextureRect"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -90,4 +92,5 @@ text = "Ship > > >"
 
 [node name="IcePackerGame" parent="." instance=ExtResource("1_8wjba")]
 
-[connection signal="pressed" from="VBoxContainer/TextureRect/Button" to="IcePackerGame" method="ship_package"]
+[connection signal="pressed" from="VBoxContainer/TextureRect/ShipButton" to="IcePackerGame" method="ship_package"]
+[connection signal="gui_input" from="IcePackerGame" to="." method="_on_gui_input"]

@@ -1,0 +1,80 @@
+[gd_scene load_steps=9 format=3 uid="uid://q8q41hk5if8b"]
+
+[ext_resource type="Script" path="res://Stages/3DWorld/Objects/Desktop/Desktop3D.gd" id="1_46uto"]
+[ext_resource type="PackedScene" uid="uid://dnwc5adrx7bm3" path="res://Stages/Desktop/Desktop.tscn" id="1_csbjr"]
+[ext_resource type="PackedScene" uid="uid://dpyvegafvxq4q" path="res://Stages/3DWorld/Objects/Desktop/Computer.blend" id="3_g6vyq"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_j2awt"]
+viewport_path = NodePath("Screen/ViewportSizer/DesktopViewport")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qetyl"]
+size = Vector3(12.8, 7.2, 0)
+
+[sub_resource type="Gradient" id="Gradient_51ual"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_qoeko"]
+gradient = SubResource("Gradient_51ual")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ec621"]
+albedo_color = Color(0.625597, 0.625597, 0.625597, 1)
+albedo_texture = SubResource("GradientTexture2D_qoeko")
+
+[node name="Desktop3D" type="Node3D"]
+script = ExtResource("1_46uto")
+
+[node name="Screen" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4.75)
+
+[node name="ViewportSizer" type="Node3D" parent="Screen"]
+transform = Transform3D(0.01, 0, 0, 0, 0.01, 0, 0, 0, 0.01, 0, 0, 0)
+
+[node name="DesktopViewport" type="SubViewport" parent="Screen/ViewportSizer"]
+canvas_item_default_texture_filter = 0
+audio_listener_enable_2d = true
+audio_listener_enable_3d = true
+size = Vector2i(1280, 720)
+
+[node name="Desktop" parent="Screen/ViewportSizer/DesktopViewport" instance=ExtResource("1_csbjr")]
+
+[node name="Sprite3D" type="Sprite3D" parent="Screen"]
+texture = SubResource("ViewportTexture_j2awt")
+
+[node name="ScreenCamera" type="Camera3D" parent="Screen"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4.65)
+
+[node name="CloseCamera" type="Camera3D" parent="Screen"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6)
+far = 1000.0
+
+[node name="RealisticCamera" type="Camera3D" parent="Screen"]
+transform = Transform3D(1, 0, 0, 0, 0.996195, -0.0871557, 0, 0.0871557, 0.996195, 0, -0.75, 6)
+
+[node name="ScreenClickDetector" type="Area3D" parent="Screen"]
+
+[node name="Shape" type="CollisionShape3D" parent="Screen/ScreenClickDetector"]
+shape = SubResource("BoxShape3D_qetyl")
+
+[node name="Node3D" type="Node3D" parent="."]
+visible = false
+
+[node name="MainBox" type="CSGBox3D" parent="Node3D"]
+size = Vector3(14.3, 8.7, 10)
+material = SubResource("StandardMaterial3D_ec621")
+
+[node name="ScreenIndent" type="CSGBox3D" parent="Node3D/MainBox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4.75)
+operation = 2
+size = Vector3(12.8, 7.2, 0.5)
+
+[node name="StandCircle" type="CSGCylinder3D" parent="Node3D/MainBox"]
+transform = Transform3D(1, 0, 0, 0, 0.984808, -0.173648, 0, 0.173648, 0.984808, 0, -4.5, -1)
+radius = 2.5
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Node3D/MainBox"]
+transform = Transform3D(1, 0, 0, 0, 0.984808, -0.173648, 0, 0.173648, 0.984808, 0, -5.6, -1)
+size = Vector3(7.5, -0.25, 7.5)
+
+[node name="Computer2" parent="." instance=ExtResource("3_g6vyq")]
+transform = Transform3D(-3.27835e-08, 0, -0.75, 0, 0.75, 0, 0.75, 0, -3.27835e-08, 0, 0, 4.735)

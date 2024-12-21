@@ -1,0 +1,54 @@
+[gd_scene load_steps=8 format=3 uid="uid://bavhispetidr5"]
+
+[ext_resource type="Texture2D" uid="uid://dy7gbfscm26go" path="res://Stages/Desktop/Applications/Music/Art/SongBackground.png" id="1_0p88j"]
+[ext_resource type="FontFile" uid="uid://dvjbusva4epa5" path="res://Assets/Fonts/OCRAEXT.TTF" id="1_c1uvu"]
+[ext_resource type="Script" path="res://Stages/Desktop/Applications/Music/SongSelection.gd" id="1_nxx57"]
+[ext_resource type="Texture2D" uid="uid://ix0secd5sqie" path="res://Stages/Desktop/Applications/Music/Art/PlayButtonIdle.png" id="3_ytech"]
+[ext_resource type="Texture2D" uid="uid://b8n6e67dgatk6" path="res://Stages/Desktop/Applications/Music/Art/MusicLines/MusicLines_1.png" id="4_c60yp"]
+[ext_resource type="Texture2D" uid="uid://bbvt2vcd3vt05" path="res://Stages/Desktop/Applications/Music/Art/PlayButtonPressed.png" id="4_ssaio"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_8f3e3"]
+font = ExtResource("1_c1uvu")
+
+[node name="SongSelection" type="MarginContainer"]
+offset_right = 304.0
+offset_bottom = 24.0
+script = ExtResource("1_nxx57")
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 2
+texture = ExtResource("1_0p88j")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+mouse_filter = 0
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_right = 4
+
+[node name="SongSelection" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="SongName" type="Label" parent="MarginContainer/SongSelection"]
+layout_mode = 2
+size_flags_vertical = 1
+text = "Song Title"
+label_settings = SubResource("LabelSettings_8f3e3")
+vertical_alignment = 1
+
+[node name="MusicLines" type="TextureRect" parent="MarginContainer/SongSelection"]
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("4_c60yp")
+stretch_mode = 1
+
+[node name="PlayButton" type="TextureButton" parent="MarginContainer/SongSelection"]
+layout_mode = 2
+mouse_filter = 1
+texture_normal = ExtResource("3_ytech")
+texture_pressed = ExtResource("4_ssaio")
+texture_disabled = ExtResource("4_ssaio")
+
+[node name="MusicPlayer" type="AudioStreamPlayer3D" parent="."]
+
+[connection signal="gui_input" from="MarginContainer" to="." method="_on_margin_container_gui_input"]

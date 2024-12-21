@@ -14,9 +14,17 @@ config/name="GodotJam76"
 run/main_scene="res://Stages/Desktop/Desktop.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 
+[audio]
+
+general/default_playback_type.web=0
+
 [autoload]
 
 DesktopManager="*res://Globals/DesktopManager.gd"
+
+[debug]
+
+settings/stdout/print_fps=true
 
 [display]
 
@@ -40,23 +48,34 @@ folder_colors={
 "res://Config/": "gray",
 "res://Globals/": "gray",
 "res://Stages/": "blue",
+"res://Stages/3DWorld/": "orange",
 "res://Stages/Desktop/Applications/": "purple",
 "res://Stages/Desktop/Applications/Exit/": "purple",
+"res://Stages/Desktop/Applications/FacultyTraining/": "purple",
+"res://Stages/Desktop/Applications/FacultyTraining/Art/": "red",
+"res://Stages/Desktop/Applications/FacultyTraining/Audio/": "red",
+"res://Stages/Desktop/Applications/FishFrying/": "purple",
+"res://Stages/Desktop/Applications/FishFrying/Art/": "red",
+"res://Stages/Desktop/Applications/FishFrying/Audio/": "red",
 "res://Stages/Desktop/Applications/IceBreaker/": "purple",
 "res://Stages/Desktop/Applications/IceBreaker/Art/": "red",
 "res://Stages/Desktop/Applications/IceFishing/": "purple",
 "res://Stages/Desktop/Applications/IceFishing/Art/": "red",
+"res://Stages/Desktop/Applications/IceFishing/Audio/": "red",
 "res://Stages/Desktop/Applications/IcePacker/": "purple",
 "res://Stages/Desktop/Applications/IcePacker/Art/": "red",
 "res://Stages/Desktop/Applications/IcePacker/Audio/": "red",
 "res://Stages/Desktop/Applications/IcePacker/Shapes/Art/": "red",
+"res://Stages/Desktop/Applications/Music/Art/": "red",
+"res://Stages/Desktop/Applications/Music/Audio/": "red",
 "res://Stages/Desktop/Applications/SnowTransport/": "purple",
 "res://Stages/Desktop/Applications/SnowTransport/Art/": "red",
+"res://Stages/Desktop/Applications/Status/": "purple",
+"res://Stages/Desktop/Applications/Status/Art/": "red",
 "res://Stages/Desktop/Applications/WindowUtility/": "gray",
 "res://Stages/Desktop/DesktopBackgrounds/": "gray",
 "res://Stages/Desktop/DesktopIcons/": "gray",
 "res://Stages/Desktop/Utilities/": "gray",
-"res://Stages/World/": "orange",
 "res://UserInterface/": "green"
 }
 
@@ -65,6 +84,31 @@ folder_colors={
 LeftMouseButton={
 "deadzone": 0.5,
 "events": [Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":0,"position":Vector2(0, 0),"global_position":Vector2(0, 0),"factor":1.0,"button_index":1,"canceled":false,"pressed":false,"double_click":false,"script":null)
+]
+}
+SwapCameras={
+"deadzone": 0.5,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":4194306,"key_label":0,"unicode":0,"location":0,"echo":false,"script":null)
+]
+}
+Forward={
+"deadzone": 0.5,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":87,"key_label":0,"unicode":119,"location":0,"echo":false,"script":null)
+]
+}
+Back={
+"deadzone": 0.5,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":83,"key_label":0,"unicode":115,"location":0,"echo":false,"script":null)
+]
+}
+Left={
+"deadzone": 0.5,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":65,"key_label":0,"unicode":97,"location":0,"echo":false,"script":null)
+]
+}
+Right={
+"deadzone": 0.5,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":68,"key_label":0,"unicode":100,"location":0,"echo":false,"script":null)
 ]
 }
 

@@ -1,0 +1,45 @@
+[gd_scene load_steps=5 format=3 uid="uid://csjuo4obesmkt"]
+
+[ext_resource type="FontFile" uid="uid://dvjbusva4epa5" path="res://Assets/Fonts/OCRAEXT.TTF" id="1_7c7kk"]
+[ext_resource type="Script" path="res://Stages/Desktop/Applications/Status/StatusSection.gd" id="1_djlyd"]
+[ext_resource type="Texture2D" uid="uid://cnqavblvfj7p6" path="res://Stages/Desktop/Applications/Status/Art/InfoSplitter.png" id="3_6la6y"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_shqqx"]
+font = ExtResource("1_7c7kk")
+
+[node name="StatusSection" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -895.0
+offset_bottom = -704.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+script = ExtResource("1_djlyd")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 21.0
+grow_horizontal = 2
+
+[node name="Title" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+text = "Title
+"
+label_settings = SubResource("LabelSettings_shqqx")
+vertical_alignment = 2
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("3_6la6y")
+stretch_mode = 1
+
+[node name="Value" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+text = "10 / 10"
+label_settings = SubResource("LabelSettings_shqqx")

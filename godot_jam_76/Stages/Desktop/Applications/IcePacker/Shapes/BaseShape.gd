@@ -1,6 +1,7 @@
 class_name BaseShape extends CharacterBody2D
 
 signal shape_placed(shape_placed);
+signal gui_input(event);
 
 # Spawner Record
 @export var spawner_origin : Area2D;
@@ -11,7 +12,7 @@ var is_shape_placed : bool = false;
 # Info on Shape Placement
 var placement_nodes : int;
 var direction_info : Dictionary;
-var ghost : Sprite2D;
+var ghost : Node2D;
 var ghost_present : bool = false;
 var storage : Array[Area2D] = [];
 
@@ -24,7 +25,7 @@ var prevPosition : Vector2 = position;
 
 func _ready() -> void:
 	# Check if requires nodes are set up:
-	if (get_node_or_null("Sprite2D") == null): push_warning(name, ": No Sprite Shape");
+	if (get_node_or_null("Sprite") == null): push_warning(name, ": No Sprites");
 	if (get_node_or_null("CollisionShape2D") == null): push_warning(name, ": No Collision Shape");
 	if (get_node_or_null("AreaDetectors") == null): push_warning(name, ": No Area Detector Node");
 	if (get_node_or_null("GrabbingAreas") == null): push_warning(name, ": No Grabbing Area Node");
@@ -47,12 +48,13 @@ func _physics_process(_delta: float) -> void:
 		_remove_ghost();
 
 func scale_shape(scale_amount : Vector2) -> void:
-	get_node("Sprite2D").scale = scale_amount;
+	get_node("Sprite").scale = scale_amount;
 	get_node("CollisionShape2D").scale = scale_amount;
 	get_node("GrabbingAreas").scale = scale_amount;
 
 func _horizontal_flip() -> void:
-	get_node("Sprite2D").flip_h = true;
+	for sprite in get_node("Sprite").get_children():
+		sprite.flip_h = true;
 	get_node("AreaDetectors").scale.x = -1;
 	get_node("GrabbingAreas").scale.x = -1;
 
@@ -84,7 +86,7 @@ func _get_closest_board_tile_direction() -> Dictionary:
 		placement_vectors.push_back(closest_vector);
 		placement_areas.push_back(closest_area);
 
-	# Check if closest are all the same.
+	## Check if closest are all the same.
 	if (placement_vectors.size() >= placement_nodes && placement_vectors.all(func(v): return v == placement_vectors.front())):
 		return { "is_valid" : true, "vector": placement_vectors.front(), "areas": placement_areas }
 	return { "is_valid" : false }
@@ -95,6 +97,7 @@ func _on_grabbing_area_gui_input(event: InputEvent) -> void:
 	if (is_shape_placed): return;
 	if (event.is_action("LeftMouseButton")):
 		if (event.is_pressed()):
+			gui_input.emit(event);
 			_grab_shape();
 		else:
 			_release_shape();
@@ -151,7 +154,7 @@ func _compare_arrays(a1 : Array, a2 : Array) -> bool:
 #region Ghost Shape
 # Creates Ghost Sprite for Placement
 func _create_ghost() -> void:
-	ghost = get_node("Sprite2D").duplicate();
+	ghost = get_node("Sprite").duplicate();
 	ghost.name = "Ghost";
 	ghost.modulate.a = 0.5
 	add_sibling(ghost);

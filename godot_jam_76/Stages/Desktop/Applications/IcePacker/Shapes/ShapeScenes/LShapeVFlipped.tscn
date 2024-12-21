@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://ccc1qcm4yys7d"]
+[gd_scene load_steps=6 format=3 uid="uid://ccc1qcm4yys7d"]
 
 [ext_resource type="PackedScene" uid="uid://b280vok6utgxq" path="res://Stages/Desktop/Applications/IcePacker/Shapes/BaseShape.tscn" id="1_6jjid"]
-[ext_resource type="Texture2D" uid="uid://dluo83wp3e8a5" path="res://Stages/Desktop/Applications/IcePacker/Shapes/Art/LShapeVFlipped.png" id="2_soils"]
+[ext_resource type="Texture2D" uid="uid://mfkjfi2328lb" path="res://Stages/Desktop/Applications/IcePacker/Shapes/Art/LShapeVFlipped_1.png" id="2_xpy43"]
+[ext_resource type="Texture2D" uid="uid://dpdph8652n57v" path="res://Stages/Desktop/Applications/IcePacker/Shapes/Art/LShapeVFlipped_2.png" id="3_yylwr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6bp2g"]
 size = Vector2(128, 208)
@@ -11,14 +12,27 @@ size = Vector2(64, 64)
 
 [node name="LShapeVFlipped" instance=ExtResource("1_6jjid")]
 
-[node name="Sprite2D" type="Sprite2D" parent="." index="0"]
+[node name="Sprite" type="Node2D" parent="." index="0"]
 y_sort_enabled = true
-texture = ExtResource("2_soils")
+
+[node name="Sprite2D" type="Sprite2D" parent="Sprite" index="0"]
+y_sort_enabled = true
+position = Vector2(0, -48)
+texture = ExtResource("2_xpy43")
+offset = Vector2(0, 48)
+
+[node name="Sprite2D_2" type="Sprite2D" parent="Sprite" index="1"]
+y_sort_enabled = true
+position = Vector2(0, 64)
+texture = ExtResource("3_yylwr")
+offset = Vector2(0, -64)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1"]
+visible = false
 shape = SubResource("RectangleShape2D_6bp2g")
 
 [node name="AreaDetectors" type="Node2D" parent="." index="2"]
+visible = false
 scale = Vector2(1, -1)
 
 [node name="Area2D" type="Area2D" parent="AreaDetectors" index="0"]

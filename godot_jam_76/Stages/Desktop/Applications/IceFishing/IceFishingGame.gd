@@ -42,7 +42,6 @@ func _spawn_fish():
 	# Prep for Next Fish
 	get_tree().create_timer(randf_range(2, 5)).connect("timeout", _spawn_fish);
 
-
 func _spawn_trash() -> void:
 	# Get Spawn Location
 	var decider : bool = randi_range(1,0) == 0;
@@ -53,17 +52,17 @@ func _spawn_trash() -> void:
 	# Spawn Trash
 	var trash = trash_scene.instantiate();
 	trash.position = spawn_location;
+	trash.move_direction = 1 if decider else -1;
 	get_node("SpawnedEntities").add_child(trash);
 	# Prep for Next Trash
 	get_tree().create_timer(2).connect("timeout", _spawn_trash);
-
 
 func _on_fish_collector_body_entered(body: Node2D) -> void:
 	if (body.is_in_group("FishingHook")):
 		if (body.hook_broken): body.fix_hook();
 		var fish = body.fish_on_hook;
 		if (!fish): return;
-		# TODO : Trigger Global Points
-		#fish.value;
+		DesktopManager.ice_fishing_fish_caught(fish.value);
+		get_node("FishingRod/FishingHook/Audio/Caught").play();
 		body.fish_on_hook = null;
 		fish.queue_free();

@@ -51,7 +51,7 @@ func _on_exit_button_pressed() -> void:
 
 # Moves Window to Front when Clicked
 func _on_window_control_gui_input(event: InputEvent) -> void:
-	if (event is InputEventMouseButton && event.is_pressed()):
+	if (event.is_action("LeftMouseButton") && event.is_pressed()):
 		move_to_front();
 
 # Used to Add the desired Content to the Window

@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://b5fuaog01j84t"]
+[gd_scene load_steps=6 format=3 uid="uid://b5fuaog01j84t"]
 
 [ext_resource type="PackedScene" uid="uid://b280vok6utgxq" path="res://Stages/Desktop/Applications/IcePacker/Shapes/BaseShape.tscn" id="1_4l041"]
-[ext_resource type="Texture2D" uid="uid://klojnaitjn0k" path="res://Stages/Desktop/Applications/IcePacker/Shapes/Art/LShape.png" id="2_mo4uw"]
+[ext_resource type="Texture2D" uid="uid://oitl6o6i851d" path="res://Stages/Desktop/Applications/IcePacker/Shapes/Art/LShape_1.png" id="2_4nqc2"]
+[ext_resource type="Texture2D" uid="uid://bsw5tac5ew5lm" path="res://Stages/Desktop/Applications/IcePacker/Shapes/Art/LShape_2.png" id="3_6lmjr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nhbke"]
 size = Vector2(128, 208)
@@ -11,14 +12,26 @@ size = Vector2(64, 64)
 
 [node name="LShape" instance=ExtResource("1_4l041")]
 
-[node name="Sprite2D" type="Sprite2D" parent="." index="0"]
+[node name="Sprite" type="Node2D" parent="." index="0"]
 y_sort_enabled = true
-texture = ExtResource("2_mo4uw")
+
+[node name="Sprite2D" type="Sprite2D" parent="Sprite" index="0"]
+y_sort_enabled = true
+position = Vector2(0, -64)
+texture = ExtResource("2_4nqc2")
+offset = Vector2(0, 64)
+
+[node name="Sprite2D_2" type="Sprite2D" parent="Sprite" index="1"]
+position = Vector2(0, 48)
+texture = ExtResource("3_6lmjr")
+offset = Vector2(0, -48)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1"]
+visible = false
 shape = SubResource("RectangleShape2D_nhbke")
 
 [node name="AreaDetectors" type="Node2D" parent="." index="2"]
+visible = false
 
 [node name="Area2D" type="Area2D" parent="AreaDetectors" index="0"]
 position = Vector2(-32, -56)

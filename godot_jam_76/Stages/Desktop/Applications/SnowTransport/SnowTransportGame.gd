@@ -25,7 +25,7 @@ func spawn_snow() -> void:
 # On Player Reaching Goal
 func _on_goal_area_body_entered(body: Node2D) -> void:
 	if (body == get_node("Player")):
-		# TODO : Trigger Global Point System
+		DesktopManager.snow_transport_delivered();
 		game_resetting = true;
 		get_node("GameResetAnimation").play("complete");
 		await get_node("GameResetAnimation").animation_finished;

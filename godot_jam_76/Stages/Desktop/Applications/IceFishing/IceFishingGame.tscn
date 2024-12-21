@@ -1,9 +1,13 @@
-[gd_scene load_steps=9 format=3 uid="uid://f30j676871dg"]
+[gd_scene load_steps=13 format=3 uid="uid://f30j676871dg"]
 
 [ext_resource type="Script" path="res://Stages/Desktop/Applications/IceFishing/IceFishingGame.gd" id="1_p5idr"]
 [ext_resource type="Texture2D" uid="uid://wcfp6wfg7rf8" path="res://Stages/Desktop/Applications/IceFishing/Art/IceFishingBackground.png" id="2_8eh4q"]
 [ext_resource type="Script" path="res://Stages/Desktop/Applications/IceFishing/FishingHook.gd" id="3_bq87i"]
 [ext_resource type="Texture2D" uid="uid://hur358c52npu" path="res://Stages/Desktop/Applications/IceFishing/Art/FishingHook.png" id="3_qm053"]
+[ext_resource type="AudioStream" uid="uid://bqg325l86kyre" path="res://Stages/Desktop/Applications/IceFishing/Audio/HookBreaking.wav" id="5_rd2dc"]
+[ext_resource type="AudioStream" uid="uid://c85ety4wpkpxl" path="res://Stages/Desktop/Applications/IceFishing/Audio/FishingReel.wav" id="6_i6r1r"]
+[ext_resource type="AudioStream" uid="uid://bg8rsh3cgpjw8" path="res://Stages/Desktop/Applications/IceFishing/Audio/FishingHookFix.wav" id="6_liu26"]
+[ext_resource type="AudioStream" uid="uid://caa88w1j1np0i" path="res://Stages/Desktop/Applications/IceFishing/Audio/FishCatch.wav" id="7_rxxsh"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_42d57"]
 
@@ -46,6 +50,25 @@ shape = SubResource("CircleShape2D_42d57")
 [node name="Sprite2D" type="Sprite2D" parent="FishingRod/FishingHook"]
 position = Vector2(2, 5)
 texture = ExtResource("3_qm053")
+
+[node name="Audio" type="Node2D" parent="FishingRod/FishingHook"]
+
+[node name="Broken" type="AudioStreamPlayer3D" parent="FishingRod/FishingHook/Audio"]
+stream = ExtResource("5_rd2dc")
+volume_db = 10.0
+
+[node name="Fixing" type="AudioStreamPlayer3D" parent="FishingRod/FishingHook/Audio"]
+stream = ExtResource("6_liu26")
+volume_db = 10.0
+pitch_scale = 1.5
+
+[node name="Caught" type="AudioStreamPlayer3D" parent="FishingRod/FishingHook/Audio"]
+stream = ExtResource("7_rxxsh")
+volume_db = 10.0
+
+[node name="Reeling" type="AudioStreamPlayer3D" parent="FishingRod/FishingHook/Audio"]
+stream = ExtResource("6_i6r1r")
+volume_db = 10.0
 
 [node name="String" type="Line2D" parent="FishingRod"]
 width = 1.0

@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://dvr1w44lp3e56"]
+
+[ext_resource type="Texture2D" uid="uid://b7s0wajn8ud7f" path="res://Stages/Desktop/Applications/FishFrying/Art/FishSlice.png" id="1_5p63j"]
+
+[node name="FishSliceObject" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_5p63j")

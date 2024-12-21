@@ -277,150 +277,175 @@ position = Vector2(36, 36)
 
 [node name="CollisionShape" type="CollisionShape2D" parent="Board/BoardTiles/Area2D"]
 shape = SubResource("RectangleShape2D_tpigj")
+debug_color = Color(0.698039, 0.470588, 0.392157, 0.419608)
 
 [node name="Area2D_2" type="Area2D" parent="Board/BoardTiles" groups=["BoardTile"]]
 position = Vector2(100, 36)
 
 [node name="CollisionShape" type="CollisionShape2D" parent="Board/BoardTiles/Area2D_2"]
 shape = SubResource("RectangleShape2D_tpigj")
+debug_color = Color(0.698295, 0.471371, 0.390678, 0.419608)
 
 [node name="Area2D_3" type="Area2D" parent="Board/BoardTiles" groups=["BoardTile"]]
 position = Vector2(164, 36)
 
 [node name="CollisionShape" type="CollisionShape2D" parent="Board/BoardTiles/Area2D_3"]
 shape = SubResource("RectangleShape2D_tpigj")
+debug_color = Color(0.698295, 0.471371, 0.390678, 0.419608)
 
 [node name="Area2D_4" type="Area2D" parent="Board/BoardTiles" groups=["BoardTile"]]
 position = Vector2(228, 36)
 
 [node name="CollisionShape" type="CollisionShape2D" parent="Board/BoardTiles/Area2D_4"]
 shape = SubResource("RectangleShape2D_tpigj")
+debug_color = Color(0.698295, 0.471371, 0.390678, 0.419608)
 
 [node name="Area2D_5" type="Area2D" parent="Board/BoardTiles" groups=["BoardTile"]]
 position = Vector2(292, 36)
 
 [node name="CollisionShape" type="CollisionShape2D" parent="Board/BoardTiles/Area2D_5"]
 shape = SubResource("RectangleShape2D_tpigj")
+debug_color = Color(0.698295, 0.471371, 0.390678, 0.419608)
 
 [node name="Area2D_6" type="Area2D" parent="Board/BoardTiles" groups=["BoardTile"]]
 position = Vector2(36, 100)
 
 [node name="CollisionShape" type="CollisionShape2D" parent="Board/BoardTiles/Area2D_6"]
 shape = SubResource("RectangleShape2D_tpigj")
+debug_color = Color(0.698295, 0.471371, 0.390678, 0.419608)
 
 [node name="Area2D_7" type="Area2D" parent="Board/BoardTiles" groups=["BoardTile"]]
 position = Vector2(100, 100)
 
 [node name="CollisionShape" type="CollisionShape2D" parent="Board/BoardTiles/Area2D_7"]
 shape = SubResource("RectangleShape2D_tpigj")
+debug_color = Color(0.698295, 0.471371, 0.390678, 0.419608)
 
 [node name="Area2D_8" type="Area2D" parent="Board/BoardTiles" groups=["BoardTile"]]
 position = Vector2(164, 100)
 
 [node name="CollisionShape" type="CollisionShape2D" parent="Board/BoardTiles/Area2D_8"]
 shape = SubResource("RectangleShape2D_tpigj")
+debug_color = Color(0.698295, 0.471371, 0.390678, 0.419608)
 
 [node name="Area2D_9" type="Area2D" parent="Board/BoardTiles" groups=["BoardTile"]]
 position = Vector2(228, 100)
 
 [node name="CollisionShape" type="CollisionShape2D" parent="Board/BoardTiles/Area2D_9"]
 shape = SubResource("RectangleShape2D_tpigj")
+debug_color = Color(0.698295, 0.471371, 0.390678, 0.419608)
 
 [node name="Area2D_10" type="Area2D" parent="Board/BoardTiles" groups=["BoardTile"]]
 position = Vector2(292, 100)
 
 [node name="CollisionShape" type="CollisionShape2D" parent="Board/BoardTiles/Area2D_10"]
 shape = SubResource("RectangleShape2D_tpigj")
+debug_color = Color(0.698295, 0.471371, 0.390678, 0.419608)
 
 [node name="Area2D_11" type="Area2D" parent="Board/BoardTiles" groups=["BoardTile"]]
 position = Vector2(36, 164)
 
 [node name="CollisionShape" type="CollisionShape2D" parent="Board/BoardTiles/Area2D_11"]
 shape = SubResource("RectangleShape2D_tpigj")
+debug_color = Color(0.698295, 0.471371, 0.390678, 0.419608)
 
 [node name="Area2D_12" type="Area2D" parent="Board/BoardTiles" groups=["BoardTile"]]
 position = Vector2(100, 164)
 
 [node name="CollisionShape" type="CollisionShape2D" parent="Board/BoardTiles/Area2D_12"]
 shape = SubResource("RectangleShape2D_tpigj")
+debug_color = Color(0.698295, 0.471371, 0.390678, 0.419608)
 
 [node name="Area2D_13" type="Area2D" parent="Board/BoardTiles" groups=["BoardTile"]]
 position = Vector2(164, 164)
 
 [node name="CollisionShape" type="CollisionShape2D" parent="Board/BoardTiles/Area2D_13"]
 shape = SubResource("RectangleShape2D_tpigj")
+debug_color = Color(0.698295, 0.471371, 0.390678, 0.419608)
 
 [node name="Area2D_14" type="Area2D" parent="Board/BoardTiles" groups=["BoardTile"]]
 position = Vector2(228, 164)
 
 [node name="CollisionShape" type="CollisionShape2D" parent="Board/BoardTiles/Area2D_14"]
 shape = SubResource("RectangleShape2D_tpigj")
+debug_color = Color(0.698295, 0.471371, 0.390678, 0.419608)
 
 [node name="Area2D_15" type="Area2D" parent="Board/BoardTiles" groups=["BoardTile"]]
 position = Vector2(292, 164)
 
 [node name="CollisionShape" type="CollisionShape2D" parent="Board/BoardTiles/Area2D_15"]
 shape = SubResource("RectangleShape2D_tpigj")
+debug_color = Color(0.698295, 0.471371, 0.390678, 0.419608)
 
 [node name="Area2D_16" type="Area2D" parent="Board/BoardTiles" groups=["BoardTile"]]
 position = Vector2(36, 228)
 
 [node name="CollisionShape" type="CollisionShape2D" parent="Board/BoardTiles/Area2D_16"]
 shape = SubResource("RectangleShape2D_tpigj")
+debug_color = Color(0.698295, 0.471371, 0.390678, 0.419608)
 
 [node name="Area2D_17" type="Area2D" parent="Board/BoardTiles" groups=["BoardTile"]]
 position = Vector2(100, 228)
 
 [node name="CollisionShape" type="CollisionShape2D" parent="Board/BoardTiles/Area2D_17"]
 shape = SubResource("RectangleShape2D_tpigj")
+debug_color = Color(0.698295, 0.471371, 0.390678, 0.419608)
 
 [node name="Area2D_18" type="Area2D" parent="Board/BoardTiles" groups=["BoardTile"]]
 position = Vector2(164, 228)
 
 [node name="CollisionShape" type="CollisionShape2D" parent="Board/BoardTiles/Area2D_18"]
 shape = SubResource("RectangleShape2D_tpigj")
+debug_color = Color(0.698295, 0.471371, 0.390678, 0.419608)
 
 [node name="Area2D_19" type="Area2D" parent="Board/BoardTiles" groups=["BoardTile"]]
 position = Vector2(228, 228)
 
 [node name="CollisionShape" type="CollisionShape2D" parent="Board/BoardTiles/Area2D_19"]
 shape = SubResource("RectangleShape2D_tpigj")
+debug_color = Color(0.698295, 0.471371, 0.390678, 0.419608)
 
 [node name="Area2D_20" type="Area2D" parent="Board/BoardTiles" groups=["BoardTile"]]
 position = Vector2(292, 228)
 
 [node name="CollisionShape" type="CollisionShape2D" parent="Board/BoardTiles/Area2D_20"]
 shape = SubResource("RectangleShape2D_tpigj")
+debug_color = Color(0.698295, 0.471371, 0.390678, 0.419608)
 
 [node name="Area2D_21" type="Area2D" parent="Board/BoardTiles" groups=["BoardTile"]]
 position = Vector2(36, 292)
 
 [node name="CollisionShape" type="CollisionShape2D" parent="Board/BoardTiles/Area2D_21"]
 shape = SubResource("RectangleShape2D_tpigj")
+debug_color = Color(0.698295, 0.471371, 0.390678, 0.419608)
 
 [node name="Area2D_22" type="Area2D" parent="Board/BoardTiles" groups=["BoardTile"]]
 position = Vector2(100, 292)
 
 [node name="CollisionShape" type="CollisionShape2D" parent="Board/BoardTiles/Area2D_22"]
 shape = SubResource("RectangleShape2D_tpigj")
+debug_color = Color(0.698295, 0.471371, 0.390678, 0.419608)
 
 [node name="Area2D_23" type="Area2D" parent="Board/BoardTiles" groups=["BoardTile"]]
 position = Vector2(164, 292)
 
 [node name="CollisionShape" type="CollisionShape2D" parent="Board/BoardTiles/Area2D_23"]
 shape = SubResource("RectangleShape2D_tpigj")
+debug_color = Color(0.698295, 0.471371, 0.390678, 0.419608)
 
 [node name="Area2D_24" type="Area2D" parent="Board/BoardTiles" groups=["BoardTile"]]
 position = Vector2(228, 292)
 
 [node name="CollisionShape" type="CollisionShape2D" parent="Board/BoardTiles/Area2D_24"]
 shape = SubResource("RectangleShape2D_tpigj")
+debug_color = Color(0.698295, 0.471371, 0.390678, 0.419608)
 
 [node name="Area2D_25" type="Area2D" parent="Board/BoardTiles" groups=["BoardTile"]]
 position = Vector2(292, 292)
 
 [node name="CollisionShape" type="CollisionShape2D" parent="Board/BoardTiles/Area2D_25"]
 shape = SubResource("RectangleShape2D_tpigj")
+debug_color = Color(0.698295, 0.471371, 0.390678, 0.419608)
 
 [node name="ShapeSpawner" type="Node2D" parent="."]
 
@@ -451,10 +476,8 @@ position = Vector2(164, 170)
 sprite_frames = SubResource("SpriteFrames_8fotu")
 autoplay = "default"
 
-[node name="GateAudio" type="AudioStreamPlayer2D" parent="ShippingGate"]
-position = Vector2(-164, -170)
+[node name="GateAudio" type="AudioStreamPlayer3D" parent="ShippingGate"]
 stream = ExtResource("4_ll026")
+volume_db = 5.0
 
 [node name="Shapes" type="Node2D" parent="."]
-
-[node name="GhostHolder" type="Node2D" parent="."]

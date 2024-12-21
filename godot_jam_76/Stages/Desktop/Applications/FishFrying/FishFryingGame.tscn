@@ -1,0 +1,172 @@
+[gd_scene load_steps=11 format=3 uid="uid://c4ter8svybneg"]
+
+[ext_resource type="Script" path="res://Stages/Desktop/Applications/FishFrying/FishFryingGame.gd" id="1_3pxt4"]
+[ext_resource type="Texture2D" uid="uid://ck6numkm66j7r" path="res://Stages/Desktop/Applications/FishFrying/Art/ChoppingBoard.png" id="1_15no2"]
+[ext_resource type="Script" path="res://Stages/Desktop/Applications/FishFrying/ChoppingBoard.gd" id="2_1tvs4"]
+[ext_resource type="PackedScene" uid="uid://rmu6qtdoarme" path="res://Stages/Desktop/Applications/FishFrying/Objects/FishObject.tscn" id="3_yy8ph"]
+[ext_resource type="LabelSettings" uid="uid://ou4wfnn6bgdi" path="res://Stages/Desktop/Applications/FishFrying/Art/FryingFishLabel.tres" id="5_gnr3t"]
+[ext_resource type="Script" path="res://Stages/Desktop/Applications/FishFrying/CookingStation.gd" id="6_nqmdl"]
+[ext_resource type="Texture2D" uid="uid://b64rrlrqva62w" path="res://Stages/Desktop/Applications/FishFrying/Art/CookingStation.png" id="6_o4jos"]
+[ext_resource type="PackedScene" uid="uid://dvr1w44lp3e56" path="res://Stages/Desktop/Applications/FishFrying/Objects/FishSliceObject.tscn" id="8_elqbq"]
+
+[sub_resource type="Gradient" id="Gradient_74hn7"]
+offsets = PackedFloat32Array(1)
+colors = PackedColorArray(1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_0okce"]
+gradient = SubResource("Gradient_74hn7")
+height = 20
+
+[node name="FishFryingGame" type="Node2D"]
+script = ExtResource("1_3pxt4")
+
+[node name="ChoppingBoard" type="Node2D" parent="."]
+script = ExtResource("2_1tvs4")
+
+[node name="TextureRect" type="TextureRect" parent="ChoppingBoard"]
+offset_right = 128.0
+offset_bottom = 64.0
+texture = ExtResource("1_15no2")
+metadata/_edit_use_anchors_ = true
+
+[node name="ToCookingStation" type="Button" parent="ChoppingBoard"]
+offset_left = 488.0
+offset_right = 512.0
+offset_bottom = 256.0
+text = ">"
+metadata/_edit_use_anchors_ = true
+
+[node name="FishObjects" type="Node2D" parent="ChoppingBoard"]
+
+[node name="FishObject_1" parent="ChoppingBoard/FishObjects" instance=ExtResource("3_yy8ph")]
+position = Vector2(64, 112)
+
+[node name="FishObject_2" parent="ChoppingBoard/FishObjects" instance=ExtResource("3_yy8ph")]
+position = Vector2(108, 112)
+
+[node name="FishObject_3" parent="ChoppingBoard/FishObjects" instance=ExtResource("3_yy8ph")]
+position = Vector2(84, 128)
+
+[node name="FishObjectDetector" type="TextureRect" parent="ChoppingBoard/FishObjects"]
+offset_left = 20.0
+offset_top = 34.0
+offset_right = 152.0
+offset_bottom = 210.0
+metadata/_edit_use_anchors_ = true
+
+[node name="LabelBackground" type="TextureRect" parent="ChoppingBoard/FishObjects"]
+anchors_preset = -1
+anchor_left = -0.45
+anchor_top = 0.025
+anchor_right = -0.45
+anchor_bottom = 0.025
+offset_left = 32.0
+offset_top = 204.0
+offset_right = 144.0
+offset_bottom = 224.0
+texture = SubResource("GradientTexture2D_0okce")
+metadata/_edit_use_anchors_ = true
+
+[node name="FishCountLabel" type="Label" parent="ChoppingBoard/FishObjects"]
+anchors_preset = -1
+anchor_left = -0.45
+anchor_top = 0.025
+anchor_right = -0.45
+anchor_bottom = 0.025
+offset_left = 32.0
+offset_top = 204.0
+offset_right = 144.0
+offset_bottom = 224.0
+text = "Fish Left:0"
+label_settings = ExtResource("5_gnr3t")
+horizontal_alignment = 1
+vertical_alignment = 1
+text_overrun_behavior = 3
+metadata/_edit_use_anchors_ = true
+
+[node name="ChoppingSpot" type="Node2D" parent="ChoppingBoard"]
+position = Vector2(298, 120)
+
+[node name="CookingStation" type="Node2D" parent="."]
+visible = false
+script = ExtResource("6_nqmdl")
+
+[node name="TextureRect" type="TextureRect" parent="CookingStation"]
+offset_right = 128.0
+offset_bottom = 64.0
+texture = ExtResource("6_o4jos")
+
+[node name="ToChoppingBoard" type="Button" parent="CookingStation"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_right = 24.0
+offset_bottom = 256.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "<"
+
+[node name="FishSlices" type="Node2D" parent="CookingStation"]
+
+[node name="FishSliceObject_1" parent="CookingStation/FishSlices" instance=ExtResource("8_elqbq")]
+position = Vector2(124, 56)
+
+[node name="FishSliceObject_2" parent="CookingStation/FishSlices" instance=ExtResource("8_elqbq")]
+position = Vector2(77, 59)
+
+[node name="FishSliceObject_3" parent="CookingStation/FishSlices" instance=ExtResource("8_elqbq")]
+position = Vector2(124, 107)
+
+[node name="FishSliceObject_4" parent="CookingStation/FishSlices" instance=ExtResource("8_elqbq")]
+position = Vector2(77, 103)
+
+[node name="FishSliceObject_5" parent="CookingStation/FishSlices" instance=ExtResource("8_elqbq")]
+position = Vector2(100, 75)
+
+[node name="FishObjectDetector" type="TextureRect" parent="CookingStation/FishSlices"]
+offset_left = 24.0
+offset_top = 16.0
+offset_right = 168.0
+offset_bottom = 152.0
+
+[node name="LabelBackground" type="TextureRect" parent="CookingStation/FishSlices"]
+offset_left = 24.0
+offset_top = 152.0
+offset_right = 168.0
+offset_bottom = 172.0
+texture = SubResource("GradientTexture2D_0okce")
+
+[node name="FishSliceCountLabel" type="Label" parent="CookingStation/FishSlices"]
+offset_left = 24.0
+offset_top = 152.0
+offset_right = 170.0
+offset_bottom = 172.0
+text = "Slices Left:0"
+label_settings = ExtResource("5_gnr3t")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CookingSpots" type="Node2D" parent="CookingStation"]
+
+[node name="Spot1" type="Node2D" parent="CookingStation/CookingSpots"]
+position = Vector2(256, 80)
+
+[node name="Spot2" type="Node2D" parent="CookingStation/CookingSpots"]
+position = Vector2(384, 80)
+
+[node name="Spot3" type="Node2D" parent="CookingStation/CookingSpots"]
+position = Vector2(256, 168)
+
+[node name="Spot4" type="Node2D" parent="CookingStation/CookingSpots"]
+position = Vector2(384, 168)
+
+[connection signal="gui_input" from="ChoppingBoard/ToCookingStation" to="." method="_on_gui_input"]
+[connection signal="pressed" from="ChoppingBoard/ToCookingStation" to="." method="_on_to_cooking_station_pressed"]
+[connection signal="gui_input" from="ChoppingBoard/FishObjects/FishObjectDetector" to="ChoppingBoard" method="_on_fish_object_detector_gui_input"]
+[connection signal="gui_input" from="CookingStation/ToChoppingBoard" to="." method="_on_gui_input"]
+[connection signal="pressed" from="CookingStation/ToChoppingBoard" to="." method="_on_to_chopping_board_pressed"]
+[connection signal="gui_input" from="CookingStation/FishSlices/FishObjectDetector" to="CookingStation" method="_on_fish_object_detector_gui_input"]

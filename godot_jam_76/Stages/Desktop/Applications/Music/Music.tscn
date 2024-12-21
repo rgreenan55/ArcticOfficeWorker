@@ -1,0 +1,58 @@
+[gd_scene load_steps=4 format=3 uid="uid://bhed54eclo74x"]
+
+[ext_resource type="Texture2D" uid="uid://bmhgqor7kr5rb" path="res://Stages/Desktop/Applications/Music/Art/MusicAppBackground.png" id="1_2mfgk"]
+[ext_resource type="Script" path="res://Stages/Desktop/Applications/Music/Music.gd" id="1_4m4ja"]
+[ext_resource type="PackedScene" uid="uid://bavhispetidr5" path="res://Stages/Desktop/Applications/Music/SongSelection.tscn" id="2_umj88"]
+
+[node name="Music" type="MarginContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -960.0
+offset_bottom = -536.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_4m4ja")
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 2
+texture = ExtResource("1_2mfgk")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 48
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="MusicOptions" type="ScrollContainer" parent="MarginContainer"]
+layout_mode = 2
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 3
+
+[node name="MusicOptionsList" type="VBoxContainer" parent="MarginContainer/MusicOptions"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 4
+
+[node name="SongSelection" parent="MarginContainer/MusicOptions/MusicOptionsList" instance=ExtResource("2_umj88")]
+layout_mode = 2
+
+[node name="SongSelection_2" parent="MarginContainer/MusicOptions/MusicOptionsList" instance=ExtResource("2_umj88")]
+layout_mode = 2
+
+[node name="SongSelection_3" parent="MarginContainer/MusicOptions/MusicOptionsList" instance=ExtResource("2_umj88")]
+layout_mode = 2
+
+[node name="SongSelection_4" parent="MarginContainer/MusicOptions/MusicOptionsList" instance=ExtResource("2_umj88")]
+layout_mode = 2
+
+[node name="SongSelection_5" parent="MarginContainer/MusicOptions/MusicOptionsList" instance=ExtResource("2_umj88")]
+layout_mode = 2
+
+[node name="SongSelection_6" parent="MarginContainer/MusicOptions/MusicOptionsList" instance=ExtResource("2_umj88")]
+layout_mode = 2
+
+[node name="SongSelection_7" parent="MarginContainer/MusicOptions/MusicOptionsList" instance=ExtResource("2_umj88")]
+layout_mode = 2
