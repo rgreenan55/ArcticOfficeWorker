@@ -1,0 +1,314 @@
+[gd_scene load_steps=33 format=3 uid="uid://bhg4ncusye3gf"]
+
+[ext_resource type="PackedScene" uid="uid://ein5q1xl1j12" path="res://Stages/3DWorld/Objects/Desk/metal_desk.glb" id="1_nrn4s"]
+[ext_resource type="PackedScene" uid="uid://q8q41hk5if8b" path="res://Stages/3DWorld/Objects/Desktop/Computer.tscn" id="2_2ipft"]
+[ext_resource type="Texture2D" uid="uid://bpe5bc5nvyuos" path="res://Assets/Art/Crosshair.png" id="2_ttht8"]
+[ext_resource type="Script" path="res://Stages/3DWorld/Player/PlayerCharacter.gd" id="3_l5bxh"]
+[ext_resource type="Script" path="res://Stages/3DWorld/ComputerMouseDetector.gd" id="4_dmm7o"]
+[ext_resource type="PackedScene" uid="uid://brh2xmvbpu6qr" path="res://Stages/3DWorld/Objects/Bed/messy_bed.glb" id="6_shu2u"]
+[ext_resource type="Script" path="res://Stages/3DWorld/GameOver.gd" id="7_rk3hi"]
+
+[sub_resource type="Gradient" id="Gradient_j2j8q"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_0fhb5"]
+gradient = SubResource("Gradient_j2j8q")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dm6kv"]
+albedo_color = Color(0.703808, 0.703808, 0.703808, 1)
+albedo_texture = SubResource("GradientTexture2D_0fhb5")
+
+[sub_resource type="BoxMesh" id="BoxMesh_8x71r"]
+material = SubResource("StandardMaterial3D_dm6kv")
+size = Vector3(200, 0.5, 100)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_cojs7"]
+data = PackedVector3Array(-100, 0.25, 50, 100, 0.25, 50, -100, -0.25, 50, 100, 0.25, 50, 100, -0.25, 50, -100, -0.25, 50, 100, 0.25, -50, -100, 0.25, -50, 100, -0.25, -50, -100, 0.25, -50, -100, -0.25, -50, 100, -0.25, -50, 100, 0.25, 50, 100, 0.25, -50, 100, -0.25, 50, 100, 0.25, -50, 100, -0.25, -50, 100, -0.25, 50, -100, 0.25, -50, -100, 0.25, 50, -100, -0.25, -50, -100, 0.25, 50, -100, -0.25, 50, -100, -0.25, -50, 100, 0.25, 50, -100, 0.25, 50, 100, 0.25, -50, -100, 0.25, 50, -100, 0.25, -50, 100, 0.25, -50, -100, -0.25, 50, 100, -0.25, 50, -100, -0.25, -50, 100, -0.25, 50, 100, -0.25, -50, -100, -0.25, -50)
+
+[sub_resource type="Gradient" id="Gradient_lkhja"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_wffav"]
+gradient = SubResource("Gradient_lkhja")
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.5, 0.2)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3n0kv"]
+albedo_texture = SubResource("GradientTexture2D_wffav")
+
+[sub_resource type="BoxMesh" id="BoxMesh_vvyje"]
+material = SubResource("StandardMaterial3D_3n0kv")
+size = Vector3(200, 50, 1)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_ikdne"]
+data = PackedVector3Array(-100, 25, 0.5, 100, 25, 0.5, -100, -25, 0.5, 100, 25, 0.5, 100, -25, 0.5, -100, -25, 0.5, 100, 25, -0.5, -100, 25, -0.5, 100, -25, -0.5, -100, 25, -0.5, -100, -25, -0.5, 100, -25, -0.5, 100, 25, 0.5, 100, 25, -0.5, 100, -25, 0.5, 100, 25, -0.5, 100, -25, -0.5, 100, -25, 0.5, -100, 25, -0.5, -100, 25, 0.5, -100, -25, -0.5, -100, 25, 0.5, -100, -25, 0.5, -100, -25, -0.5, 100, 25, 0.5, -100, 25, 0.5, 100, 25, -0.5, -100, 25, 0.5, -100, 25, -0.5, 100, 25, -0.5, -100, -25, 0.5, 100, -25, 0.5, -100, -25, -0.5, 100, -25, 0.5, 100, -25, -0.5, -100, -25, -0.5)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_7r5vf"]
+data = PackedVector3Array(-100, 25, 0.5, 100, 25, 0.5, -100, -25, 0.5, 100, 25, 0.5, 100, -25, 0.5, -100, -25, 0.5, 100, 25, -0.5, -100, 25, -0.5, 100, -25, -0.5, -100, 25, -0.5, -100, -25, -0.5, 100, -25, -0.5, 100, 25, 0.5, 100, 25, -0.5, 100, -25, 0.5, 100, 25, -0.5, 100, -25, -0.5, 100, -25, 0.5, -100, 25, -0.5, -100, 25, 0.5, -100, -25, -0.5, -100, 25, 0.5, -100, -25, 0.5, -100, -25, -0.5, 100, 25, 0.5, -100, 25, 0.5, 100, 25, -0.5, -100, 25, 0.5, -100, 25, -0.5, 100, 25, -0.5, -100, -25, 0.5, 100, -25, 0.5, -100, -25, -0.5, 100, -25, 0.5, 100, -25, -0.5, -100, -25, -0.5)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_r1xce"]
+gradient = SubResource("Gradient_lkhja")
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.2, 0.5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6b6a2"]
+albedo_texture = SubResource("GradientTexture2D_r1xce")
+
+[sub_resource type="BoxMesh" id="BoxMesh_n66v8"]
+size = Vector3(1, 50, 100)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_wrawd"]
+data = PackedVector3Array(-0.5, 25, 50, 0.5, 25, 50, -0.5, -25, 50, 0.5, 25, 50, 0.5, -25, 50, -0.5, -25, 50, 0.5, 25, -50, -0.5, 25, -50, 0.5, -25, -50, -0.5, 25, -50, -0.5, -25, -50, 0.5, -25, -50, 0.5, 25, 50, 0.5, 25, -50, 0.5, -25, 50, 0.5, 25, -50, 0.5, -25, -50, 0.5, -25, 50, -0.5, 25, -50, -0.5, 25, 50, -0.5, -25, -50, -0.5, 25, 50, -0.5, -25, 50, -0.5, -25, -50, 0.5, 25, 50, -0.5, 25, 50, 0.5, 25, -50, -0.5, 25, 50, -0.5, 25, -50, 0.5, 25, -50, -0.5, -25, 50, 0.5, -25, 50, -0.5, -25, -50, 0.5, -25, 50, 0.5, -25, -50, -0.5, -25, -50)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ipjve"]
+albedo_texture = SubResource("GradientTexture2D_r1xce")
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_2sjnd"]
+points = PackedVector3Array(4.75316, 8.47713, -1.145, -4.82903, -8.47094, -0.775712, -4.43322, -8.78321, -1.86978, 3.68455, -10.052, 2.19448, -2.2399, 8.43359, 4.36169, -0.775712, 8.47094, -4.82903, 2.14894, -8.38914, -4.41786, -1.52248, -9.26828, 4.41059, 2.48421, 7.93319, 4.28921, -4.13466, 10.0477, -1.15581, 1.48567, 12.2136, 0.722023, -0.800088, -12.1772, -1.56146, -2.22901, -8.02608, -4.41927, -4.34247, 7.16891, 2.46899, 4.75317, -8.47714, -1.145, 3.24377, 8.39164, -3.68909, 4.73795, 8.08191, 1.42877, 1.42877, -8.08191, 4.73795, -4.00384, 7.92535, -2.92246, -3.68909, -8.39164, 3.24377, 4.28921, -7.93319, 2.48421, 1.08887, 11.2985, -3.05332, -1.54698, -11.6835, 2.22175, -1.17283, 11.3348, 2.98268, 2.98268, -11.3348, -1.17283, -4.83697, 8.48498, 0.696628, -1.92291, 11.6765, -1.92291, -1.145, 8.47714, 4.75317, 4.28167, -7.56073, -2.56009, -4.77936, -7.65462, 1.41711, 1.47026, -11.7115, 2.22716, -0.775711, -8.47093, -4.82903)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_lpub4"]
+size = Vector3(20, 10, 10)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_w62f8"]
+size = Vector3(20, 15, 6)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0ix2w"]
+size = Vector3(2, 1, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_uo3pt"]
+size = Vector3(135.933, 138.555, 216.031)
+
+[sub_resource type="Environment" id="Environment_vwmqo"]
+
+[sub_resource type="Gradient" id="Gradient_tlyyg"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_8ggjm"]
+gradient = SubResource("Gradient_tlyyg")
+
+[sub_resource type="LabelSettings" id="LabelSettings_hbydn"]
+font_size = 48
+
+[node name="World" type="Node3D"]
+
+[node name="Building" type="Node3D" parent="."]
+
+[node name="Floor" type="MeshInstance3D" parent="Building"]
+mesh = SubResource("BoxMesh_8x71r")
+skeleton = NodePath("../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Building/Floor"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Building/Floor/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_cojs7")
+
+[node name="Ceiling" type="MeshInstance3D" parent="Building"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0627785, 50.1515, 0.927582)
+mesh = SubResource("BoxMesh_8x71r")
+skeleton = NodePath("../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Building/Ceiling"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Building/Ceiling/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_cojs7")
+
+[node name="LongWall1" type="MeshInstance3D" parent="Building"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 25, -50)
+mesh = SubResource("BoxMesh_vvyje")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Building/LongWall1"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Building/LongWall1/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_ikdne")
+
+[node name="LongWall2" type="MeshInstance3D" parent="Building"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 25, 50)
+mesh = SubResource("BoxMesh_vvyje")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Building/LongWall2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Building/LongWall2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_7r5vf")
+
+[node name="DoorWall" type="CSGBox3D" parent="Building"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 100, 25, 0)
+size = Vector3(1, 50, 100)
+material = SubResource("StandardMaterial3D_6b6a2")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Building/DoorWall"]
+visible = false
+mesh = SubResource("BoxMesh_n66v8")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Building/DoorWall/MeshInstance3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Building/DoorWall/MeshInstance3D/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_wrawd")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Building/DoorWall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5, 0)
+operation = 2
+size = Vector3(1, 40, 25)
+
+[node name="WindowWall" type="CSGBox3D" parent="Building"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -100, 25, 0)
+size = Vector3(1, 50, 100)
+material = SubResource("StandardMaterial3D_ipjve")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Building/WindowWall"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Building/WindowWall/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_wrawd")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Building/WindowWall"]
+operation = 2
+size = Vector3(1, 15, 25)
+
+[node name="PlayerCharacter" type="CharacterBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 21.9712, 23.2555)
+script = ExtResource("3_l5bxh")
+
+[node name="Neck" type="Node3D" parent="PlayerCharacter"]
+
+[node name="Camera" type="Camera3D" parent="PlayerCharacter/Neck"]
+current = true
+
+[node name="Crosshair" type="TextureRect" parent="PlayerCharacter/Neck/Camera"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -10.0
+offset_top = -10.0
+offset_right = 30.0
+offset_bottom = 30.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
+mouse_filter = 2
+texture = ExtResource("2_ttht8")
+
+[node name="InteractLabel" type="Label" parent="PlayerCharacter/Neck/Camera"]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = 128.5
+offset_right = 20.0
+offset_bottom = 151.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Press [E] to Interact"
+
+[node name="TransitionCamera" type="Camera3D" parent="PlayerCharacter/Neck"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="PlayerCharacter"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -6.10834, 0)
+shape = SubResource("ConvexPolygonShape3D_2sjnd")
+
+[node name="AudioListener3D" type="AudioListener3D" parent="PlayerCharacter"]
+current = true
+
+[node name="Objects" type="Node3D" parent="."]
+
+[node name="Computer" parent="Objects" instance=ExtResource("2_2ipft")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 17, -40)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Objects/Computer"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Objects/Computer/StaticBody3D"]
+shape = SubResource("BoxShape3D_lpub4")
+
+[node name="ComputerMouseDetector" type="Area3D" parent="Objects/Computer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5)
+collision_layer = 2
+script = ExtResource("4_dmm7o")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Objects/Computer/ComputerMouseDetector"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.5, -2)
+shape = SubResource("BoxShape3D_w62f8")
+
+[node name="ScreenCamera" type="Camera3D" parent="Objects/Computer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 9.43)
+
+[node name="CloseCamera" type="Camera3D" parent="Objects/Computer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 10.25)
+far = 1000.0
+
+[node name="RealisticCamera" type="Camera3D" parent="Objects/Computer"]
+transform = Transform3D(1, 0, 0, 0, 0.991445, -0.130526, 0, 0.130526, 0.991445, 0, -1, 10)
+
+[node name="Desk" parent="Objects" instance=ExtResource("1_nrn4s")]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 4.75, -39)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Objects/Desk"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Objects/Desk/StaticBody3D"]
+shape = SubResource("BoxShape3D_0ix2w")
+
+[node name="Bed" parent="Objects" instance=ExtResource("6_shu2u")]
+transform = Transform3D(-9.83506e-09, 0, 0.225, 0, 0.225, 0, -0.225, 0, -9.83506e-09, -73, -0.625766, 34.5612)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Objects/Bed"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Objects/Bed/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.15881, 44.2774, -1.04935)
+shape = SubResource("BoxShape3D_uo3pt")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.619478, -0.785014, 0, 0.785014, 0.619478, 0, 41.989, 0)
+visible = false
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_vwmqo")
+
+[node name="GameOver" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("7_rk3hi")
+
+[node name="TextureRect" type="TextureRect" parent="GameOver"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_8ggjm")
+
+[node name="CenterContainer" type="CenterContainer" parent="GameOver"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="GameOver/CenterContainer"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="GameOverLabel" type="Label" parent="GameOver/CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "Game Over"
+label_settings = SubResource("LabelSettings_hbydn")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="GameOver/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 32
+
+[node name="Button" type="Button" parent="GameOver/CenterContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Retry"
+
+[node name="Button_2" type="Button" parent="GameOver/CenterContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Quit"

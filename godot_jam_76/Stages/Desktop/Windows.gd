@@ -2,7 +2,6 @@ extends Node
 
 @onready var window_scene : PackedScene = preload("res://Stages/Desktop/Applications/DesktopWindow.tscn")
 
-# TODO : Prevent two identical windows from opening.
 func open_window(application_name : String, window_content : PackedScene) -> void:
 	if (has_node(application_name)):
 		get_node(application_name).move_to_front();

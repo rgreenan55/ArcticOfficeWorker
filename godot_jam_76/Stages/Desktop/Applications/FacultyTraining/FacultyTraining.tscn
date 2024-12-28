@@ -90,13 +90,13 @@ layout_mode = 2
 theme_override_fonts/font = SubResource("FontVariation_lk2n7")
 theme_override_font_sizes/font_size = 20
 
-[node name="CorrectSound" type="AudioStreamPlayer2D" parent="."]
+[node name="CorrectSound" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("3_l7wvr")
-volume_db = -5.0
-
-[node name="TypeKeySound" type="AudioStreamPlayer2D" parent="."]
-stream = SubResource("AudioStreamWAV_o3o8s")
 volume_db = 5.0
+
+[node name="TypeKeySound" type="AudioStreamPlayer3D" parent="."]
+stream = SubResource("AudioStreamWAV_o3o8s")
+volume_db = 10.0
 
 [connection signal="gui_input" from="MarginContainer/SizingOrganizer/UserInputContainer/UserInput" to="." method="_on_gui_input"]
 [connection signal="text_changed" from="MarginContainer/SizingOrganizer/UserInputContainer/UserInput" to="." method="_on_user_input_text_changed"]

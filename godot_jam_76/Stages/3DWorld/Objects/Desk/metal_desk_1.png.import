@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://dnirlocm68xs5"
 path.s3tc="res://.godot/imported/metal_desk_1.png-a09620bcf9c20bfa67c4f5cd0cf1ae30.s3tc.ctex"
+path.etc2="res://.godot/imported/metal_desk_1.png-a09620bcf9c20bfa67c4f5cd0cf1ae30.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://Stages/3DWorld/Objects/Desk/metal_desk_1.png"
-dest_files=["res://.godot/imported/metal_desk_1.png-a09620bcf9c20bfa67c4f5cd0cf1ae30.s3tc.ctex"]
+dest_files=["res://.godot/imported/metal_desk_1.png-a09620bcf9c20bfa67c4f5cd0cf1ae30.s3tc.ctex", "res://.godot/imported/metal_desk_1.png-a09620bcf9c20bfa67c4f5cd0cf1ae30.etc2.ctex"]
 
 [params]
 

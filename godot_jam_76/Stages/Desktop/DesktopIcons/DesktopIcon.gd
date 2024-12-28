@@ -15,5 +15,5 @@ func _ready() -> void:
 	if (pressed_icon): texture_pressed = pressed_icon;
 
 func _on_pressed() -> void:
-	if (is_exit): pass; # Trigger, Exit Computer
+	if (is_exit): DesktopManager.exit_computer.emit();
 	if (window_content): get_node("../../Windows").open_window(application_name, window_content);

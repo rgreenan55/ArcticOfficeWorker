@@ -46,20 +46,21 @@ theme_override_styles/panel = SubResource("StyleBoxEmpty_vbqpc")
 layout_mode = 2
 mouse_filter = 1
 
-[node name="MarginContainer" type="MarginContainer" parent="WindowControl/WindowDivider/WindowHeader"]
+[node name="WindowMargins" type="MarginContainer" parent="WindowControl/WindowDivider/WindowHeader"]
+unique_name_in_owner = true
 layout_mode = 2
 theme_override_constants/margin_left = 24
 theme_override_constants/margin_right = 8
 
-[node name="HSplitContainer" type="HSplitContainer" parent="WindowControl/WindowDivider/WindowHeader/MarginContainer"]
+[node name="HSplitContainer" type="HSplitContainer" parent="WindowControl/WindowDivider/WindowHeader/WindowMargins"]
 layout_mode = 2
 dragger_visibility = 2
 
-[node name="StatusSymbol" parent="WindowControl/WindowDivider/WindowHeader/MarginContainer/HSplitContainer" instance=ExtResource("3_62ipf")]
+[node name="StatusSymbol" parent="WindowControl/WindowDivider/WindowHeader/WindowMargins/HSplitContainer" instance=ExtResource("3_62ipf")]
 unique_name_in_owner = true
 position = Vector2(-11, 15)
 
-[node name="WindowLabel" type="Label" parent="WindowControl/WindowDivider/WindowHeader/MarginContainer/HSplitContainer"]
+[node name="WindowLabel" type="Label" parent="WindowControl/WindowDivider/WindowHeader/WindowMargins/HSplitContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 1
@@ -68,7 +69,7 @@ text = "Title"
 label_settings = ExtResource("3_4qutd")
 vertical_alignment = 1
 
-[node name="ExitButton" type="Button" parent="WindowControl/WindowDivider/WindowHeader/MarginContainer/HSplitContainer"]
+[node name="ExitButton" type="Button" parent="WindowControl/WindowDivider/WindowHeader/WindowMargins/HSplitContainer"]
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 4
@@ -109,5 +110,5 @@ shape = SubResource("RectangleShape2D_j7cjq")
 
 [connection signal="gui_input" from="WindowControl" to="." method="_on_window_control_gui_input"]
 [connection signal="gui_input" from="WindowControl/WindowDivider/WindowHeader" to="." method="_on_window_header_gui_input"]
-[connection signal="pressed" from="WindowControl/WindowDivider/WindowHeader/MarginContainer/HSplitContainer/ExitButton" to="." method="_on_exit_button_pressed"]
+[connection signal="pressed" from="WindowControl/WindowDivider/WindowHeader/WindowMargins/HSplitContainer/ExitButton" to="." method="_on_exit_button_pressed"]
 [connection signal="child_entered_tree" from="WindowControl/WindowDivider/WindowPanel/ContentContainer" to="." method="_on_content_container_child_entered_tree"]

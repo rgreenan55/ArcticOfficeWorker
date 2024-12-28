@@ -7,7 +7,7 @@ func _ready() -> void:
 	move_snow();
 
 func move_snow() -> void:
-	await get_tree().create_timer(0.25).timeout;
+	await get_tree().create_timer(0.25, false).timeout;
 	if (is_last):
 		queue_free();
 	else:

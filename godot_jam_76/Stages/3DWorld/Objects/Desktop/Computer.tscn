@@ -1,0 +1,40 @@
+[gd_scene load_steps=5 format=3 uid="uid://q8q41hk5if8b"]
+
+[ext_resource type="PackedScene" uid="uid://dnwc5adrx7bm3" path="res://Stages/Desktop/Desktop.tscn" id="1_csbjr"]
+[ext_resource type="PackedScene" uid="uid://dpyvegafvxq4q" path="res://Stages/3DWorld/Objects/Desktop/Computer.blend" id="3_g6vyq"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_j2awt"]
+viewport_path = NodePath("Screen/ViewportSizer/DesktopViewport")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qetyl"]
+size = Vector3(12.8, 7.2, 0)
+
+[node name="Computer" type="Node3D"]
+
+[node name="Screen" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4.75)
+
+[node name="ViewportSizer" type="Node3D" parent="Screen"]
+transform = Transform3D(0.01, 0, 0, 0, 0.01, 0, 0, 0, 0.01, 0, 0, 0)
+
+[node name="DesktopViewport" type="SubViewport" parent="Screen/ViewportSizer"]
+canvas_item_default_texture_filter = 0
+audio_listener_enable_2d = true
+audio_listener_enable_3d = true
+size = Vector2i(1280, 720)
+
+[node name="Desktop" parent="Screen/ViewportSizer/DesktopViewport" instance=ExtResource("1_csbjr")]
+
+[node name="Sprite3D" type="Sprite3D" parent="Screen"]
+texture = SubResource("ViewportTexture_j2awt")
+
+[node name="ScreenClickDetector" type="Area3D" parent="Screen"]
+
+[node name="Shape" type="CollisionShape3D" parent="Screen/ScreenClickDetector"]
+shape = SubResource("BoxShape3D_qetyl")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Screen"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+
+[node name="ComputerMesh" parent="." instance=ExtResource("3_g6vyq")]
+transform = Transform3D(-3.27835e-08, 0, -0.75, 0, 0.75, 0, 0.75, 0, -3.27835e-08, 0, 0, 4.735)

@@ -10,7 +10,7 @@ func cook_slice() -> void:
 	if (cooking_stage == CookingStage.Burnt):
 		slice_burnt();
 	else:
-		await get_tree().create_timer(randf_range(5,10)).timeout;
+		await get_tree().create_timer(randf_range(5,10), false).timeout;
 		get_node("Sprite2D").frame += 1;
 		@warning_ignore("int_as_enum_without_cast")
 		cooking_stage += 1;

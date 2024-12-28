@@ -20,7 +20,7 @@ func spawn_snow() -> void:
 	snow.position.x = spawn_location * 16 - 8;
 	snow.position.y = get_node("SnowSpawnArea/CollisionShape2D").position.y;
 	get_node("SnowHolder").add_child(snow);
-	get_tree().create_timer(0.25).connect("timeout", spawn_snow);
+	get_tree().create_timer(0.25, false).connect("timeout", spawn_snow);
 
 # On Player Reaching Goal
 func _on_goal_area_body_entered(body: Node2D) -> void:

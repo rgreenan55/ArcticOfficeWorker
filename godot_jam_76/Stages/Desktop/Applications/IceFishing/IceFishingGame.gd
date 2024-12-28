@@ -14,8 +14,8 @@ var fish_scene : PackedScene = preload("res://Stages/Desktop/Applications/IceFis
 var trash_scene : PackedScene = preload("res://Stages/Desktop/Applications/IceFishing/Trash.tscn");
 
 func _ready() -> void:
-	get_tree().create_timer(randf_range(2, 5)).connect("timeout", _spawn_fish);
-	get_tree().create_timer(2).connect("timeout", _spawn_trash);
+	get_tree().create_timer(randf_range(2, 5), false).connect("timeout", _spawn_fish);
+	get_tree().create_timer(2, false).connect("timeout", _spawn_trash);
 	string.add_point(Vector2(256, 0));
 	string.add_point(hook.position, 1);
 
@@ -40,7 +40,7 @@ func _spawn_fish():
 	elif (type <= 25): fish.become_red_fish();
 	get_node("SpawnedEntities").add_child(fish);
 	# Prep for Next Fish
-	get_tree().create_timer(randf_range(2, 5)).connect("timeout", _spawn_fish);
+	get_tree().create_timer(randf_range(2, 5), false).connect("timeout", _spawn_fish);
 
 func _spawn_trash() -> void:
 	# Get Spawn Location
@@ -55,7 +55,7 @@ func _spawn_trash() -> void:
 	trash.move_direction = 1 if decider else -1;
 	get_node("SpawnedEntities").add_child(trash);
 	# Prep for Next Trash
-	get_tree().create_timer(2).connect("timeout", _spawn_trash);
+	get_tree().create_timer(2, false).connect("timeout", _spawn_trash);
 
 func _on_fish_collector_body_entered(body: Node2D) -> void:
 	if (body.is_in_group("FishingHook")):

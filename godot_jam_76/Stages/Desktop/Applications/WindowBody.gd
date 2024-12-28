@@ -3,14 +3,20 @@ class_name DesktopWindow extends CharacterBody2D
 enum Status { Normal, Warning, Alert }
 var current_status : Status;
 
+@export var has_status : bool = true;
 @export var window_name : String;
 
 var draggingDistance : float;
 var direction : Vector2;
 var dragging : bool;
 var newPosition : Vector2 = Vector2();
+@onready var window_margins: MarginContainer = %WindowMargins
 
 func _ready() -> void:
+	if (!has_status):
+		get_node("%StatusSymbol").queue_free();
+		get_node("%WindowMargins").add_theme_constant_override("margin_left", 8);
+	%WindowLabel.text = window_name;
 	position.x = randf_range(0, 1280 - get_node("WindowControl").size.x);
 	position.y = randf_range(32, 720 - get_node("WindowControl").size.y);
 
@@ -19,6 +25,7 @@ func set_window_name(window_name_string : String) -> void:
 	%WindowLabel.text = window_name;
 
 func _process(_delta: float) -> void:
+	if (!has_status): return;
 	var get_status_callable : Callable = Callable(DesktopManager, window_name.replace(" ", "_").to_lower() + "_get_status");
 	var status : Status = get_status_callable.call();
 	if (current_status != status):

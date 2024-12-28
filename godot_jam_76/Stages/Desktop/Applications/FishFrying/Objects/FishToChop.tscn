@@ -83,13 +83,13 @@ offset_right = 130.0
 offset_bottom = 51.0
 texture = ExtResource("4_r1utx")
 
-[node name="ChopSound" type="AudioStreamPlayer2D" parent="."]
+[node name="ChopSound" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("5_nlnl4")
-volume_db = 1.0
-
-[node name="ClearBoardSound" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("6_l7ef8")
 volume_db = 5.0
+
+[node name="ClearBoardSound" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("6_l7ef8")
+volume_db = 7.5
 
 [connection signal="gui_input" from="Step1/CutTail" to="." method="_on_cut_tail_gui_input"]
 [connection signal="gui_input" from="Step1/CutHead" to="." method="_on_cut_head_gui_input"]

@@ -11,7 +11,7 @@ func set_status(new_status : Status) -> void:
 	elif (new_status == Status.Alert): frame = 4;
 
 func alternate() -> void:
-	await get_tree().create_timer(0.5).timeout;
+	await get_tree().create_timer(0.5, false).timeout;
 	if (frame % 2 == 0): frame += 1;
 	else: frame -= 1;
 	alternate();

@@ -19,7 +19,7 @@ func _on_cut_tail_gui_input(event: InputEvent) -> void:
 		get_node("Tail").frame = 0;
 		get_node("Body3").frame = 1;
 		get_node("Step1/CutTail").queue_free();
-		await get_tree().create_timer(0.5).timeout;
+		await get_tree().create_timer(0.5, false).timeout;
 		var tween : Tween = get_tree().create_tween();
 		tween.tween_property(get_node("Tail"), "position", get_node("Tail").position - Vector2(32,0), 1);
 		step_1 += 1;
@@ -29,7 +29,7 @@ func _on_cut_head_gui_input(event: InputEvent) -> void:
 		get_node("ChopSound").play();
 		get_node("Head").frame = 4;
 		get_node("Step1/CutHead").queue_free();
-		await get_tree().create_timer(0.5).timeout;
+		await get_tree().create_timer(0.5, false).timeout;
 		var tween : Tween = get_tree().create_tween();
 		tween.tween_property(get_node("Head"), "position", get_node("Head").position + Vector2(32,0), 1);
 		step_1 += 1;
@@ -44,7 +44,7 @@ func _on_cut_left_gui_input(event: InputEvent) -> void:
 		get_node("ChopSound").play();
 		get_node("Body2").frame = 2;
 		get_node("Step2/CutLeft").queue_free();
-		await get_tree().create_timer(0.5).timeout;
+		await get_tree().create_timer(0.5, false).timeout;
 		var tween : Tween = get_tree().create_tween();
 		tween.tween_property(get_node("Body3"), "position", get_node("Body3").position - Vector2(12,0), 1);
 		await tween.finished;
@@ -55,7 +55,7 @@ func _on_cut_right_gui_input(event: InputEvent) -> void:
 		get_node("ChopSound").play();
 		get_node("Body1").frame = 3;
 		get_node("Step2/CutRight").queue_free();
-		await get_tree().create_timer(0.5).timeout;
+		await get_tree().create_timer(0.5, false).timeout;
 		var tween : Tween = get_tree().create_tween();
 		tween.tween_property(get_node("Body1"), "position", get_node("Body1").position + Vector2(12,0), 1);
 		await tween.finished;

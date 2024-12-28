@@ -1,0 +1,128 @@
+[gd_scene load_steps=9 format=3 uid="uid://cc0h0uedkvj1v"]
+
+[ext_resource type="LabelSettings" uid="uid://d2a4gol6xvhu5" path="res://Stages/Desktop/Utilities/DesktopFont.tres" id="1_m51uw"]
+[ext_resource type="FontFile" uid="uid://dvjbusva4epa5" path="res://Assets/Fonts/OCRAEXT.TTF" id="2_6n57t"]
+
+[sub_resource type="Gradient" id="Gradient_w80vr"]
+offsets = PackedFloat32Array(0.621118)
+colors = PackedColorArray(1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_47h17"]
+gradient = SubResource("Gradient_w80vr")
+width = 256
+height = 320
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3rids"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_fda7q"]
+font = ExtResource("2_6n57t")
+font_size = 12
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Gradient" id="Gradient_0ocke"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_bg66i"]
+gradient = SubResource("Gradient_0ocke")
+height = 1
+
+[node name="FacultyInstructions" type="CenterContainer"]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 2
+texture = SubResource("GradientTexture2D_47h17")
+
+[node name="MarginContainer" type="MarginContainer" parent="Background"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Background/MarginContainer"]
+layout_mode = 2
+
+[node name="Header" type="Label" parent="Background/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_3rids")
+text = "Welcome!"
+label_settings = ExtResource("1_m51uw")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Background/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+vertical_scroll_mode = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Background/MarginContainer/VBoxContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 8
+
+[node name="Instructions_1" type="Label" parent="Background/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(184, 95)
+layout_mode = 2
+text = "Today is a new day of work!
+
+If you are included in our new batch valued staff members, the employee orientation manual is included below.
+
+If not, please begin working at your earliest convenience by pressing the Red Button beside the computer."
+label_settings = SubResource("LabelSettings_fda7q")
+autowrap_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Background/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+texture = SubResource("GradientTexture2D_bg66i")
+
+[node name="Instructions_2" type="Label" parent="Background/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(184, 95)
+layout_mode = 2
+text = "You are the pride and strength behind the GWJ Inc's most prestigious  operations office located in the Arctic of Northern Canada."
+label_settings = SubResource("LabelSettings_fda7q")
+autowrap_mode = 2
+
+[node name="TextureRect_2" type="TextureRect" parent="Background/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+texture = SubResource("GradientTexture2D_bg66i")
+
+[node name="Instructions_3" type="Label" parent="Background/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(184, 95)
+layout_mode = 2
+text = "This computer has been set up for the responsibilities of a member within [ General Management ].
+
+Listed below are the collection of tasks that you will be responsible for:
+- Ice Removal Services
+- Package Transportation
+- Ice Block Storage
+- Sea Specimen Collection
+- Facility Cuisine Management
+
+These tasks may seem overwhelming, but due to the technological advances of GWJ Inc, we have constructed apparatuses for remote operation from your very computer!"
+label_settings = SubResource("LabelSettings_fda7q")
+autowrap_mode = 2
+
+[node name="TextureRect_3" type="TextureRect" parent="Background/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+texture = SubResource("GradientTexture2D_bg66i")
+
+[node name="Instructions_4" type="Label" parent="Background/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(184, 95)
+layout_mode = 2
+text = "The status of all tasks can be viewed from the Status Application within the computer.
+
+Further detection identifies that you are a [ New Employee ], therefore, please ensure you meet your daily quota of examining your favourite Inspirational Quotes.
+
+Once you are ready to take on your responsibilities as a [ General Manager ], press the button located beside the computer. Feel free to practice as much as you wish before hand."
+label_settings = SubResource("LabelSettings_fda7q")
+autowrap_mode = 2
+
+[node name="TextureRect_4" type="TextureRect" parent="Background/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+texture = SubResource("GradientTexture2D_bg66i")

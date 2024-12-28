@@ -31,10 +31,10 @@ func set_post_text(text : String) -> void:
 
 func flash_color() -> void:
 	self.modulate = Color.WHITE;
-	await get_tree().create_timer(0.5).timeout;
+	await get_tree().create_timer(0.5, false).timeout;
 	if (text_color != Color.WHITE):
 		self.modulate = text_color;
-	await get_tree().create_timer(0.5).timeout;
+	await get_tree().create_timer(0.5, false).timeout;
 	flash_color();
 
 func set_color(color : Color) -> void:

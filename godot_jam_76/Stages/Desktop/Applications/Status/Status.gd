@@ -8,7 +8,7 @@ func _ready() -> void:
 
 func _process(_delta: float) -> void:
 	# Sound Meter
-	sound_progress.value = DesktopManager.get_sound_value();
+	sound_progress.value = float(DesktopManager.get_sound_value()) / 1.5;
 
 	# Other Status
 	var status_info = DesktopManager.get_status();
@@ -47,9 +47,9 @@ func handle_sound_meter_color() -> void:
 	var style_box = sound_progress.get_theme_stylebox("fill");
 	style_box.bg_color = Color.WHITE;
 	if (sound_value >= 75):
-		await get_tree().create_timer(0.5).timeout;
+		await get_tree().create_timer(0.5, false).timeout;
 		style_box.bg_color = Color.RED;
 	elif (sound_value >= 50):
-		await get_tree().create_timer(0.5).timeout;
+		await get_tree().create_timer(0.5, false).timeout;
 		style_box.bg_color = Color.YELLOW;
-	get_tree().create_timer(0.5).connect("timeout", handle_sound_meter_color);
+	get_tree().create_timer(0.5, false).connect("timeout", handle_sound_meter_color);

@@ -1,15 +1,49 @@
 extends Node
 
+@warning_ignore("unused_signal")
+signal exit_computer;
+@warning_ignore("unused_signal")
+signal start_game;
+signal game_over;
+
 enum Status { Normal, Warning, Alert }
 
-const SOUND_MAX : int = 100;
-var sound_meter_value : int = 0;
+const SOUND_MAX : int = 150;
+var sound_meter_value : int = 99;
 
-func _ready() -> void:
-	_init_shift();
+# fuck
+var resetting : bool = true;
 
-func _init_shift() -> void:
+var start_time : float;
+
+func reset() -> void:
+	resetting = true;
+	# Clear Timers
+	if (snow_transport_timer): snow_transport_timer.time_left = 0;
+	if (ice_packer_timer): ice_packer_timer.time_left = 0;
+	if (fish_frying_timer): fish_frying_timer.time_left = 0;
+	if (faculty_training_timer): snow_transport_timer.time_left = 0;
+	if (sound_timer): snow_transport_timer.time_left = 0;
+	# Clear Values
+	sound_meter_value = 0;
+	ice_breaker_health = 0;
+	snow_transport_current = 0;
+	snow_transport_required = 0;
+	ice_boxes_shipped = 0;
+	required_boxes_shipped = 0;
+	current_fish = 0;
+	is_hook_broken = false;
+	chopped_fish = 0;
+	cooked_slices = 0;
+	required_slices = 0;
+	required_quotes = 0;
+	current_quotes = 0;
+
+func init_shift() -> void:
+	resetting = false;
 	# Sound Meter
+
+	sound_meter_value = 0;
 	handle_sound_meter();
 
 	# Init Games
@@ -19,8 +53,11 @@ func _init_shift() -> void:
 	_init_ice_fishing();
 	_init_fish_frying();
 	_init_faculty_training();
+	start_game.emit();
 
+var sound_timer : SceneTreeTimer;
 func handle_sound_meter() -> void:
+	if (resetting): return;
 	var status : Status = facility_status_get_status();
 	match status:
 		Status.Normal:
@@ -29,16 +66,13 @@ func handle_sound_meter() -> void:
 			sound_meter_value += 1;
 		Status.Alert:
 			sound_meter_value += 2;
-
 	if (sound_meter_value >= SOUND_MAX):
-		print("GAME OVER");
-	print("Sound: ", sound_meter_value, " / ", SOUND_MAX);
-
-	get_tree().create_timer(1).connect("timeout", handle_sound_meter);
+		game_over.emit();
+	sound_timer = get_tree().create_timer(1, false);
+	sound_timer.connect("timeout", handle_sound_meter);
 
 func get_sound_value() -> int:
 	return sound_meter_value;
-
 
 # -------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 #region Facility Status
@@ -98,8 +132,8 @@ func facility_status_get_status() -> Status:
 		if (status > 0): warnings += 1;
 		if (status == 2): alerts += 1;
 	# Determine Status
-	if (alerts >= 2 || warnings >= 4): return Status.Alert;
-	elif (warnings > 1 || alerts == 1): return Status.Warning;
+	if (alerts >= 2 || warnings >= 5): return Status.Alert;
+	elif (warnings >= 3 || alerts == 1): return Status.Warning;
 	return Status.Normal;
 #endregion
 # -------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -116,6 +150,7 @@ const ICE_BREAKER_MAX : int = 20;
 		ice_breaker_health_changed.emit();
 
 func _init_ice_breaker() -> void:
+	ice_breaker_health = 0.0;
 	_ice_breaker_heal();
 
 func ice_breaker_get_status() -> Status:
@@ -131,10 +166,10 @@ func ice_breaker_hit() -> void:
 	else: ice_breaker_health = 0;
 
 func _ice_breaker_heal() -> void:
+	if (resetting): return;
 	if (ice_breaker_health < ICE_BREAKER_MAX):
 		ice_breaker_health += 0.20
-	var wait_time : float = 0.75
-	get_tree().create_timer(wait_time).connect("timeout", _ice_breaker_heal);
+	get_tree().create_timer(0.75, false).connect("timeout", _ice_breaker_heal);
 
 #endregion
 # -------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -143,13 +178,18 @@ const SNOW_TRANSPORT_WARNING : int = 2;
 const SNOW_TRANSPORT_ALERT : int = 3;
 var snow_transport_current : int = 0;
 var snow_transport_required : int = 0;
+var snow_transport_timer : SceneTreeTimer;
 
 func _init_snow_transport() -> void:
+	snow_transport_current = 0;
 	snow_transport_update_required();
 
 func snow_transport_update_required() -> void:
+	if (resetting): return;
+	snow_transport_timer = null;
 	snow_transport_required += 1
-	get_tree().create_timer(75).connect("timeout", snow_transport_update_required);
+	snow_transport_timer = get_tree().create_timer(75, false);
+	snow_transport_timer.connect("timeout", snow_transport_update_required);
 
 func snow_transport_delivered() -> void:
 	snow_transport_current += 1;
@@ -168,13 +208,19 @@ const ICE_PACKER_WARNING : int = 1;
 const ICE_PACKER_ALERT : int = 2;
 var ice_boxes_shipped : float = 0;
 var required_boxes_shipped : int = 0;
+var ice_packer_timer : SceneTreeTimer;
 
 func _init_ice_packer() -> void:
-	get_tree().create_timer(60).connect("timeout", ice_packed_updated_required);
+	ice_boxes_shipped = 0;
+	ice_packer_timer = get_tree().create_timer(45, false);
+	ice_packer_timer.connect("timeout", ice_packed_updated_required);
 
 func ice_packed_updated_required() -> void:
+	if (resetting): return;
+	ice_packer_timer = null;
 	required_boxes_shipped += 1;
-	get_tree().create_timer(60).connect("timeout", ice_packed_updated_required);
+	ice_packer_timer = get_tree().create_timer(75, false);
+	ice_packer_timer.connect("timeout", ice_packed_updated_required);
 
 func ice_packer_get_status() -> Status:
 	var diff = required_boxes_shipped - floor(ice_boxes_shipped);
@@ -194,7 +240,7 @@ var current_fish : int = 0;
 var is_hook_broken : bool = false;
 
 func _init_ice_fishing() -> void:
-	pass;
+	current_fish = 0;
 
 func ice_fishing_get_status() -> Status:
 	if (is_hook_broken): return Status.Warning;
@@ -222,13 +268,20 @@ const FISH_FRYING_ALERT : int = 8;
 var chopped_fish : int = 0;
 var cooked_slices : int = 0;
 var required_slices : int = 0;
+var fish_frying_timer : SceneTreeTimer;
 
 func _init_fish_frying() -> void:
-	get_tree().create_timer(60).connect("timeout", fish_frying_update_required);
+	chopped_fish = 0;
+	cooked_slices = 0;
+	fish_frying_timer = get_tree().create_timer(50, false);
+	fish_frying_timer.connect("timeout", fish_frying_update_required);
 
 func fish_frying_update_required() -> void:
+	if (resetting): return;
+	fish_frying_timer = null;
 	required_slices += 1;
-	get_tree().create_timer(15).connect("timeout", fish_frying_update_required);
+	fish_frying_timer = get_tree().create_timer(15, false);
+	fish_frying_timer.connect("timeout", fish_frying_update_required);
 
 func fish_frying_get_status() -> Status:
 	var diff = required_slices - cooked_slices;
@@ -261,13 +314,18 @@ const FACULTY_TRAINING_WARNING : int = 1;
 const FACULTY_TRAINING_ALERT : int = 2;
 var required_quotes : int = 0;
 var current_quotes : int = 0;
+var faculty_training_timer : SceneTreeTimer;
 
 func _init_faculty_training() -> void:
-	get_tree().create_timer(30).connect("timeout", faculty_training_update_required);
+	current_quotes = 0;
+	faculty_training_timer = get_tree().create_timer(30, false);
+	faculty_training_timer.connect("timeout", faculty_training_update_required);
 
 func faculty_training_update_required() -> void:
+	if (resetting): return;
 	required_quotes += 1;
-	get_tree().create_timer(30).connect("timeout", faculty_training_update_required);
+	faculty_training_timer =get_tree().create_timer(45, false)
+	faculty_training_timer.connect("timeout", faculty_training_update_required);
 
 func faculty_training_get_status() -> Status:
 	var diff = required_quotes - current_quotes;

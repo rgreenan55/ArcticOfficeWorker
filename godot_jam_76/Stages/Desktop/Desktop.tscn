@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://dnwc5adrx7bm3"]
+[gd_scene load_steps=42 format=3 uid="uid://dnwc5adrx7bm3"]
 
 [ext_resource type="Script" path="res://Stages/Desktop/Desktop.gd" id="1_dbuie"]
 [ext_resource type="PackedScene" uid="uid://dmm7ujmcn46k4" path="res://Stages/Desktop/Utilities/InterfaceStyle/InterfaceBackground.tscn" id="3_fwov0"]
@@ -38,6 +38,8 @@
 [ext_resource type="PackedScene" uid="uid://bhed54eclo74x" path="res://Stages/Desktop/Applications/Music/Music.tscn" id="17_cii7a"]
 [ext_resource type="Texture2D" uid="uid://bixp50vwqc8b5" path="res://Stages/Desktop/Applications/SnowTransport/Art/SnowTransportPressed.png" id="17_mbwvg"]
 [ext_resource type="PackedScene" uid="uid://ukc0qadxpmxk" path="res://Stages/Desktop/Applications/Status/Status.tscn" id="27_jhnr2"]
+[ext_resource type="Texture2D" uid="uid://dgcu5hntgfbg8" path="res://Stages/Desktop/Applications/Status/Art/StatusIcon.png" id="34_srqlp"]
+[ext_resource type="PackedScene" uid="uid://bnufeghigo603" path="res://Stages/Desktop/Applications/DesktopWindow.tscn" id="39_fpe55"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_xef0d"]
 
@@ -197,6 +199,9 @@ offset_left = 1136.0
 offset_top = 448.0
 offset_right = 1232.0
 offset_bottom = 544.0
+idle_icon = ExtResource("34_srqlp")
+hover_icon = ExtResource("34_srqlp")
+pressed_icon = ExtResource("34_srqlp")
 application_name = "Facility Status"
 window_content = ExtResource("27_jhnr2")
 
@@ -215,3 +220,8 @@ is_exit = true
 unique_name_in_owner = true
 script = ExtResource("11_rla85")
 metadata/_edit_use_anchors_ = true
+
+[node name="Tutorial" parent="Windows" instance=ExtResource("39_fpe55")]
+position = Vector2(460, 300)
+has_status = false
+window_name = "Faculty Instructions"

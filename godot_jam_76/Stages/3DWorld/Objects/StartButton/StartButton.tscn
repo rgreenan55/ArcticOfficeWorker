@@ -1,0 +1,47 @@
+[gd_scene load_steps=8 format=3 uid="uid://tg70pv8miect"]
+
+[ext_resource type="Script" path="res://Stages/3DWorld/Objects/StartButton/ButtonMouseDetector.gd" id="1_ecw1k"]
+[ext_resource type="AudioStream" uid="uid://dulj1owm3qfi4" path="res://Stages/Desktop/Applications/FacultyTraining/Audio/TypeKey.wav" id="2_oc52t"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_n83n5"]
+size = Vector3(1, 2.5, 1)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_vuylg"]
+points = PackedVector3Array(0.5, 1.24005, 0.5, -0.5, -1.22052, -0.5, -0.5, -1.22052, 0.492064, 0.5, -1.24005, 0.5, 0.492064, -1.22052, -0.5, -0.5, 1.22052, -0.5, -0.5, 1.22052, 0.492064, 0.492064, 1.22052, -0.5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3p4fy"]
+albedo_color = Color(1, 0.372549, 0.4, 1)
+metallic = 1.0
+metallic_specular = 1.0
+clearcoat_enabled = true
+
+[sub_resource type="SphereMesh" id="SphereMesh_d7q2h"]
+material = SubResource("StandardMaterial3D_3p4fy")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ucn0e"]
+
+[node name="StartButton" type="Node3D"]
+
+[node name="Stand" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_n83n5")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Stand"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Stand/StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_vuylg")
+
+[node name="Button" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0534, 0)
+mesh = SubResource("SphereMesh_d7q2h")
+skeleton = NodePath("../Stand")
+
+[node name="ButtonMouseDetector" type="Area3D" parent="Button"]
+collision_layer = 2
+script = ExtResource("1_ecw1k")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Button/ButtonMouseDetector"]
+shape = SubResource("BoxShape3D_ucn0e")
+
+[node name="PressSound" type="AudioStreamPlayer3D" parent="Button"]
+stream = ExtResource("2_oc52t")
+volume_db = 10.0

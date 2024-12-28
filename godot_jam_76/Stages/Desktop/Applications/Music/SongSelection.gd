@@ -1,4 +1,4 @@
-class_name SongSelection extends MarginContainer
+extends MarginContainer
 
 signal song_played(node);
 
@@ -38,7 +38,7 @@ func animate_music_lines() -> void:
 		current_music_line = current_music_line + 1
 		if (current_music_line > 7): current_music_line = 1;
 		music_lines.texture = load(music_lines_path + "_" + str(current_music_line) + ".png");
-		get_tree().create_timer(0.15).connect("timeout", animate_music_lines);
+		get_tree().create_timer(0.15, false).connect("timeout", animate_music_lines);
 	else:
 		current_music_line = 1;
 		music_lines.texture = load(music_lines_path + "_" + str(current_music_line) + ".png");
